@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: theme("colors.bone");
+  color: theme("colors.ink");
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: theme("colors.sea");
+  color: theme("colors.bone");
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02";
+}
+
+/* A very restrained, editorial hairline used under headings. */
+.hairline::after {
+  content: "";
+  display: block;
+  margin-top: 1.25rem;
+  width: 3rem;
+  height: 1px;
+  background-color: theme("colors.ink");
+  opacity: 0.4;
+}
+
+/* Reveal on first paint — subtle, no animation library needed. */
+@keyframes nc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nc-fade-up {
+  animation: nc-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nc-fade-up-1 {
+  animation-delay: 0.05s;
+}
+.nc-fade-up-2 {
+  animation-delay: 0.15s;
+}
+.nc-fade-up-3 {
+  animation-delay: 0.3s;
+}
+.nc-fade-up-4 {
+  animation-delay: 0.45s;
+}
+
+/* Thin top marquee rule used for page openers. */
+.rule-top {
+  border-top: 1px solid theme("colors.line");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .nc-fade-up,
+  .nc-fade-up-1,
+  .nc-fade-up-2,
+  .nc-fade-up-3,
+  .nc-fade-up-4 {
+    animation: none;
+  }
+}
