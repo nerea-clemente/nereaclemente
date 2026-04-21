@@ -3,10 +3,20 @@ import { Container } from "@/components/Container";
 import { SectionHeader, Eyebrow } from "@/components/SectionHeader";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Button } from "@/components/Button";
+import { Currently } from "@/components/Currently";
 import { featuredProjects, projects } from "@/lib/projects";
 import { expertise } from "@/lib/expertise";
 import { articles } from "@/lib/writing";
 import { site } from "@/lib/site";
+
+const preoccupations = [
+  "the semicolon",
+  "bivalves and their economics",
+  "how fishing communities tell their own story",
+  "provenance claims that don't survive scrutiny",
+  "the first hour at a fish market",
+  "press releases written like postcards",
+];
 
 export default function HomePage() {
   const featured = featuredProjects.slice(0, 3);
@@ -15,52 +25,43 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-12 pb-24 md:pt-20 md:pb-32">
+      <section className="relative overflow-hidden pt-10 pb-24 md:pt-16 md:pb-32">
         <Container>
-          <div className="grid gap-10 md:grid-cols-12">
-            <div className="md:col-span-9">
-              <span className="nc-fade-up text-xs uppercase tracking-caps text-tide">
-                Folio — 2026
-              </span>
-              <h1 className="nc-fade-up nc-fade-up-1 mt-6 font-display text-display-xl text-ink">
-                Marketing, content and communication for{" "}
-                <span className="italic text-tide">aquaculture, seafood</span>{" "}
-                and sustainability.
-              </h1>
-              <p className="nc-fade-up nc-fade-up-2 mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-                {site.subtagline} I work with producers, coalitions and editorial teams on brand narrative, campaigns and science communication — in British English, with a Mediterranean tilt.
+          <div className="nc-fade-up flex flex-wrap items-center gap-3 text-xs uppercase tracking-caps text-tide">
+            <span>Folio — 2026</span>
+            <span className="text-line">·</span>
+            <span className="text-muted">A Coruña, Galicia</span>
+            <span className="text-line">·</span>
+            <span className="text-muted">EN · ES · GL</span>
+          </div>
+
+          <p className="nc-fade-up nc-fade-up-1 mt-12 font-script text-4xl text-tide md:text-5xl">
+            Hola — Olá — Hello.
+          </p>
+
+          <h1 className="nc-fade-up nc-fade-up-2 mt-6 max-w-[18ch] font-display text-display-xl text-ink">
+            I&rsquo;m{" "}
+            <span className="italic text-tide">Nerea Clemente</span>, a
+            communications writer for{" "}
+            <span className="italic">aquaculture, seafood</span> and
+            sustainability.
+          </h1>
+
+          <div className="nc-fade-up nc-fade-up-3 mt-12 grid gap-12 md:grid-cols-12 md:gap-16">
+            <div className="md:col-span-7">
+              <p className="max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+                I help companies and projects in technical sectors tell their story with clarity, precision and a point of view. Brand narrative, campaigns, long-form writing, science communication and the editorial side of sustainability reporting — in British English, with a Mediterranean tilt.
               </p>
-              <div className="nc-fade-up nc-fade-up-3 mt-10 flex flex-wrap items-center gap-4">
+              <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Button href="/work">See the work</Button>
                 <Button href="/contact" variant="ghost">
                   Start a conversation
                 </Button>
               </div>
             </div>
-            <aside className="nc-fade-up nc-fade-up-4 md:col-span-3 md:border-l md:border-line md:pl-8">
-              <div className="flex flex-col gap-6 text-sm text-muted">
-                <div>
-                  <div className="text-xs uppercase tracking-caps text-ink">
-                    Available
-                  </div>
-                  <p className="mt-2">
-                    Selective freelance projects from June 2026.
-                  </p>
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-caps text-ink">
-                    Based
-                  </div>
-                  <p className="mt-2">{site.location}</p>
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-caps text-ink">
-                    Languages
-                  </div>
-                  <p className="mt-2">English · Spanish · Galician</p>
-                </div>
-              </div>
-            </aside>
+            <div className="nc-fade-up nc-fade-up-4 md:col-span-5">
+              <Currently />
+            </div>
           </div>
         </Container>
       </section>
@@ -159,23 +160,64 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Philosophy quote — deep marine surface for contrast */}
+      {/* Manifesto — full bleed marine, hand-signed */}
       <section className="bg-tide py-28 text-paper md:py-40">
         <Container size="narrow">
-          <blockquote className="relative">
+          <span className="text-xs uppercase tracking-caps text-sky">
+            A working note, pinned above the desk
+          </span>
+          <blockquote className="relative mt-10">
             <span
               aria-hidden
-              className="absolute -top-8 -left-2 font-display text-7xl leading-none text-sky opacity-60 md:-top-10 md:text-9xl"
+              className="absolute -top-10 -left-3 font-display text-7xl leading-none text-sky opacity-60 md:-top-14 md:text-[10rem]"
             >
               “
             </span>
             <p className="font-display text-display-md leading-snug">
-              Good communication in a technical sector is mostly translation. The job is not to make the work sound bigger. It is to let it be understood, <span className="italic">accurately</span>, by the people who need to understand it.
+              I&rsquo;d rather write one careful sentence about a fish farm than ten clever ones about something I don&rsquo;t know. The work begins on the dock, in someone else&rsquo;s vocabulary, and ends on the page in <span className="italic">mine</span>.
             </p>
-            <footer className="mt-10 text-xs uppercase tracking-caps text-sky">
-              — Working note, 2025
+            <footer className="mt-10 flex items-center gap-4">
+              <span className="font-script text-4xl text-paper md:text-5xl">
+                — Nerea
+              </span>
+              <span className="h-px flex-1 bg-sky/40" />
+              <span className="text-xs uppercase tracking-caps text-sky">
+                A Coruña, 2026
+              </span>
             </footer>
           </blockquote>
+        </Container>
+      </section>
+
+      {/* Preoccupations — small, opinionated, very her */}
+      <section className="py-24 md:py-32">
+        <Container>
+          <div className="grid gap-10 md:grid-cols-12 md:gap-20">
+            <div className="md:col-span-4">
+              <Eyebrow>Preoccupations</Eyebrow>
+              <h2 className="mt-4 font-display text-display-sm text-ink">
+                What I keep coming back to.
+              </h2>
+              <p className="mt-4 max-w-reading text-base text-muted">
+                The recurring interests behind most of the work. Not a list of services — a list of obsessions.
+              </p>
+            </div>
+            <ul className="md:col-span-8">
+              {preoccupations.map((p, i) => (
+                <li
+                  key={p}
+                  className="grid grid-cols-[auto_1fr] items-baseline gap-6 border-b border-line py-5 md:gap-10 md:py-7"
+                >
+                  <span className="font-mono text-xs text-muted">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-display text-2xl italic text-ink md:text-3xl">
+                    {p}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Container>
       </section>
 

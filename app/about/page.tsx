@@ -14,18 +14,58 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="pt-16 pb-20 md:pt-28 md:pb-28">
+      <section className="pt-16 pb-20 md:pt-24 md:pb-28">
         <Container>
-          <span className="text-xs uppercase tracking-caps text-tide">
-            Profile
-          </span>
-          <h1 className="mt-6 max-w-5xl font-display text-display-xl text-ink">
-            A communicator for sectors that are usually{" "}
-            <span className="italic text-tide">explained badly.</span>
-          </h1>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted md:text-xl">
-            I&rsquo;m Nerea Clemente. I work in marketing and communications, mostly with companies and projects in aquaculture, seafood, food systems and sustainability. My practice sits between strategy and editorial — brand narrative, campaigns, long-form writing and science communication — with a consistent interest in the parts of these sectors that tend not to be communicated well.
-          </p>
+          <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+            <div className="md:col-span-7">
+              <span className="text-xs uppercase tracking-caps text-tide">
+                Profile · Perfil
+              </span>
+              <p className="mt-6 font-script text-4xl text-tide md:text-5xl">
+                Hola, I&rsquo;m Nerea.
+              </p>
+              <h1 className="mt-4 max-w-5xl font-display text-display-xl text-ink">
+                A communicator for sectors that are usually{" "}
+                <span className="italic text-tide">explained badly.</span>
+              </h1>
+              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted md:text-xl">
+                I work in marketing and communications, mostly with companies and projects in aquaculture, seafood, food systems and sustainability. My practice sits between strategy and editorial — brand narrative, campaigns, long-form writing and science communication — with a consistent interest in the parts of these sectors that tend not to be communicated well.
+              </p>
+            </div>
+            <figure className="md:col-span-5">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-tide text-paper">
+                <svg
+                  viewBox="0 0 400 500"
+                  className="absolute inset-0 h-full w-full opacity-40"
+                  preserveAspectRatio="none"
+                  aria-hidden
+                >
+                  {Array.from({ length: 9 }).map((_, i) => (
+                    <path
+                      key={i}
+                      d={`M0 ${80 + i * 50} Q 200 ${40 + i * 35} 400 ${
+                        100 + i * 55
+                      }`}
+                      stroke="currentColor"
+                      strokeWidth="0.6"
+                      fill="none"
+                      opacity={0.4 + i * 0.06}
+                    />
+                  ))}
+                </svg>
+                <div className="absolute left-6 top-6 font-mono text-[10px] uppercase tracking-caps opacity-80">
+                  Portrait · placeholder
+                </div>
+                <div className="absolute right-6 bottom-6 font-script text-3xl text-paper">
+                  NC
+                </div>
+              </div>
+              <figcaption className="mt-4 flex items-center justify-between text-xs uppercase tracking-caps text-muted">
+                <span>A Coruña, March 2026</span>
+                <span>Photo · A. Pereira</span>
+              </figcaption>
+            </figure>
+          </div>
         </Container>
       </section>
 

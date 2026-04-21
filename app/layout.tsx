@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Caveat, Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { site } from "@/lib/site";
@@ -22,6 +22,13 @@ const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
+});
+
+const script = Caveat({
+  subsets: ["latin"],
+  variable: "--font-script",
+  display: "swap",
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -53,7 +60,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}
+      className={`${fraunces.variable} ${inter.variable} ${mono.variable} ${script.variable}`}
     >
       <body className="flex min-h-screen flex-col">
         <a

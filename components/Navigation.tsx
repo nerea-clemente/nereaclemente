@@ -52,6 +52,9 @@ export function Navigation() {
               className="group flex items-baseline gap-3"
               aria-label="Home"
             >
+              <span className="font-script text-2xl leading-none text-tide md:text-3xl">
+                nc
+              </span>
               <span className="font-display text-xl text-ink md:text-2xl">
                 {site.name}
               </span>

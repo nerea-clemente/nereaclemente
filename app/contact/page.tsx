@@ -17,9 +17,12 @@ export default function ContactPage() {
           <div className="grid gap-16 md:grid-cols-12 md:gap-20">
             <div className="md:col-span-7">
               <span className="text-xs uppercase tracking-caps text-tide">
-                Contact
+                Contact · Contacto
               </span>
-              <h1 className="mt-6 font-display text-display-xl text-ink">
+              <p className="mt-6 font-script text-4xl text-tide md:text-5xl">
+                Write to me.
+              </p>
+              <h1 className="mt-4 font-display text-display-xl text-ink">
                 Let&rsquo;s talk about the{" "}
                 <span className="italic text-tide">brief.</span>
               </h1>

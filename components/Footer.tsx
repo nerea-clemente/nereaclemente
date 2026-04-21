@@ -77,11 +77,21 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-line py-8 text-xs text-muted md:flex-row md:items-center md:justify-between">
-          <span>
-            © {year} {site.name}. All rights reserved.
-          </span>
-          <span>{site.location}</span>
+        <div className="flex flex-col items-start gap-6 border-t border-line py-10 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-baseline gap-4">
+            <span className="font-script text-3xl text-tide md:text-4xl">
+              Hola — Olá — Hello
+            </span>
+            <span className="text-xs uppercase tracking-caps text-muted">
+              again, soon.
+            </span>
+          </div>
+          <div className="flex flex-col gap-1 text-xs text-muted md:items-end">
+            <span>
+              © {year} {site.name}. Set in Fraunces &amp; Inter.
+            </span>
+            <span>{site.location}</span>
+          </div>
         </div>
       </Container>
     </footer>
