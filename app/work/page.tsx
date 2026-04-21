@@ -24,13 +24,13 @@ export default function WorkPage() {
     <>
       <section className="pt-16 pb-12 md:pt-24 md:pb-16">
         <Container>
-          <span className="text-xs uppercase tracking-caps text-sea">
+          <span className="text-xs uppercase tracking-caps text-tide">
             Work — 2022 / 2026
           </span>
           <h1 className="mt-6 max-w-5xl font-display text-display-xl text-ink">
             A selection of projects across{" "}
-            <span className="italic text-sea">campaigns, editorial</span> and{" "}
-            <span className="italic text-sea">science communication</span>.
+            <span className="italic text-tide">campaigns, editorial</span> and{" "}
+            <span className="italic text-tide">science communication</span>.
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted">
             Both client work and self-initiated projects. Use the filters below to browse by category, or switch to the index view for a faster scan.

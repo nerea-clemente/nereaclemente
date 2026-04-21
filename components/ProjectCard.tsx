@@ -4,15 +4,18 @@ import { Project } from "@/lib/projects";
 type Variant = "default" | "featured" | "compact";
 
 const toneMap: Record<string, string> = {
-  sea: "bg-sea text-bone",
-  deep: "bg-deep text-bone",
+  sea: "bg-sea text-paper",
+  deep: "bg-deep text-paper",
+  tide: "bg-tide text-paper",
+  wave: "bg-wave text-paper",
   shell: "bg-shell text-ink",
   sand: "bg-sand text-ink",
-  clay: "bg-clay text-bone",
+  paper: "bg-paper text-ink ring-1 ring-line",
+  clay: "bg-clay text-paper",
 };
 
 function pickTone(slug: string) {
-  const tones = ["sea", "shell", "clay", "deep", "sand"];
+  const tones = ["tide", "shell", "sea", "paper", "wave", "clay", "sand"];
   const idx = Math.abs(
     [...slug].reduce((acc, c) => acc + c.charCodeAt(0), 0)
   ) % tones.length;

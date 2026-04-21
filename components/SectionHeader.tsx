@@ -51,7 +51,7 @@ export function SectionHeader({
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <span className="text-xs uppercase tracking-caps text-sea">
+    <span className="text-xs uppercase tracking-caps text-tide">
       {children}
     </span>
   );

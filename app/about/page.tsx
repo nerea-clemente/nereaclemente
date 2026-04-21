@@ -16,12 +16,12 @@ export default function AboutPage() {
     <>
       <section className="pt-16 pb-20 md:pt-28 md:pb-28">
         <Container>
-          <span className="text-xs uppercase tracking-caps text-sea">
+          <span className="text-xs uppercase tracking-caps text-tide">
             Profile
           </span>
           <h1 className="mt-6 max-w-5xl font-display text-display-xl text-ink">
             A communicator for sectors that are usually{" "}
-            <span className="italic text-sea">explained badly.</span>
+            <span className="italic text-tide">explained badly.</span>
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted md:text-xl">
             I&rsquo;m Nerea Clemente. I work in marketing and communications, mostly with companies and projects in aquaculture, seafood, food systems and sustainability. My practice sits between strategy and editorial — brand narrative, campaigns, long-form writing and science communication — with a consistent interest in the parts of these sectors that tend not to be communicated well.

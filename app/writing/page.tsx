@@ -22,12 +22,12 @@ export default function WritingPage() {
     <>
       <section className="pt-16 pb-20 md:pt-24 md:pb-24">
         <Container>
-          <span className="text-xs uppercase tracking-caps text-sea">
+          <span className="text-xs uppercase tracking-caps text-tide">
             Writing & Insights
           </span>
           <h1 className="mt-6 max-w-5xl font-display text-display-xl text-ink">
             Notes on communication in{" "}
-            <span className="italic text-sea">technical sectors.</span>
+            <span className="italic text-tide">technical sectors.</span>
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted md:text-xl">
             Short essays, field notes and briefings. Published when the thinking is ready, not on a schedule.

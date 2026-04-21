@@ -16,12 +16,12 @@ export default function ContactPage() {
         <Container>
           <div className="grid gap-16 md:grid-cols-12 md:gap-20">
             <div className="md:col-span-7">
-              <span className="text-xs uppercase tracking-caps text-sea">
+              <span className="text-xs uppercase tracking-caps text-tide">
                 Contact
               </span>
               <h1 className="mt-6 font-display text-display-xl text-ink">
                 Let&rsquo;s talk about the{" "}
-                <span className="italic text-sea">brief.</span>
+                <span className="italic text-tide">brief.</span>
               </h1>
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
                 The best way to start is a short email with the project, the timing and what you&rsquo;ve already got in place. I reply within a few working days. If it&rsquo;s a fit for the next intake, we&rsquo;ll set up a call.
@@ -32,7 +32,7 @@ export default function ContactPage() {
                   href={`mailto:${site.email}`}
                   className="group inline-flex items-baseline gap-4"
                 >
-                  <span className="font-display text-display-md text-ink underline decoration-line underline-offset-[10px] transition-colors group-hover:decoration-ink">
+                  <span className="font-display text-display-md text-ink underline decoration-wave underline-offset-[10px] transition-colors group-hover:decoration-tide">
                     {site.email}
                   </span>
                   <span

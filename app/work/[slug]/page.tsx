@@ -25,12 +25,21 @@ export function generateMetadata({
 }
 
 const toneMap: Record<string, string> = {
-  sea: "bg-sea text-bone",
-  deep: "bg-deep text-bone",
+  sea: "bg-sea text-paper",
+  deep: "bg-deep text-paper",
+  tide: "bg-tide text-paper",
+  wave: "bg-wave text-paper",
   shell: "bg-shell text-ink",
   sand: "bg-sand text-ink",
-  clay: "bg-clay text-bone",
+  paper: "bg-paper text-ink",
+  clay: "bg-clay text-paper",
 };
+
+const heroTones = ["tide", "sea", "wave", "deep"] as const;
+function heroTone(slug: string) {
+  const idx = Math.abs([...slug].reduce((a, c) => a + c.charCodeAt(0), 0)) % heroTones.length;
+  return heroTones[idx];
+}
 
 export default function CaseStudyPage({
   params,
@@ -95,7 +104,7 @@ export default function CaseStudyPage({
       {/* Hero visual */}
       <section className="pb-16 md:pb-24">
         <Container>
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-sea text-bone">
+          <div className={`relative aspect-[16/9] w-full overflow-hidden rounded-sm ${toneMap[heroTone(project.slug)]}`}>
             <svg
               viewBox="0 0 1600 900"
               className="absolute inset-0 h-full w-full opacity-50"
@@ -146,7 +155,7 @@ export default function CaseStudyPage({
               <ul className="flex flex-col gap-5">
                 {project.approach.map((a, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="mt-2 inline-block h-px w-6 flex-none bg-sea" />
+                    <span className="mt-2 inline-block h-px w-6 flex-none bg-tide" />
                     <span>{a}</span>
                   </li>
                 ))}
@@ -156,7 +165,7 @@ export default function CaseStudyPage({
               <ul className="flex flex-col gap-5">
                 {project.execution.map((a, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="mt-2 inline-block h-px w-6 flex-none bg-sea" />
+                    <span className="mt-2 inline-block h-px w-6 flex-none bg-tide" />
                     <span>{a}</span>
                   </li>
                 ))}
@@ -166,7 +175,7 @@ export default function CaseStudyPage({
               <ul className="flex flex-col gap-5">
                 {project.outcome.map((a, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="mt-2 inline-block h-px w-6 flex-none bg-sea" />
+                    <span className="mt-2 inline-block h-px w-6 flex-none bg-tide" />
                     <span>{a}</span>
                   </li>
                 ))}
@@ -230,10 +239,12 @@ export default function CaseStudyPage({
       {project.takeaway && (
         <section className="py-24 md:py-32">
           <Container size="narrow">
-            <div className="flex flex-col gap-8 border-t border-line pt-12">
+            <div className="rounded-sm bg-paper p-10 ring-1 ring-line md:p-16">
               <Eyebrow>Key takeaway</Eyebrow>
-              <p className="font-display text-display-md leading-snug text-ink">
+              <p className="mt-6 font-display text-display-md leading-snug text-ink">
+                <span className="text-tide">“</span>
                 {project.takeaway}
+                <span className="text-tide">”</span>
               </p>
             </div>
           </Container>
@@ -303,7 +314,7 @@ function CaseSection({
           <span className="font-mono text-xs uppercase tracking-caps text-muted">
             § {n}
           </span>
-          <span className="text-xs uppercase tracking-caps text-sea">
+          <span className="text-xs uppercase tracking-caps text-tide">
             {label}
           </span>
         </div>

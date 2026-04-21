@@ -23,8 +23,8 @@ body {
 }
 
 ::selection {
-  background: theme("colors.sea");
-  color: theme("colors.bone");
+  background: theme("colors.tide");
+  color: theme("colors.paper");
 }
 
 .font-display {

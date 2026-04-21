@@ -19,12 +19,12 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-10 md:grid-cols-12">
             <div className="md:col-span-9">
-              <span className="nc-fade-up text-xs uppercase tracking-caps text-sea">
+              <span className="nc-fade-up text-xs uppercase tracking-caps text-tide">
                 Folio — 2026
               </span>
               <h1 className="nc-fade-up nc-fade-up-1 mt-6 font-display text-display-xl text-ink">
                 Marketing, content and communication for{" "}
-                <span className="italic text-sea">aquaculture, seafood</span>{" "}
+                <span className="italic text-tide">aquaculture, seafood</span>{" "}
                 and sustainability.
               </h1>
               <p className="nc-fade-up nc-fade-up-2 mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
@@ -90,8 +90,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Brief intro */}
-      <section className="py-24 md:py-32">
+      {/* Brief intro — paper surface to break the beige rhythm */}
+      <section className="bg-paper py-24 md:py-32">
         <Container>
           <div className="grid gap-10 md:grid-cols-12">
             <div className="md:col-span-4">
@@ -102,7 +102,7 @@ export default function HomePage() {
             </div>
             <div className="md:col-span-8">
               <p className="font-display text-display-md leading-tight text-ink">
-                I&rsquo;m a marketing and communications professional working mainly with companies and projects in aquaculture, seafood and adjacent technical sectors.
+                I&rsquo;m a marketing and communications professional working mainly with companies and projects in <span className="italic text-tide">aquaculture, seafood</span> and adjacent technical sectors.
               </p>
               <p className="mt-8 max-w-reading text-lg leading-relaxed text-muted">
                 My work sits between strategy and editorial: brand narratives, campaigns, long-form writing, science communication and sustainability reporting. I spend time on site with the people actually doing the work, then translate that into language buyers, retailers, journalists and the wider public can use. Alongside client work, I run an ongoing personal project on seafood and a small editorial initiative documenting women across the aquaculture value chain.
@@ -159,20 +159,20 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Philosophy quote */}
-      <section className="py-24 md:py-32">
+      {/* Philosophy quote — deep marine surface for contrast */}
+      <section className="bg-tide py-28 text-paper md:py-40">
         <Container size="narrow">
           <blockquote className="relative">
             <span
               aria-hidden
-              className="absolute -top-8 -left-2 font-display text-7xl leading-none text-sea opacity-40 md:-top-10 md:text-9xl"
+              className="absolute -top-8 -left-2 font-display text-7xl leading-none text-sky opacity-60 md:-top-10 md:text-9xl"
             >
               “
             </span>
-            <p className="font-display text-display-md leading-snug text-ink">
-              Good communication in a technical sector is mostly translation. The job is not to make the work sound bigger. It is to let it be understood, accurately, by the people who need to understand it.
+            <p className="font-display text-display-md leading-snug">
+              Good communication in a technical sector is mostly translation. The job is not to make the work sound bigger. It is to let it be understood, <span className="italic">accurately</span>, by the people who need to understand it.
             </p>
-            <footer className="mt-8 text-xs uppercase tracking-caps text-muted">
+            <footer className="mt-10 text-xs uppercase tracking-caps text-sky">
               — Working note, 2025
             </footer>
           </blockquote>
