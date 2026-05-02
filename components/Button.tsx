@@ -10,17 +10,15 @@ type ButtonProps = {
 };
 
 const base =
-  "inline-flex items-center gap-3 text-[13px] uppercase tracking-caps font-medium transition-all duration-300 ease-soft";
+  "inline-flex items-center gap-3 text-[13px] uppercase tracking-caps font-medium rounded-full transition-all duration-300 ease-soft";
 
 const variants = {
-  primary:
-    "bg-ink px-6 py-3.5 text-paper hover:bg-electric",
-  lemon:
-    "bg-lemon px-6 py-3.5 text-ink hover:bg-ink hover:text-lemon",
+  primary: "bg-ink px-7 py-3.5 text-paper hover:bg-clay",
+  lemon: "bg-blush px-7 py-3.5 text-ink hover:bg-clay hover:text-paper",
   ghost:
-    "border border-ink px-6 py-3.5 text-ink hover:bg-ink hover:text-paper",
+    "border border-ink/40 px-7 py-3.5 text-ink hover:border-clay hover:text-clay",
   quiet:
-    "border-b-2 border-ink pb-1 text-ink hover:border-electric hover:text-electric hover:gap-5",
+    "rounded-none border-b border-clay pb-1 text-ink hover:border-ink hover:text-clay hover:gap-5",
 };
 
 export function Button({

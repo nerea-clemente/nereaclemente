@@ -6,12 +6,14 @@ import { ui } from "@/lib/i18n/strings";
 export function Currently({ className = "" }: { className?: string }) {
   const t = useT();
   return (
-    <aside className={`relative bg-ink p-7 text-paper md:p-9 ${className}`}>
-      <div className="flex items-center justify-between border-b border-paper/15 pb-4">
-        <span className="font-mono text-[10px] uppercase tracking-caps text-lemon">
-          {t(ui.currently.label)}
+    <aside
+      className={`relative bg-blush p-7 text-ink md:p-9 ${className}`}
+    >
+      <div className="flex items-baseline justify-between border-b border-line/15 pb-4">
+        <span className="italic-serif text-2xl text-clay md:text-3xl">
+          {t(ui.currently.label).replace("◆ ", "")}
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-caps text-paper/50">
+        <span className="font-mono text-[10px] uppercase tracking-caps text-ink/50">
           {new Date().toLocaleDateString("en-GB", {
             month: "short",
             year: "numeric",
@@ -22,12 +24,12 @@ export function Currently({ className = "" }: { className?: string }) {
         {ui.currently.items.map((item, i) => (
           <div
             key={i}
-            className="grid grid-cols-[7rem_1fr] items-baseline gap-4 border-b border-paper/10 py-3 last:border-b-0"
+            className="grid grid-cols-[7rem_1fr] items-baseline gap-4 border-b border-line/10 py-3 last:border-b-0"
           >
-            <dt className="font-mono text-[10px] uppercase tracking-caps text-paper/50">
+            <dt className="font-mono text-[10px] uppercase tracking-caps text-ink/55">
               {t(item.label)}
             </dt>
-            <dd className="text-base text-paper">{t(item.value)}</dd>
+            <dd className="text-base text-ink">{t(item.value)}</dd>
           </div>
         ))}
       </dl>

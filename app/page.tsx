@@ -73,13 +73,11 @@ export default function HomePage() {
           {Array.from({ length: 6 }).map((_, i) => (
             <span key={i} className="flex items-center gap-10">
               <span>{t(ui.ticker.folio)}</span>
-              <span className="text-electric">◆</span>
+              <span className="text-clay">◆</span>
               <span>{t(ui.ticker.location)}</span>
-              <span className="text-electric">◆</span>
-              <span>{t(ui.ticker.available)}</span>
-              <span className="text-electric">◆</span>
+              <span className="text-clay">◆</span>
               <span>{t(ui.ticker.languages)}</span>
-              <span className="text-electric">◆</span>
+              <span className="text-clay">◆</span>
             </span>
           ))}
         </div>
@@ -91,7 +89,7 @@ export default function HomePage() {
           <div className="grid gap-16 md:grid-cols-12 md:gap-12">
             <div className="md:col-span-8">
               <div className="nc-fade-up flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-                <span className="bg-electric px-2 py-0.5 text-paper">
+                <span className="bg-sea px-2 py-0.5 text-paper">
                   {t(ui.hero.badge)}
                 </span>
                 <span className="text-muted">{t(ui.hero.badgeMeta)}</span>
@@ -100,7 +98,7 @@ export default function HomePage() {
               <h1 className="nc-fade-up nc-fade-up-1 mt-10 font-display-tight text-[clamp(3rem,8.5vw,8.5rem)] leading-[0.92] text-ink">
                 {t(ui.hero.headline.l1)}
                 <br />
-                <span className="italic-serif text-electric">
+                <span className="italic-serif text-sea">
                   {t(ui.hero.headline.l2a)}
                 </span>
                 {t(ui.hero.headline.l2b)}
@@ -133,8 +131,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Lemon strip */}
-      <section className="bg-lemon py-4">
+      {/* Soft strip */}
+      <section className="bg-blush py-4">
         <Container>
           <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-caps text-ink">
             <span>{t(ui.home.selectedStrip)}</span>
@@ -154,7 +152,7 @@ export default function HomePage() {
               <Eyebrow>{t(ui.home.selectedStrip).replace("◆ ", "")}</Eyebrow>
               <h2 className="mt-5 font-display-tight text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] text-ink">
                 {t(ui.home.selectedTitle.a)}
-                <span className="italic-serif text-electric">
+                <span className="italic-serif text-sea">
                   {t(ui.home.selectedTitle.em)}
                 </span>
                 {t(ui.home.selectedTitle.b)}
@@ -164,7 +162,7 @@ export default function HomePage() {
               <p className="text-base text-muted">{t(ui.home.selectedLede)}</p>
               <Link
                 href="/work"
-                className="mt-5 inline-flex items-center gap-2 border-b-2 border-ink pb-0.5 text-sm uppercase tracking-caps text-ink transition-colors hover:border-electric hover:text-electric"
+                className="mt-5 inline-flex items-center gap-2 border-b border-line pb-0.5 text-sm uppercase tracking-caps text-ink transition-colors hover:border-sea hover:text-sea"
               >
                 {t(ui.common.allProjects)} <span aria-hidden>→</span>
               </Link>
@@ -188,7 +186,7 @@ export default function HomePage() {
             <div className="md:col-span-9">
               <p className="font-display text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.15] text-ink">
                 {t(ui.home.profileLeadA)}
-                <span className="italic-serif text-electric">
+                <span className="italic-serif text-sea">
                   {t(ui.home.profileLeadEm)}
                 </span>
                 {t(ui.home.profileLeadB)}
@@ -221,16 +219,16 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid border-t border-ink md:grid-cols-2">
+          <div className="grid border-t border-line md:grid-cols-2">
             {expertise.map((group, i) => (
               <article
                 key={i}
-                className={`flex flex-col gap-5 border-b border-ink p-8 md:p-12 ${
+                className={`flex flex-col gap-5 border-b border-line p-8 md:p-12 ${
                   i % 2 === 0 ? "md:border-r" : ""
                 }`}
               >
                 <div className="flex items-baseline justify-between">
-                  <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
+                  <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
                     0{i + 1}
                   </span>
                   <span className="font-mono text-[11px] uppercase tracking-caps text-muted">
@@ -259,12 +257,12 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Manifesto */}
-      <section className="bg-electric py-28 text-paper md:py-40">
+      {/* Manifesto — soft Mediterranean sea panel */}
+      <section className="bg-deep py-28 text-paper md:py-40">
         <Container>
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-3">
-              <span className="font-mono text-[11px] uppercase tracking-caps text-lemon">
+              <span className="font-mono text-[11px] uppercase tracking-caps text-saffron">
                 {t(ui.home.manifestoEyebrow)}
               </span>
               <p className="mt-3 font-mono text-[11px] uppercase tracking-caps text-paper/70">
@@ -273,16 +271,16 @@ export default function HomePage() {
             </div>
             <blockquote className="md:col-span-9">
               <p className="font-display-tight text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
-                <span className="italic-serif text-lemon">“</span>
+                <span className="italic-serif text-saffron">“</span>
                 {t(ui.home.manifestoQuote)}
-                <span className="italic-serif text-lemon">
+                <span className="italic-serif text-saffron">
                   {t(ui.home.manifestoEm)}
                 </span>
                 {t(ui.home.manifestoTrail)}
-                <span className="italic-serif text-lemon">”</span>
+                <span className="italic-serif text-saffron">”</span>
               </p>
               <footer className="mt-12 flex items-center gap-5 font-mono text-[11px] uppercase tracking-caps text-paper/70">
-                <span className="bg-lemon px-2 py-0.5 text-ink">
+                <span className="bg-saffron px-2 py-0.5 text-ink">
                   {t(ui.home.manifestoSign)}
                 </span>
                 <span className="h-px flex-1 bg-paper/20" />
@@ -302,7 +300,7 @@ export default function HomePage() {
               <h2 className="mt-5 font-display-tight text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[0.95] text-ink">
                 {t(ui.home.preocTitleA)}
                 <br />
-                <span className="italic-serif text-electric">
+                <span className="italic-serif text-sea">
                   {t(ui.home.preocTitleEm)}
                 </span>
               </h2>
@@ -312,16 +310,16 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ul className="grid border-t border-ink md:grid-cols-2">
+          <ul className="grid border-t border-line md:grid-cols-2">
             {preoccupations.map((p, i) => (
               <li
                 key={i}
-                className={`flex flex-col gap-3 border-b border-ink p-6 md:p-10 ${
+                className={`flex flex-col gap-3 border-b border-line p-6 md:p-10 ${
                   i % 2 === 0 ? "md:border-r" : ""
                 }`}
               >
                 <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-                  <span className="bg-ink px-2 py-0.5 text-lemon">
+                  <span className="bg-ink px-2 py-0.5 text-saffron">
                     № {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-muted">{t(ui.home.preocChip)}</span>
@@ -344,7 +342,7 @@ export default function HomePage() {
               <Eyebrow>{t(ui.home.writingEyebrow)}</Eyebrow>
               <h2 className="mt-5 font-display-tight text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[0.95] text-ink">
                 {t(ui.home.writingTitleA)}
-                <span className="italic-serif text-electric">
+                <span className="italic-serif text-sea">
                   {t(ui.home.writingTitleEm)}
                 </span>
                 {t(ui.home.writingTitleB)}
@@ -354,20 +352,20 @@ export default function HomePage() {
               <p className="text-base text-muted">{t(ui.home.writingLede)}</p>
               <Link
                 href="/writing"
-                className="mt-5 inline-flex items-center gap-2 border-b-2 border-ink pb-0.5 text-sm uppercase tracking-caps text-ink hover:border-electric hover:text-electric"
+                className="mt-5 inline-flex items-center gap-2 border-b border-line pb-0.5 text-sm uppercase tracking-caps text-ink hover:border-sea hover:text-sea"
               >
                 {t(ui.common.allWriting)} <span aria-hidden>→</span>
               </Link>
             </div>
           </div>
-          <ul className="border-t border-ink">
+          <ul className="border-t border-line">
             {recentWriting.map((a, i) => (
               <li key={a.slug}>
                 <Link
                   href={`/writing#${a.slug}`}
-                  className="group grid grid-cols-[2.5rem_1fr] items-baseline gap-6 border-b border-ink py-8 transition-colors hover:bg-lemon md:grid-cols-[3rem_140px_1fr_140px] md:py-10"
+                  className="group grid grid-cols-[2.5rem_1fr] items-baseline gap-6 border-b border-line py-8 transition-colors hover:bg-saffron md:grid-cols-[3rem_140px_1fr_140px] md:py-10"
                 >
-                  <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
+                  <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
                     №&nbsp;0{i + 1}
                   </span>
                   <span className="hidden font-mono text-[11px] uppercase tracking-caps text-muted md:block">

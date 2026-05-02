@@ -11,22 +11,22 @@ export function Footer() {
   const t = useT();
 
   return (
-    <footer className="mt-32 bg-marine text-paper">
+    <footer className="mt-32 bg-clay text-paper">
       <Container>
         <div className="grid gap-16 py-24 md:grid-cols-12 md:py-32">
           <div className="md:col-span-8">
-            <p className="text-[11px] uppercase tracking-caps text-lemon">
+            <p className="text-[11px] uppercase tracking-caps text-saffron">
               {t(ui.footer.open)}
             </p>
             <p className="mt-8 max-w-3xl font-display-tight text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
               {t(ui.footer.cta)}{" "}
-              <span className="italic-serif text-lemon">
+              <span className="italic-serif text-saffron">
                 {t(ui.footer.ctaEm)}
               </span>
             </p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-10 inline-flex items-center gap-3 border-b border-lemon pb-1 text-lg text-lemon transition-opacity hover:opacity-80"
+              className="mt-10 inline-flex items-center gap-3 border-b border-saffron pb-1 text-lg text-saffron transition-opacity hover:opacity-80"
             >
               {site.email} <span aria-hidden>→</span>
             </a>
@@ -92,13 +92,13 @@ export function Footer() {
             {Array.from({ length: 4 }).map((_, i) => (
               <span key={i} className="flex items-center gap-12">
                 <span>NEREA CLEMENTE</span>
-                <span className="text-lemon">●</span>
-                <span className="italic-serif text-lemon">
+                <span className="text-saffron">●</span>
+                <span className="italic-serif text-saffron">
                   {t(ui.footer.marqueeTagline)}
                 </span>
-                <span className="text-lemon">●</span>
-                <span>EN · ES · VAL · DA</span>
-                <span className="text-lemon">●</span>
+                <span className="text-saffron">●</span>
+                <span>EN · ES · VAL</span>
+                <span className="text-saffron">●</span>
               </span>
             ))}
           </div>

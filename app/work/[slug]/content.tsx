@@ -10,11 +10,11 @@ import { getProject, projects } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 const tiles = [
-  { bg: "bg-marine", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
-  { bg: "bg-electric", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
-  { bg: "bg-lemon", fg: "text-ink", accent: "text-marine", accentBg: "bg-marine" },
-  { bg: "bg-ink", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
-  { bg: "bg-coral", fg: "text-paper", accent: "text-ink", accentBg: "bg-ink" },
+  { bg: "bg-deep", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
+  { bg: "bg-sea", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
+  { bg: "bg-saffron", fg: "text-ink", accent: "text-deep", accentBg: "bg-deep" },
+  { bg: "bg-ink", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
+  { bg: "bg-clay", fg: "text-paper", accent: "text-ink", accentBg: "bg-ink" },
 ] as const;
 
 function pickTile(slug: string) {
@@ -23,11 +23,11 @@ function pickTile(slug: string) {
 }
 
 const galleryTones: Record<string, { bg: string; fg: string; accent: string; accentBg: string }> = {
-  sea: { bg: "bg-marine", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
-  deep: { bg: "bg-deep", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
-  shell: { bg: "bg-soft", fg: "text-ink", accent: "text-electric", accentBg: "bg-electric" },
-  sand: { bg: "bg-soft", fg: "text-ink", accent: "text-electric", accentBg: "bg-electric" },
-  clay: { bg: "bg-coral", fg: "text-paper", accent: "text-ink", accentBg: "bg-ink" },
+  sea: { bg: "bg-deep", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
+  deep: { bg: "bg-deep", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
+  shell: { bg: "bg-soft", fg: "text-ink", accent: "text-sea", accentBg: "bg-sea" },
+  sand: { bg: "bg-soft", fg: "text-ink", accent: "text-sea", accentBg: "bg-sea" },
+  clay: { bg: "bg-clay", fg: "text-paper", accent: "text-ink", accentBg: "bg-ink" },
 };
 
 export function CaseStudyContent({ slug }: { slug: string }) {
@@ -46,7 +46,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
       <section className="pt-10 pb-8 md:pt-16">
         <Container>
           <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps text-muted">
-            <Link href="/work" className="hover:text-electric">
+            <Link href="/work" className="hover:text-sea">
               {t(ui.caseStudy.backIndex)}
             </Link>
             <span className="text-line">/</span>
@@ -62,7 +62,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
             {t(project.overview)}
           </p>
 
-          <dl className="mt-14 grid grid-cols-2 gap-8 border-t-2 border-ink pt-8 md:grid-cols-4">
+          <dl className="mt-14 grid grid-cols-2 gap-8 border-t border-line pt-8 md:grid-cols-4">
             <div>
               <dt className="font-mono text-[11px] uppercase tracking-caps text-muted">
                 {t(ui.caseStudy.metaClient)}
@@ -134,7 +134,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
               <ul className="flex flex-col gap-5">
                 {t(project.approach).map((a, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="mt-2 inline-block h-px w-6 flex-none bg-electric" />
+                    <span className="mt-2 inline-block h-px w-6 flex-none bg-sea" />
                     <span>{a}</span>
                   </li>
                 ))}
@@ -144,7 +144,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
               <ul className="flex flex-col gap-5">
                 {t(project.execution).map((a, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="mt-2 inline-block h-px w-6 flex-none bg-electric" />
+                    <span className="mt-2 inline-block h-px w-6 flex-none bg-sea" />
                     <span>{a}</span>
                   </li>
                 ))}
@@ -154,7 +154,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
               <ul className="flex flex-col gap-5">
                 {t(project.outcome).map((a, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="mt-2 inline-block h-px w-6 flex-none bg-electric" />
+                    <span className="mt-2 inline-block h-px w-6 flex-none bg-sea" />
                     <span>{a}</span>
                   </li>
                 ))}
@@ -167,7 +167,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
       {project.gallery && project.gallery.length > 0 && (
         <section className="bg-chalk py-20 md:py-28">
           <Container>
-            <div className="mb-10 flex items-baseline justify-between border-t-2 border-ink pt-8">
+            <div className="mb-10 flex items-baseline justify-between border-t border-line pt-8">
               <Eyebrow>{t(ui.caseStudy.visuals)}</Eyebrow>
               <span className="font-mono text-[11px] uppercase tracking-caps text-muted">
                 {t(ui.common.placeholders)}
@@ -204,18 +204,18 @@ export function CaseStudyContent({ slug }: { slug: string }) {
       )}
 
       {project.takeaway && (
-        <section className="bg-electric py-24 text-paper md:py-32">
+        <section className="bg-deep py-24 text-paper md:py-32">
           <Container size="narrow">
             <div className="grid gap-8 md:grid-cols-12">
               <div className="md:col-span-3">
-                <span className="font-mono text-[11px] uppercase tracking-caps text-lemon">
+                <span className="font-mono text-[11px] uppercase tracking-caps text-saffron">
                   {t(ui.caseStudy.takeaway)}
                 </span>
               </div>
               <p className="md:col-span-9 font-display-tight text-[clamp(2rem,5vw,4rem)] leading-[1.05]">
-                <span className="italic-serif text-lemon">“</span>
+                <span className="italic-serif text-saffron">“</span>
                 {t(project.takeaway)}
-                <span className="italic-serif text-lemon">”</span>
+                <span className="italic-serif text-saffron">”</span>
               </p>
             </div>
           </Container>
@@ -226,13 +226,13 @@ export function CaseStudyContent({ slug }: { slug: string }) {
         <Container>
           <Link
             href={`/work/${nextProject.slug}`}
-            className="group block border-t-2 border-ink pt-10"
+            className="group block border-t border-line pt-10"
           >
             <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-caps text-muted">
               <span>◆ {t(ui.common.nextProject)}</span>
               <span>{nextCategoryLabel}</span>
             </div>
-            <span className="mt-6 block font-display-tight text-[clamp(3rem,9vw,9rem)] leading-[0.9] text-ink transition-colors group-hover:text-electric">
+            <span className="mt-6 block font-display-tight text-[clamp(3rem,9vw,9rem)] leading-[0.9] text-ink transition-colors group-hover:text-sea">
               {t(nextProject.title)} <span aria-hidden>→</span>
             </span>
             <p className="mt-4 max-w-reading text-lg text-muted">
@@ -248,7 +248,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
             <Eyebrow>{t(ui.common.available)}</Eyebrow>
             <p className="font-display-tight text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] text-ink">
               {t(ui.caseStudy.interestedIn)}
-              <span className="italic-serif text-electric">
+              <span className="italic-serif text-sea">
                 {t(ui.common.writeToMe)}
               </span>
             </p>
@@ -279,14 +279,14 @@ function CaseSection({
   return (
     <article className="contents">
       <div className="md:col-span-4 md:pr-8">
-        <div className="flex flex-col gap-2 border-t-2 border-ink pt-6">
-          <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
+        <div className="flex flex-col gap-2 border-t border-line pt-6">
+          <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
             §&nbsp;{n} · {label}
           </span>
         </div>
       </div>
       <div className="md:col-span-8">
-        <div className="border-t-2 border-ink pt-6">
+        <div className="border-t border-line pt-6">
           <h2 className="font-display-tight text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] text-ink">
             {title}
           </h2>

@@ -50,16 +50,13 @@ export function Navigation() {
           <div className="flex h-16 items-center justify-between md:h-20">
             <Link
               href="/"
-              className="group flex items-center gap-3"
+              className="group flex items-baseline gap-3"
               aria-label="Home"
             >
-              <span className="flex h-7 items-center justify-center bg-ink px-2 font-mono text-[11px] uppercase tracking-caps text-paper transition-colors group-hover:bg-electric">
-                NC
-              </span>
               <span className="font-display text-lg text-ink md:text-xl">
                 Nerea Clemente
               </span>
-              <span className="hidden text-[11px] uppercase tracking-caps text-muted md:inline">
+              <span className="hidden italic-serif text-base text-clay md:inline">
                 — {t(site.role)}
               </span>
             </Link>
@@ -204,33 +201,28 @@ function LangToggle({
     <div
       role="group"
       aria-label={ariaLabel}
-      className={`flex items-stretch overflow-hidden border border-ink ${
-        compact ? "h-7" : "h-8"
-      }`}
+      className={`flex items-baseline gap-1.5 ${compact ? "text-xs" : "text-sm"}`}
     >
       <button
         type="button"
         onClick={() => setLocale("en")}
         aria-pressed={locale === "en"}
-        className={`px-2.5 font-mono text-[11px] uppercase tracking-caps transition-colors ${
-          locale === "en"
-            ? "bg-ink text-paper"
-            : "bg-paper text-ink hover:bg-soft"
+        className={`italic-serif transition-colors ${
+          locale === "en" ? "text-clay" : "text-muted hover:text-ink"
         }`}
       >
-        EN
+        en
       </button>
+      <span className="text-muted">/</span>
       <button
         type="button"
         onClick={() => setLocale("es")}
         aria-pressed={locale === "es"}
-        className={`px-2.5 font-mono text-[11px] uppercase tracking-caps transition-colors ${
-          locale === "es"
-            ? "bg-ink text-paper"
-            : "bg-paper text-ink hover:bg-soft"
+        className={`italic-serif transition-colors ${
+          locale === "es" ? "text-clay" : "text-muted hover:text-ink"
         }`}
       >
-        ES
+        es
       </button>
     </div>
   );

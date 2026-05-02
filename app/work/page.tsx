@@ -28,18 +28,18 @@ export default function WorkPage() {
       <section className="pt-12 pb-12 md:pt-20 md:pb-16">
         <Container>
           <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-            <span className="bg-electric px-2 py-0.5 text-paper">
+            <span className="bg-sea px-2 py-0.5 text-paper">
               {t(ui.work.badge)}
             </span>
             <span className="text-muted">{t(ui.work.badgeMeta)}</span>
           </div>
           <h1 className="mt-8 max-w-6xl font-display-tight text-[clamp(3rem,8vw,8rem)] leading-[0.92] text-ink">
             {t(ui.work.titleA)}
-            <span className="italic-serif text-electric">
+            <span className="italic-serif text-sea">
               {t(ui.work.titleEm1)}
             </span>
             {t(ui.work.titleMid)}{" "}
-            <span className="italic-serif text-electric">
+            <span className="italic-serif text-sea">
               {t(ui.work.titleEm2)}
             </span>
           </h1>
@@ -51,7 +51,7 @@ export default function WorkPage() {
 
       <section className="py-8">
         <Container>
-          <div className="flex flex-col gap-6 border-y-2 border-ink py-5 md:flex-row md:items-center md:justify-between md:gap-4">
+          <div className="flex flex-col gap-6 border-y border-line py-5 md:flex-row md:items-center md:justify-between md:gap-4">
             <div className="flex flex-wrap items-center gap-2">
               <span className="mr-2 font-mono text-[11px] uppercase tracking-caps text-muted">
                 {t(ui.work.filterLabel)}
@@ -87,7 +87,7 @@ export default function WorkPage() {
                   onClick={() => setView("grid")}
                   aria-pressed={view === "grid"}
                   className={`transition-colors ${
-                    view === "grid" ? "text-electric" : "text-muted hover:text-ink"
+                    view === "grid" ? "text-sea" : "text-muted hover:text-ink"
                   }`}
                 >
                   {t(ui.work.grid)}
@@ -98,7 +98,7 @@ export default function WorkPage() {
                   onClick={() => setView("index")}
                   aria-pressed={view === "index"}
                   className={`transition-colors ${
-                    view === "index" ? "text-electric" : "text-muted hover:text-ink"
+                    view === "index" ? "text-sea" : "text-muted hover:text-ink"
                   }`}
                 >
                   {t(ui.work.index)}
@@ -138,7 +138,7 @@ export default function WorkPage() {
 
       <section className="py-20 md:py-28">
         <Container>
-          <div className="grid gap-8 border-t-2 border-ink pt-12 md:grid-cols-12 md:gap-16">
+          <div className="grid gap-8 border-t border-line pt-12 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4">
               <Eyebrow>{t(ui.work.alsoEyebrow)}</Eyebrow>
               <h2 className="mt-5 font-display-tight text-[clamp(2rem,4.5vw,3.5rem)] leading-[1] text-ink">

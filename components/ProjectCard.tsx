@@ -8,13 +8,13 @@ import { ui } from "@/lib/i18n/strings";
 type Variant = "default" | "featured" | "compact";
 
 const tiles = [
-  { bg: "bg-marine", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
-  { bg: "bg-electric", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
-  { bg: "bg-lemon", fg: "text-ink", accent: "text-marine", accentBg: "bg-marine" },
-  { bg: "bg-ink", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
-  { bg: "bg-coral", fg: "text-paper", accent: "text-ink", accentBg: "bg-ink" },
-  { bg: "bg-soft", fg: "text-ink", accent: "text-electric", accentBg: "bg-electric" },
-  { bg: "bg-deep", fg: "text-paper", accent: "text-lemon", accentBg: "bg-lemon" },
+  { bg: "bg-deep", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
+  { bg: "bg-sea", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
+  { bg: "bg-saffron", fg: "text-ink", accent: "text-deep", accentBg: "bg-deep" },
+  { bg: "bg-ink", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
+  { bg: "bg-clay", fg: "text-paper", accent: "text-ink", accentBg: "bg-ink" },
+  { bg: "bg-soft", fg: "text-ink", accent: "text-sea", accentBg: "bg-sea" },
+  { bg: "bg-deep", fg: "text-paper", accent: "text-saffron", accentBg: "bg-saffron" },
 ] as const;
 
 function pickTile(slug: string) {
@@ -47,7 +47,7 @@ export function ProjectCard({
           {String((index ?? 0) + 1).padStart(2, "0")}
         </span>
         <span className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-6">
-          <span className="font-display text-2xl text-ink transition-colors duration-300 ease-soft group-hover:text-electric md:text-3xl">
+          <span className="font-display text-2xl text-ink transition-colors duration-300 ease-soft group-hover:text-sea md:text-3xl">
             {t(project.title)}
           </span>
           <span className="text-sm text-muted">{t(project.summary)}</span>
@@ -70,7 +70,7 @@ export function ProjectCard({
         </div>
         <div className="flex flex-col justify-between gap-6 md:col-span-5 md:py-2">
           <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps text-muted">
-            <span className="inline-block h-1.5 w-1.5 bg-electric" />
+            <span className="inline-block h-1.5 w-1.5 bg-sea" />
             <span>{categoryLabel}</span>
             <span className="text-line">/</span>
             <span>{project.year}</span>
@@ -88,7 +88,7 @@ export function ProjectCard({
               </span>
             ))}
           </div>
-          <span className="inline-flex items-center gap-3 self-start border-b-2 border-ink pb-1 text-sm uppercase tracking-caps text-ink transition-all group-hover:border-electric group-hover:text-electric group-hover:gap-5">
+          <span className="inline-flex items-center gap-3 self-start border-b border-line pb-1 text-sm uppercase tracking-caps text-ink transition-all group-hover:border-sea group-hover:text-sea group-hover:gap-5">
             {t(ui.common.readCase)} <span aria-hidden>→</span>
           </span>
         </div>
@@ -104,7 +104,7 @@ export function ProjectCard({
           <span>{categoryLabel}</span>
           <span>{project.year}</span>
         </div>
-        <h3 className="font-display text-2xl text-ink transition-colors group-hover:text-electric md:text-3xl">
+        <h3 className="font-display text-2xl text-ink transition-colors group-hover:text-sea md:text-3xl">
           {t(project.title)}
         </h3>
         <p className="max-w-reading text-base leading-relaxed text-muted">

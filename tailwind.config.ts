@@ -9,17 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#FFFFFF",
-        chalk: "#F4F5F7",
-        ink: "#0A0E13",
-        marine: "#0A2E66",
-        deep: "#06204A",
-        electric: "#1B4DFF",
-        lemon: "#E8FF5C",
-        coral: "#FF5A3C",
-        muted: "#5C6470",
-        line: "#E1E4EB",
-        soft: "#EEF0F4",
+        paper: "#FBF6EC",
+        chalk: "#F3E9D5",
+        sand: "#E8DBC0",
+        ink: "#2A2218",
+        sea: "#7FA3BE",
+        deep: "#3F6884",
+        clay: "#C2826F",
+        olive: "#9AA784",
+        blush: "#EBC0AE",
+        saffron: "#DBA755",
+        muted: "#7A6E5C",
+        line: "#E1D4B9",
+        soft: "#EFE4CD",
       },
       fontFamily: {
         display: ["var(--font-display)", "Inter", "system-ui", "sans-serif"],
@@ -39,7 +41,7 @@ const config: Config = {
         page: "1400px",
       },
       letterSpacing: {
-        caps: "0.14em",
+        caps: "0.1em",
       },
       transitionTimingFunction: {
         soft: "cubic-bezier(0.22, 1, 0.36, 1)",

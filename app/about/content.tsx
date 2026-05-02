@@ -24,7 +24,7 @@ export function AboutContent() {
                 <br />
                 {t(ui.about.titleL3)}
                 <br />
-                <span className="italic-serif text-electric">
+                <span className="italic-serif text-sea">
                   {t(ui.about.titleL4)}
                 </span>
               </h1>
@@ -33,10 +33,10 @@ export function AboutContent() {
               </p>
             </div>
             <figure className="md:col-span-5">
-              <div className="relative aspect-[4/5] w-full overflow-hidden bg-marine text-paper">
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-deep text-paper">
                 <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8">
                   <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-caps">
-                    <span className="bg-lemon px-2 py-0.5 text-ink">
+                    <span className="bg-saffron px-2 py-0.5 text-ink">
                       {t(ui.about.portraitTag)}
                     </span>
                     <span className="text-paper/70">№ 26—04</span>
@@ -45,7 +45,7 @@ export function AboutContent() {
                     <div className="font-display-tight text-7xl leading-[0.85] md:text-8xl">
                       NC
                     </div>
-                    <div className="text-right font-mono text-[10px] uppercase tracking-caps text-lemon">
+                    <div className="text-right font-mono text-[10px] uppercase tracking-caps text-saffron">
                       <div>{t(ui.about.portraitPlaceholder)}</div>
                       <div>{t(ui.about.portraitNote)}</div>
                     </div>
@@ -91,17 +91,17 @@ export function AboutContent() {
               <h2 className="mt-5 font-display-tight text-[clamp(2rem,4.5vw,3.75rem)] leading-[1] text-ink">
                 {t(ui.about.princTitleA)}
                 <br />
-                <span className="italic-serif text-electric">
+                <span className="italic-serif text-sea">
                   {t(ui.about.princTitleEm)}
                 </span>
               </h2>
-              <ol className="mt-10 border-t border-ink">
+              <ol className="mt-10 border-t border-line">
                 {principles.map((p) => (
                   <li
                     key={p.n}
-                    className="grid grid-cols-[3rem_1fr] gap-4 border-b border-ink py-7 md:gap-8"
+                    className="grid grid-cols-[3rem_1fr] gap-4 border-b border-line py-7 md:gap-8"
                   >
-                    <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
+                    <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
                       № {p.n}
                     </span>
                     <div>
@@ -120,11 +120,11 @@ export function AboutContent() {
         </Container>
       </section>
 
-      <section className="bg-lemon py-20 md:py-28">
+      <section className="bg-blush py-20 md:py-28">
         <Container>
           <div className="grid gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4">
-              <span className="font-mono text-[11px] uppercase tracking-caps text-marine">
+              <span className="font-mono text-[11px] uppercase tracking-caps text-clay">
                 {t(ui.about.sectorsEyebrow)}
               </span>
               <h2 className="mt-5 font-display-tight text-[clamp(2rem,4.5vw,3.75rem)] leading-[1] text-ink">
@@ -141,7 +141,7 @@ export function AboutContent() {
                 {sectors.map((s, i) => (
                   <li
                     key={i}
-                    className="border-2 border-ink bg-lemon px-4 py-2 font-mono text-[11px] uppercase tracking-caps text-ink"
+                    className="border border-ink/40 bg-blush px-4 py-2 font-mono text-[11px] uppercase tracking-caps text-ink"
                   >
                     {t(s)}
                   </li>
@@ -163,21 +163,21 @@ export function AboutContent() {
               <h2 className="mt-5 font-display-tight text-[clamp(2rem,4.5vw,3.75rem)] leading-[1] text-ink">
                 {t(ui.about.servicesTitleA)}
                 <br />
-                <span className="italic-serif text-electric">
+                <span className="italic-serif text-sea">
                   {t(ui.about.servicesTitleEm)}
                 </span>
               </h2>
             </div>
           </div>
-          <div className="grid border-t border-ink md:grid-cols-2">
+          <div className="grid border-t border-line md:grid-cols-2">
             {ui.about.services.map((item, i) => (
               <div
                 key={item.n}
-                className={`flex flex-col gap-3 border-b border-ink p-8 md:p-12 ${
+                className={`flex flex-col gap-3 border-b border-line p-8 md:p-12 ${
                   i % 2 === 0 ? "md:border-r" : ""
                 }`}
               >
-                <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
+                <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
                   № {item.n}
                 </span>
                 <h3 className="font-display-tight text-2xl text-ink md:text-3xl">
@@ -194,11 +194,11 @@ export function AboutContent() {
 
       <section className="py-24 md:py-32">
         <Container size="narrow">
-          <div className="border-t-2 border-ink pt-14">
+          <div className="border-t border-line pt-14">
             <Eyebrow>{t(ui.about.ctaEyebrow)}</Eyebrow>
             <p className="mt-6 font-display-tight text-[clamp(2rem,5vw,4rem)] leading-[1] text-ink">
               {t(ui.about.ctaText)}
-              <span className="italic-serif text-electric">
+              <span className="italic-serif text-sea">
                 {t(ui.about.ctaEm)}
               </span>
             </p>

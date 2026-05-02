@@ -13,7 +13,7 @@ export function ContactContent() {
         <div className="grid gap-16 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-7">
             <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-              <span className="bg-electric px-2 py-0.5 text-paper">
+              <span className="bg-sea px-2 py-0.5 text-paper">
                 {t(ui.contact.badge)}
               </span>
               <span className="text-muted">{t(ui.contact.badgeMeta)}</span>
@@ -23,7 +23,7 @@ export function ContactContent() {
               {t(ui.contact.titleA)}
               <br />
               {t(ui.contact.titleB)}
-              <span className="italic-serif text-electric">
+              <span className="italic-serif text-sea">
                 {t(ui.contact.titleEm)}
               </span>
             </h1>
@@ -34,12 +34,12 @@ export function ContactContent() {
 
             <a
               href={`mailto:${site.email}`}
-              className="group mt-14 inline-flex flex-col gap-3 border-t border-ink pt-6"
+              className="group mt-14 inline-flex flex-col gap-3 border-t border-line pt-6"
             >
-              <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
+              <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
                 {t(ui.contact.direct)}
               </span>
-              <span className="font-display-tight text-[clamp(2rem,5vw,4rem)] leading-[1] text-ink transition-colors group-hover:text-electric">
+              <span className="font-display-tight text-[clamp(2rem,5vw,4rem)] leading-[1] text-ink transition-colors group-hover:text-sea">
                 {site.email}{" "}
                 <span
                   aria-hidden
@@ -55,7 +55,7 @@ export function ContactContent() {
                 href={site.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-ink px-3 py-2 text-paper hover:bg-electric"
+                className="bg-ink px-3 py-2 text-paper hover:bg-sea"
               >
                 LinkedIn ↗
               </a>
@@ -63,7 +63,7 @@ export function ContactContent() {
                 href={site.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-ink px-3 py-2 text-paper hover:bg-electric"
+                className="bg-ink px-3 py-2 text-paper hover:bg-sea"
               >
                 Seafood on Nerea ↗
               </a>
@@ -73,7 +73,7 @@ export function ContactContent() {
           <aside className="md:col-span-4 md:col-start-9">
             <div className="bg-ink p-7 text-paper md:p-9">
               <div className="flex items-center justify-between border-b border-paper/15 pb-4">
-                <span className="font-mono text-[10px] uppercase tracking-caps text-lemon">
+                <span className="font-mono text-[10px] uppercase tracking-caps text-saffron">
                   {t(ui.contact.cardTitle)}
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-caps text-paper/50">

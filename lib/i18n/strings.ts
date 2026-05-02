@@ -7,8 +7,7 @@ export const ui = {
   ticker: {
     folio: b("Folio 2026 · Vol. 04", "Folio 2026 · Vol. 04"),
     location: b("Denmark ↔ Valencia", "Dinamarca ↔ Valencia"),
-    available: b("Available from June 2026", "Disponible desde junio de 2026"),
-    languages: b("EN · ES · VAL · DA", "EN · ES · VAL · DA"),
+    languages: b("EN · ES · VAL", "EN · ES · VAL"),
   },
 
   // Navigation
@@ -320,8 +319,8 @@ export const ui = {
     ],
     languages: b("Languages", "Idiomas"),
     languagesValue: b(
-      "English · Spanish · Valenciano · Danish",
-      "Inglés · Español · Valenciano · Danés"
+      "English · Spanish · Valenciano",
+      "Inglés · Español · Valenciano"
     ),
   },
 
@@ -344,7 +343,7 @@ export const ui = {
       },
       {
         label: b("Working on", "Trabajando en"),
-        value: b("BioFarm, vol. II", "BioFarm, vol. II"),
+        value: b("Building a cool brand", "Construyendo una marca chula"),
       },
       {
         label: b("On loop", "En bucle"),

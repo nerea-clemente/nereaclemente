@@ -13,7 +13,7 @@ export function WritingContent() {
       <section className="pt-12 pb-16 md:pt-20 md:pb-20">
         <Container>
           <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-            <span className="bg-electric px-2 py-0.5 text-paper">
+            <span className="bg-sea px-2 py-0.5 text-paper">
               {t(ui.writing.badge)}
             </span>
             <span className="text-muted">{t(ui.writing.badgeMeta)}</span>
@@ -22,7 +22,7 @@ export function WritingContent() {
             {t(ui.writing.titleA)}
             <br />
             {t(ui.writing.titleB)}
-            <span className="italic-serif text-electric">
+            <span className="italic-serif text-sea">
               {t(ui.writing.titleEm)}
             </span>
           </h1>
@@ -32,7 +32,7 @@ export function WritingContent() {
         </Container>
       </section>
 
-      <section className="bg-lemon py-6">
+      <section className="bg-blush py-6">
         <Container>
           <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-caps text-ink">
             <span>{t(ui.writing.themesLabel)}</span>
@@ -45,12 +45,12 @@ export function WritingContent() {
 
       <section className="py-12 md:py-16">
         <Container>
-          <ul className="border-t border-ink">
+          <ul className="border-t border-line">
             {articles.map((a, i) => (
               <li key={a.slug} id={a.slug}>
-                <article className="group grid grid-cols-1 gap-6 border-b border-ink py-10 transition-colors hover:bg-lemon md:grid-cols-[140px_1fr_180px] md:gap-12 md:py-14">
+                <article className="group grid grid-cols-1 gap-6 border-b border-line py-10 transition-colors hover:bg-saffron md:grid-cols-[140px_1fr_180px] md:gap-12 md:py-14">
                   <div className="flex items-start gap-4 md:flex-col md:gap-2">
-                    <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
+                    <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
                       №&nbsp;{String(articles.length - i).padStart(2, "0")}
                     </span>
                     <span className="font-mono text-[11px] uppercase tracking-caps text-muted">
@@ -65,7 +65,7 @@ export function WritingContent() {
                       {t(a.dek)}
                     </p>
                     <div className="mt-2 flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-                      <span className="bg-ink px-2 py-0.5 text-lemon">
+                      <span className="bg-ink px-2 py-0.5 text-saffron">
                         {t(articleCategoryLabels[a.category])}
                       </span>
                       <span className="text-muted">{t(a.readTime)}</span>
@@ -85,7 +85,7 @@ export function WritingContent() {
 
       <section className="py-20 md:py-28">
         <Container size="narrow">
-          <div className="border-t-2 border-ink pt-14">
+          <div className="border-t border-line pt-14">
             <Eyebrow>{t(ui.common.note)}</Eyebrow>
             <p className="mt-6 font-display-tight text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] text-ink">
               {t(ui.writing.noteText)}
