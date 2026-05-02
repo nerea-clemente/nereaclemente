@@ -2,13 +2,16 @@
 
 import { useMemo, useState } from "react";
 import { Container } from "@/components/Container";
-import { SectionHeader } from "@/components/SectionHeader";
+import { Eyebrow } from "@/components/SectionHeader";
 import { ProjectCard } from "@/components/ProjectCard";
-import { categories, projects, ProjectCategory } from "@/lib/projects";
+import { useT } from "@/lib/i18n/context";
+import { ui } from "@/lib/i18n/strings";
+import { categories, projects, type ProjectCategory } from "@/lib/projects";
 
 type Filter = "All" | ProjectCategory;
 
 export default function WorkPage() {
+  const t = useT();
   const [filter, setFilter] = useState<Filter>("All");
   const [view, setView] = useState<"grid" | "index">("grid");
 
@@ -26,20 +29,22 @@ export default function WorkPage() {
         <Container>
           <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
             <span className="bg-electric px-2 py-0.5 text-paper">
-              ◆ Index
+              {t(ui.work.badge)}
             </span>
-            <span className="text-muted">/ 2022 — 2026</span>
+            <span className="text-muted">{t(ui.work.badgeMeta)}</span>
           </div>
           <h1 className="mt-8 max-w-6xl font-display-tight text-[clamp(3rem,8vw,8rem)] leading-[0.92] text-ink">
-            A selection of projects across{" "}
-            <span className="italic-serif text-electric">campaigns,</span>{" "}
-            editorial &amp;{" "}
+            {t(ui.work.titleA)}
             <span className="italic-serif text-electric">
-              science communication.
+              {t(ui.work.titleEm1)}
+            </span>
+            {t(ui.work.titleMid)}{" "}
+            <span className="italic-serif text-electric">
+              {t(ui.work.titleEm2)}
             </span>
           </h1>
           <p className="mt-10 max-w-3xl text-lg leading-relaxed text-muted">
-            Both client work and self-initiated projects. Use the filters to browse by category, or switch to index view for a faster scan.
+            {t(ui.work.lede)}
           </p>
         </Container>
       </section>
@@ -49,10 +54,12 @@ export default function WorkPage() {
           <div className="flex flex-col gap-6 border-y-2 border-ink py-5 md:flex-row md:items-center md:justify-between md:gap-4">
             <div className="flex flex-wrap items-center gap-2">
               <span className="mr-2 font-mono text-[11px] uppercase tracking-caps text-muted">
-                Filter →
+                {t(ui.work.filterLabel)}
               </span>
               {(["All", ...categories] as Filter[]).map((c) => {
                 const active = filter === c;
+                const label =
+                  c === "All" ? t(ui.work.all) : t(ui.categoryLabels[c]);
                 return (
                   <button
                     key={c}
@@ -64,13 +71,15 @@ export default function WorkPage() {
                         : "bg-soft text-muted hover:bg-ink hover:text-paper"
                     }`}
                   >
-                    {c}
+                    {label}
                   </button>
                 );
               })}
             </div>
             <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-caps text-muted">
-              <span>{filtered.length} projects</span>
+              <span>
+                {filtered.length} {t(ui.work.countLabel)}
+              </span>
               <span className="text-line">/</span>
               <div className="flex items-center gap-2">
                 <button
@@ -81,7 +90,7 @@ export default function WorkPage() {
                     view === "grid" ? "text-electric" : "text-muted hover:text-ink"
                   }`}
                 >
-                  Grid
+                  {t(ui.work.grid)}
                 </button>
                 <span className="text-line">·</span>
                 <button
@@ -92,7 +101,7 @@ export default function WorkPage() {
                     view === "index" ? "text-electric" : "text-muted hover:text-ink"
                   }`}
                 >
-                  Index
+                  {t(ui.work.index)}
                 </button>
               </div>
             </div>
@@ -122,21 +131,24 @@ export default function WorkPage() {
           )}
 
           {filtered.length === 0 && (
-            <p className="py-24 text-center text-muted">
-              No projects in this category yet.
-            </p>
+            <p className="py-24 text-center text-muted">{t(ui.work.empty)}</p>
           )}
         </Container>
       </section>
 
       <section className="py-20 md:py-28">
         <Container>
-          <SectionHeader
-            eyebrow="Also"
-            title={<>Not everything lives on the site.</>}
-            lede="Some of the most interesting work — confidential strategy decks, internal narrative systems, crisis communication — doesn't make it into a public portfolio. If a specific brief overlaps with one of those, I'm happy to walk through it privately."
-            align="split"
-          />
+          <div className="grid gap-8 border-t-2 border-ink pt-12 md:grid-cols-12 md:gap-16">
+            <div className="md:col-span-4">
+              <Eyebrow>{t(ui.work.alsoEyebrow)}</Eyebrow>
+              <h2 className="mt-5 font-display-tight text-[clamp(2rem,4.5vw,3.5rem)] leading-[1] text-ink">
+                {t(ui.work.alsoTitle)}
+              </h2>
+            </div>
+            <p className="md:col-span-7 md:col-start-6 max-w-reading text-lg leading-relaxed text-muted">
+              {t(ui.work.alsoLede)}
+            </p>
+          </div>
         </Container>
       </section>
     </>

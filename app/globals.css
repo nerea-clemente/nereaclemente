@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
@@ -19,8 +19,8 @@ html {
 body {
   background-color: theme("colors.paper");
   color: theme("colors.ink");
-  font-family: var(--font-sans);
-  font-feature-settings: "ss01", "cv11";
+  font-family: var(--font-display);
+  font-weight: 400;
 }
 
 ::selection {
@@ -30,25 +30,26 @@ body {
 
 .font-display {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 95, "opsz" 24;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .font-display-tight {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 80, "opsz" 96;
-  letter-spacing: -0.04em;
+  font-weight: 800;
+  letter-spacing: -0.035em;
 }
 
 .font-display-wide {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 110, "opsz" 12;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  letter-spacing: 0.005em;
 }
 
 .italic-serif {
   font-family: var(--font-serif);
   font-style: italic;
+  font-weight: 400;
   letter-spacing: -0.005em;
 }
 
@@ -66,13 +67,11 @@ body {
 .nc-fade-up {
   animation: nc-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-
 .nc-fade-up-1 { animation-delay: 0.05s; }
 .nc-fade-up-2 { animation-delay: 0.15s; }
 .nc-fade-up-3 { animation-delay: 0.3s; }
 .nc-fade-up-4 { animation-delay: 0.45s; }
 
-/* Marquee strip used as a brand divider */
 @keyframes nc-marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

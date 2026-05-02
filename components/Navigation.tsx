@@ -4,10 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "./Container";
-import { nav, site } from "@/lib/site";
+import { useLocale, useT } from "@/lib/i18n/context";
+import { ui } from "@/lib/i18n/strings";
+import { site } from "@/lib/site";
 
 export function Navigation() {
   const pathname = usePathname();
+  const t = useT();
+  const { locale, setLocale } = useLocale();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -23,11 +27,8 @@ export function Navigation() {
   }, []);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (open) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -59,54 +60,70 @@ export function Navigation() {
                 Nerea Clemente
               </span>
               <span className="hidden text-[11px] uppercase tracking-caps text-muted md:inline">
-                — {site.role}
+                — {t(site.role)}
               </span>
             </Link>
 
-            <nav aria-label="Primary" className="hidden md:block">
-              <ul className="flex items-center gap-8">
-                {nav.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={`group relative text-sm uppercase tracking-caps transition-colors ${
-                        isActive(item.href)
-                          ? "text-ink"
-                          : "text-muted hover:text-ink"
-                      }`}
-                    >
-                      {item.label}
-                      <span
-                        className={`absolute -bottom-1 left-0 block h-px bg-ink transition-all duration-300 ease-soft ${
+            <div className="hidden items-center gap-8 md:flex">
+              <nav aria-label="Primary">
+                <ul className="flex items-center gap-7">
+                  {ui.nav.primary.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className={`group relative text-[12px] uppercase tracking-caps transition-colors ${
                           isActive(item.href)
-                            ? "w-full"
-                            : "w-0 group-hover:w-full"
+                            ? "text-ink"
+                            : "text-muted hover:text-ink"
                         }`}
-                      />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+                      >
+                        {t(item.label)}
+                        <span
+                          className={`absolute -bottom-1 left-0 block h-px bg-ink transition-all duration-300 ease-soft ${
+                            isActive(item.href)
+                              ? "w-full"
+                              : "w-0 group-hover:w-full"
+                          }`}
+                        />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-            <button
-              type="button"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
-              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
-            >
-              <span
-                className={`block h-px w-6 bg-ink transition-transform duration-300 ease-soft ${
-                  open ? "translate-y-[3px] rotate-45" : ""
-                }`}
+              <LangToggle
+                locale={locale}
+                setLocale={setLocale}
+                ariaLabel={t(ui.nav.toggleLabel)}
               />
-              <span
-                className={`block h-px w-6 bg-ink transition-transform duration-300 ease-soft ${
-                  open ? "-translate-y-[3px] -rotate-45" : ""
-                }`}
+            </div>
+
+            <div className="flex items-center gap-3 md:hidden">
+              <LangToggle
+                locale={locale}
+                setLocale={setLocale}
+                ariaLabel={t(ui.nav.toggleLabel)}
+                compact
               />
-            </button>
+              <button
+                type="button"
+                aria-label={open ? "Close menu" : "Open menu"}
+                aria-expanded={open}
+                onClick={() => setOpen((v) => !v)}
+                className="flex h-10 w-10 flex-col items-center justify-center gap-1.5"
+              >
+                <span
+                  className={`block h-px w-6 bg-ink transition-transform duration-300 ease-soft ${
+                    open ? "translate-y-[3px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-px w-6 bg-ink transition-transform duration-300 ease-soft ${
+                    open ? "-translate-y-[3px] -rotate-45" : ""
+                  }`}
+                />
+              </button>
+            </div>
           </div>
         </Container>
       </header>
@@ -130,19 +147,21 @@ export function Navigation() {
           <Container>
             <nav aria-label="Mobile">
               <ul className="flex flex-col gap-6">
-                {nav.map((item, i) => (
+                {ui.nav.primary.map((item, i) => (
                   <li
                     key={item.href}
                     className={`transition-all duration-500 ease-soft ${
-                      open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                      open
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
                     }`}
                     style={{ transitionDelay: `${80 + i * 60}ms` }}
                   >
                     <Link
                       href={item.href}
-                      className="font-display text-5xl text-ink"
+                      className="font-display-tight text-5xl text-ink"
                     >
-                      {item.label}
+                      {t(item.label)}
                     </Link>
                   </li>
                 ))}
@@ -167,5 +186,52 @@ export function Navigation() {
         </div>
       </div>
     </>
+  );
+}
+
+function LangToggle({
+  locale,
+  setLocale,
+  ariaLabel,
+  compact = false,
+}: {
+  locale: "en" | "es";
+  setLocale: (l: "en" | "es") => void;
+  ariaLabel: string;
+  compact?: boolean;
+}) {
+  return (
+    <div
+      role="group"
+      aria-label={ariaLabel}
+      className={`flex items-stretch overflow-hidden border border-ink ${
+        compact ? "h-7" : "h-8"
+      }`}
+    >
+      <button
+        type="button"
+        onClick={() => setLocale("en")}
+        aria-pressed={locale === "en"}
+        className={`px-2.5 font-mono text-[11px] uppercase tracking-caps transition-colors ${
+          locale === "en"
+            ? "bg-ink text-paper"
+            : "bg-paper text-ink hover:bg-soft"
+        }`}
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        onClick={() => setLocale("es")}
+        aria-pressed={locale === "es"}
+        className={`px-2.5 font-mono text-[11px] uppercase tracking-caps transition-colors ${
+          locale === "es"
+            ? "bg-ink text-paper"
+            : "bg-paper text-ink hover:bg-soft"
+        }`}
+      >
+        ES
+      </button>
+    </div>
   );
 }

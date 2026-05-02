@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#FAFAF6",
-        chalk: "#FFFFFF",
+        paper: "#FFFFFF",
+        chalk: "#F4F5F7",
         ink: "#0A0E13",
         marine: "#0A2E66",
         deep: "#06204A",
@@ -18,8 +18,8 @@ const config: Config = {
         lemon: "#E8FF5C",
         coral: "#FF5A3C",
         muted: "#5C6470",
-        line: "#E5E2DA",
-        soft: "#EFEDE6",
+        line: "#E1E4EB",
+        soft: "#EEF0F4",
       },
       fontFamily: {
         display: ["var(--font-display)", "Inter", "system-ui", "sans-serif"],

@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import {
-  Bricolage_Grotesque,
-  Instrument_Serif,
-  Inter,
-  JetBrains_Mono,
-} from "next/font/google";
+import { Poppins, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { site } from "@/lib/site";
+import { LocaleProvider } from "@/lib/i18n/context";
+import { siteMeta } from "@/lib/site";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+const display = Poppins({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  axes: ["wdth", "opsz"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const serif = Instrument_Serif({
@@ -25,12 +21,6 @@ const serif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -39,22 +29,18 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s · ${site.name}`,
+    default: `${siteMeta.name} — ${siteMeta.taglineEn}`,
+    template: `%s · ${siteMeta.name}`,
   },
-  description: site.subtagline,
-  metadataBase: new URL(site.url),
+  description: siteMeta.subtaglineEn,
+  metadataBase: new URL(siteMeta.url),
   openGraph: {
-    title: `${site.name} — ${site.tagline}`,
-    description: site.subtagline,
+    title: `${siteMeta.name} — ${siteMeta.taglineEn}`,
+    description: siteMeta.subtaglineEn,
     type: "website",
-    url: site.url,
+    url: siteMeta.url,
     locale: "en_GB",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
-    description: site.subtagline,
+    alternateLocale: "es_ES",
   },
 };
 
@@ -65,8 +51,8 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en-GB"
-      className={`${display.variable} ${serif.variable} ${inter.variable} ${mono.variable}`}
+      lang="en"
+      className={`${display.variable} ${serif.variable} ${mono.variable}`}
     >
       <body className="flex min-h-screen flex-col">
         <a
@@ -75,11 +61,13 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Navigation />
-        <main id="content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <LocaleProvider>
+          <Navigation />
+          <main id="content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );

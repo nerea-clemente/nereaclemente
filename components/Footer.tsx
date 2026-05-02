@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { Container } from "./Container";
-import { nav, site } from "@/lib/site";
+import { useT } from "@/lib/i18n/context";
+import { ui } from "@/lib/i18n/strings";
+import { site } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const t = useT();
 
   return (
     <footer className="mt-32 bg-marine text-paper">
@@ -11,11 +16,13 @@ export function Footer() {
         <div className="grid gap-16 py-24 md:grid-cols-12 md:py-32">
           <div className="md:col-span-8">
             <p className="text-[11px] uppercase tracking-caps text-lemon">
-              Open for briefs · 2026
+              {t(ui.footer.open)}
             </p>
-            <p className="mt-8 max-w-3xl font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.05] tracking-tight">
-              Working on something at the intersection of seafood, science and story?{" "}
-              <span className="italic-serif text-lemon">Tell me about it.</span>
+            <p className="mt-8 max-w-3xl font-display-tight text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+              {t(ui.footer.cta)}{" "}
+              <span className="italic-serif text-lemon">
+                {t(ui.footer.ctaEm)}
+              </span>
             </p>
             <a
               href={`mailto:${site.email}`}
@@ -27,16 +34,16 @@ export function Footer() {
 
           <div className="md:col-span-2">
             <div className="text-[11px] uppercase tracking-caps text-paper/60">
-              Index
+              {t(ui.footer.index)}
             </div>
             <ul className="mt-5 flex flex-col gap-2.5 text-base">
-              {nav.map((item) => (
+              {ui.nav.primary.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     className="text-paper transition-opacity hover:opacity-60"
                   >
-                    {item.label}
+                    {t(item.label)}
                   </Link>
                 </li>
               ))}
@@ -45,7 +52,7 @@ export function Footer() {
 
           <div className="md:col-span-2">
             <div className="text-[11px] uppercase tracking-caps text-paper/60">
-              Elsewhere
+              {t(ui.footer.elsewhere)}
             </div>
             <ul className="mt-5 flex flex-col gap-2.5 text-base">
               <li>
@@ -80,7 +87,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Marquee strip */}
         <div className="overflow-hidden border-t border-paper/15 py-5">
           <div className="nc-marquee flex w-max gap-12 whitespace-nowrap font-display-wide text-2xl text-paper/70 md:text-3xl">
             {Array.from({ length: 4 }).map((_, i) => (
@@ -88,7 +94,7 @@ export function Footer() {
                 <span>NEREA CLEMENTE</span>
                 <span className="text-lemon">●</span>
                 <span className="italic-serif text-lemon">
-                  Aquaculture, seafood &amp; sustainability
+                  {t(ui.footer.marqueeTagline)}
                 </span>
                 <span className="text-lemon">●</span>
                 <span>EN · ES · VAL · DA</span>
@@ -100,10 +106,10 @@ export function Footer() {
 
         <div className="flex flex-col gap-2 border-t border-paper/15 py-6 text-[11px] uppercase tracking-caps text-paper/60 md:flex-row md:items-center md:justify-between">
           <span>
-            © {year} {site.name}. All rights reserved.
+            © {year} {site.name}. {t(ui.footer.rights)}
           </span>
           <span>
-            {site.location} · Set in Bricolage Grotesque &amp; Instrument Serif
+            {t(site.location)} · {t(ui.footer.set)}
           </span>
         </div>
       </Container>
