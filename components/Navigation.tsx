@@ -41,25 +41,25 @@ export function Navigation() {
       <header
         className={`sticky top-0 z-40 border-b transition-colors duration-300 ease-soft ${
           scrolled
-            ? "border-line/80 bg-bone/90 backdrop-blur"
-            : "border-transparent bg-bone/0"
+            ? "border-line/80 bg-paper/90 backdrop-blur"
+            : "border-transparent bg-paper/0"
         }`}
       >
         <Container>
           <div className="flex h-16 items-center justify-between md:h-20">
             <Link
               href="/"
-              className="group flex items-baseline gap-3"
+              className="group flex items-center gap-3"
               aria-label="Home"
             >
-              <span className="font-script text-2xl leading-none text-tide md:text-3xl">
-                nc
+              <span className="flex h-7 items-center justify-center bg-ink px-2 font-mono text-[11px] uppercase tracking-caps text-paper transition-colors group-hover:bg-electric">
+                NC
               </span>
-              <span className="font-display text-xl text-ink md:text-2xl">
-                {site.name}
+              <span className="font-display text-lg text-ink md:text-xl">
+                Nerea Clemente
               </span>
-              <span className="hidden text-xs uppercase tracking-caps text-muted md:inline">
-                {site.role}
+              <span className="hidden text-[11px] uppercase tracking-caps text-muted md:inline">
+                — {site.role}
               </span>
             </Link>
 
@@ -118,7 +118,7 @@ export function Navigation() {
         aria-hidden={!open}
       >
         <div
-          className={`absolute inset-0 bg-bone transition-opacity duration-300 ease-soft ${
+          className={`absolute inset-0 bg-paper transition-opacity duration-300 ease-soft ${
             open ? "opacity-100" : "opacity-0"
           }`}
         />

@@ -4,18 +4,18 @@ import { SectionHeader, Eyebrow } from "@/components/SectionHeader";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Button } from "@/components/Button";
 import { Currently } from "@/components/Currently";
-import { featuredProjects, projects } from "@/lib/projects";
+import { featuredProjects } from "@/lib/projects";
 import { expertise } from "@/lib/expertise";
 import { articles } from "@/lib/writing";
 import { site } from "@/lib/site";
 
 const preoccupations = [
-  "the semicolon",
-  "bivalves and their economics",
-  "how fishing communities tell their own story",
-  "provenance claims that don't survive scrutiny",
-  "the first hour at a fish market",
-  "press releases written like postcards",
+  { phrase: "the semicolon", note: "still earns its keep" },
+  { phrase: "bivalves and their economics", note: "a whole supply chain in one shell" },
+  { phrase: "fishing communities telling their own story", note: "without a fixer in the room" },
+  { phrase: "provenance claims that don't survive scrutiny", note: "and the ones that do" },
+  { phrase: "the first hour at a fish market", note: "everything happens before 6 am" },
+  { phrase: "press releases written like postcards", note: "short, specific, addressed to one person" },
 ];
 
 export default function HomePage() {
@@ -24,66 +24,107 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-10 pb-24 md:pt-16 md:pb-32">
+      {/* Top brand strip — running ticker, instantly un-Anthropic */}
+      <div className="overflow-hidden border-b border-line bg-paper py-2.5">
+        <div className="nc-marquee flex w-max gap-10 whitespace-nowrap font-mono text-[11px] uppercase tracking-caps text-muted">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <span key={i} className="flex items-center gap-10">
+              <span>Folio 2026 · Vol. 04</span>
+              <span className="text-electric">◆</span>
+              <span>A Coruña · Galicia</span>
+              <span className="text-electric">◆</span>
+              <span>Available from June 2026</span>
+              <span className="text-electric">◆</span>
+              <span>EN · ES · GL</span>
+              <span className="text-electric">◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Hero — confident editorial cover */}
+      <section className="relative pt-12 pb-20 md:pt-20 md:pb-28">
         <Container>
-          <div className="nc-fade-up flex flex-wrap items-center gap-3 text-xs uppercase tracking-caps text-tide">
-            <span>Folio — 2026</span>
-            <span className="text-line">·</span>
-            <span className="text-muted">A Coruña, Galicia</span>
-            <span className="text-line">·</span>
-            <span className="text-muted">EN · ES · GL</span>
-          </div>
+          <div className="grid gap-16 md:grid-cols-12 md:gap-12">
+            <div className="md:col-span-8">
+              <div className="nc-fade-up flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
+                <span className="bg-electric px-2 py-0.5 text-paper">
+                  ◆ Independent practice
+                </span>
+                <span className="text-muted">/ est. A Coruña, Galicia</span>
+              </div>
 
-          <p className="nc-fade-up nc-fade-up-1 mt-12 font-script text-4xl text-tide md:text-5xl">
-            Hola — Olá — Hello.
-          </p>
+              <h1 className="nc-fade-up nc-fade-up-1 mt-10 font-display-tight text-[clamp(3.5rem,9vw,9rem)] leading-[0.92] text-ink">
+                An independent
+                <br />
+                <span className="italic-serif text-electric">communications</span>{" "}
+                practice
+                <br />
+                for aquaculture,
+                <br />
+                seafood &amp;
+                <br />
+                sustainability.
+              </h1>
 
-          <h1 className="nc-fade-up nc-fade-up-2 mt-6 max-w-[18ch] font-display text-display-xl text-ink">
-            I&rsquo;m{" "}
-            <span className="italic text-tide">Nerea Clemente</span>, a
-            communications writer for{" "}
-            <span className="italic">aquaculture, seafood</span> and
-            sustainability.
-          </h1>
-
-          <div className="nc-fade-up nc-fade-up-3 mt-12 grid gap-12 md:grid-cols-12 md:gap-16">
-            <div className="md:col-span-7">
-              <p className="max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-                I help companies and projects in technical sectors tell their story with clarity, precision and a point of view. Brand narrative, campaigns, long-form writing, science communication and the editorial side of sustainability reporting — in British English, with a Mediterranean tilt.
+              <p className="nc-fade-up nc-fade-up-2 mt-12 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+                Run by <span className="text-ink">Nerea Clemente</span>. Mostly long-form: brand narrative, campaigns, science communication and the editorial side of sustainability reporting. In British English, with a Mediterranean tilt.
               </p>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Button href="/work">See the work</Button>
+
+              <div className="nc-fade-up nc-fade-up-3 mt-10 flex flex-wrap items-center gap-4">
+                <Button href="/work" variant="primary">
+                  See the work
+                </Button>
                 <Button href="/contact" variant="ghost">
                   Start a conversation
                 </Button>
               </div>
             </div>
-            <div className="nc-fade-up nc-fade-up-4 md:col-span-5">
+
+            <div className="nc-fade-up nc-fade-up-4 md:col-span-4 md:pt-32">
               <Currently />
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Featured work */}
-      <section className="pb-24 md:pb-32">
+      {/* Lemon strip — featured projects intro */}
+      <section className="bg-lemon py-4">
         <Container>
-          <SectionHeader
-            eyebrow="Selected work"
-            title={<>Projects from the last two years.</>}
-            lede="A short selection across campaigns, editorial and science communication. The full index is on the work page."
-            align="split"
-            meta={
+          <div className="overflow-hidden">
+            <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-caps text-ink">
+              <span>◆ Selected projects, 2024 — 2026</span>
+              <span className="hidden md:inline">07 case studies in the index</span>
+              <span>Vol. 04</span>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Featured work */}
+      <section className="py-20 md:py-28">
+        <Container>
+          <div className="mb-16 grid items-end gap-8 md:grid-cols-12">
+            <div className="md:col-span-6">
+              <Eyebrow>Selected work</Eyebrow>
+              <h2 className="mt-5 font-display-tight text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] text-ink">
+                Three projects that say{" "}
+                <span className="italic-serif text-electric">most</span> of it.
+              </h2>
+            </div>
+            <div className="md:col-span-5 md:col-start-8">
+              <p className="text-base text-muted">
+                A short selection across campaigns, editorial and science communication. The full index lives on the work page.
+              </p>
               <Link
                 href="/work"
-                className="inline-flex items-center gap-2 text-ink hover:opacity-70"
+                className="mt-5 inline-flex items-center gap-2 border-b-2 border-ink pb-0.5 text-sm uppercase tracking-caps text-ink transition-colors hover:border-electric hover:text-electric"
               >
                 All projects <span aria-hidden>→</span>
               </Link>
-            }
-          />
-          <div className="mt-16 flex flex-col gap-20 md:gap-28">
+            </div>
+          </div>
+          <div className="flex flex-col gap-20 md:gap-28">
             {featured.map((p) => (
               <ProjectCard key={p.slug} project={p} variant="featured" />
             ))}
@@ -91,22 +132,19 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Brief intro — paper surface to break the beige rhythm */}
-      <section className="bg-paper py-24 md:py-32">
+      {/* Brief intro on chalk surface */}
+      <section className="bg-chalk py-24 md:py-32">
         <Container>
           <div className="grid gap-10 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <Eyebrow>About</Eyebrow>
-              <div className="mt-4 font-mono text-sm text-muted">
-                §&nbsp;01 · Profile
-              </div>
+            <div className="md:col-span-3">
+              <Eyebrow>§ 01 / Profile</Eyebrow>
             </div>
-            <div className="md:col-span-8">
-              <p className="font-display text-display-md leading-tight text-ink">
-                I&rsquo;m a marketing and communications professional working mainly with companies and projects in <span className="italic text-tide">aquaculture, seafood</span> and adjacent technical sectors.
+            <div className="md:col-span-9">
+              <p className="font-display text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.15] text-ink">
+                I&rsquo;m a marketing and communications professional working mainly with companies and projects in <span className="italic-serif text-electric">aquaculture, seafood</span> and adjacent technical sectors.
               </p>
               <p className="mt-8 max-w-reading text-lg leading-relaxed text-muted">
-                My work sits between strategy and editorial: brand narratives, campaigns, long-form writing, science communication and sustainability reporting. I spend time on site with the people actually doing the work, then translate that into language buyers, retailers, journalists and the wider public can use. Alongside client work, I run an ongoing personal project on seafood and a small editorial initiative documenting women across the aquaculture value chain.
+                My work sits between strategy and editorial: brand narratives, campaigns, long-form writing, science communication and sustainability reporting. I spend time on site with the people doing the work, then translate that into language buyers, retailers, journalists and the wider public can use. Alongside client work, I run Seafood on Nerea, a personal editorial project, and Women in Aquaculture, a small interview series.
               </p>
               <div className="mt-10">
                 <Button href="/about" variant="quiet">
@@ -118,37 +156,48 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Expertise */}
+      {/* Expertise — restructured as a table grid */}
       <section className="py-24 md:py-32">
         <Container>
-          <SectionHeader
-            eyebrow="Areas of work"
-            title={<>What I actually do, and for whom.</>}
-            align="split"
-            lede="Four overlapping disciplines. Most engagements combine two or three."
-          />
-          <div className="mt-16 grid gap-px overflow-hidden rounded-sm bg-line md:grid-cols-2">
+          <div className="mb-16 grid gap-8 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <Eyebrow>§ 02 / Practice</Eyebrow>
+              <h2 className="mt-5 font-display-tight text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[0.95] text-ink">
+                What I actually do.
+              </h2>
+            </div>
+            <p className="md:col-span-5 md:col-start-7 md:pt-10 max-w-reading text-base text-muted">
+              Four overlapping disciplines. Most engagements combine two or three, and most begin with a few weeks of listening before any writing happens.
+            </p>
+          </div>
+
+          <div className="grid border-t border-ink md:grid-cols-2">
             {expertise.map((group, i) => (
               <article
                 key={group.title}
-                className="flex flex-col gap-6 bg-bone p-8 md:p-12"
+                className={`flex flex-col gap-5 border-b border-ink p-8 md:p-12 ${
+                  i % 2 === 0 ? "md:border-r" : ""
+                }`}
               >
                 <div className="flex items-baseline justify-between">
-                  <h3 className="font-display text-2xl text-ink md:text-3xl">
-                    {group.title}
-                  </h3>
-                  <span className="font-mono text-xs text-muted">
+                  <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
                     0{i + 1}
                   </span>
+                  <span className="font-mono text-[11px] uppercase tracking-caps text-muted">
+                    {group.items.length} services
+                  </span>
                 </div>
+                <h3 className="font-display-tight text-[clamp(1.75rem,3vw,2.5rem)] leading-tight text-ink">
+                  {group.title}
+                </h3>
                 <p className="max-w-reading text-base leading-relaxed text-muted">
                   {group.description}
                 </p>
-                <ul className="mt-auto flex flex-wrap gap-2">
+                <ul className="mt-auto flex flex-wrap gap-1.5 pt-4">
                   {group.items.map((item) => (
                     <li
                       key={item}
-                      className="border border-line px-3 py-1 text-xs uppercase tracking-caps text-ink"
+                      className="bg-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-caps text-ink"
                     >
                       {item}
                     </li>
@@ -160,130 +209,123 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Manifesto — full bleed marine, hand-signed */}
-      <section className="bg-tide py-28 text-paper md:py-40">
-        <Container size="narrow">
-          <span className="text-xs uppercase tracking-caps text-sky">
-            A working note, pinned above the desk
-          </span>
-          <blockquote className="relative mt-10">
-            <span
-              aria-hidden
-              className="absolute -top-10 -left-3 font-display text-7xl leading-none text-sky opacity-60 md:-top-14 md:text-[10rem]"
-            >
-              “
-            </span>
-            <p className="font-display text-display-md leading-snug">
-              I&rsquo;d rather write one careful sentence about a fish farm than ten clever ones about something I don&rsquo;t know. The work begins on the dock, in someone else&rsquo;s vocabulary, and ends on the page in <span className="italic">mine</span>.
-            </p>
-            <footer className="mt-10 flex items-center gap-4">
-              <span className="font-script text-4xl text-paper md:text-5xl">
-                — Nerea
-              </span>
-              <span className="h-px flex-1 bg-sky/40" />
-              <span className="text-xs uppercase tracking-caps text-sky">
-                A Coruña, 2026
-              </span>
-            </footer>
-          </blockquote>
-        </Container>
-      </section>
-
-      {/* Preoccupations — small, opinionated, very her */}
-      <section className="py-24 md:py-32">
+      {/* Manifesto — bold electric block, no script */}
+      <section className="bg-electric py-28 text-paper md:py-40">
         <Container>
-          <div className="grid gap-10 md:grid-cols-12 md:gap-20">
-            <div className="md:col-span-4">
-              <Eyebrow>Preoccupations</Eyebrow>
-              <h2 className="mt-4 font-display text-display-sm text-ink">
-                What I keep coming back to.
-              </h2>
-              <p className="mt-4 max-w-reading text-base text-muted">
-                The recurring interests behind most of the work. Not a list of services — a list of obsessions.
+          <div className="grid gap-8 md:grid-cols-12">
+            <div className="md:col-span-3">
+              <span className="font-mono text-[11px] uppercase tracking-caps text-lemon">
+                ◆ Working note
+              </span>
+              <p className="mt-3 font-mono text-[11px] uppercase tracking-caps text-paper/70">
+                Pinned above the desk
               </p>
             </div>
-            <ul className="md:col-span-8">
-              {preoccupations.map((p, i) => (
-                <li
-                  key={p}
-                  className="grid grid-cols-[auto_1fr] items-baseline gap-6 border-b border-line py-5 md:gap-10 md:py-7"
-                >
-                  <span className="font-mono text-xs text-muted">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-display text-2xl italic text-ink md:text-3xl">
-                    {p}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <blockquote className="md:col-span-9">
+              <p className="font-display-tight text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
+                <span className="italic-serif text-lemon">“</span>I&rsquo;d rather write one careful sentence about a fish farm than ten clever ones about something I don&rsquo;t know. The work begins on the dock, in someone else&rsquo;s vocabulary, and ends on the page in <span className="italic-serif text-lemon">mine</span>.<span className="italic-serif text-lemon">”</span>
+              </p>
+              <footer className="mt-12 flex items-center gap-5 font-mono text-[11px] uppercase tracking-caps text-paper/70">
+                <span className="bg-lemon px-2 py-0.5 text-ink">— N.C.</span>
+                <span className="h-px flex-1 bg-paper/20" />
+                <span>A Coruña · 2026</span>
+              </footer>
+            </blockquote>
           </div>
         </Container>
       </section>
 
-      {/* Writing preview */}
+      {/* Preoccupations — opinionated, very her */}
       <section className="py-24 md:py-32">
         <Container>
-          <SectionHeader
-            eyebrow="Writing"
-            title={<>Recent notes and essays.</>}
-            lede="Short pieces on communication, feed, welfare and the editorial side of sustainability."
-            align="split"
-            meta={
-              <Link
-                href="/writing"
-                className="inline-flex items-center gap-2 text-ink hover:opacity-70"
+          <div className="mb-12 grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
+            <div className="md:col-span-5">
+              <Eyebrow>§ 03 / Recurring interests</Eyebrow>
+              <h2 className="mt-5 font-display-tight text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[0.95] text-ink">
+                What I keep
+                <br />
+                <span className="italic-serif text-electric">coming back to.</span>
+              </h2>
+            </div>
+            <p className="md:col-span-5 md:col-start-8 max-w-reading text-base text-muted">
+              The recurring interests behind most of the work. Not a list of services. A list of obsessions — and a quick note on why each one stuck.
+            </p>
+          </div>
+
+          <ul className="grid border-t border-ink md:grid-cols-2">
+            {preoccupations.map((p, i) => (
+              <li
+                key={p.phrase}
+                className={`flex flex-col gap-3 border-b border-ink p-6 md:p-10 ${
+                  i % 2 === 0 ? "md:border-r" : ""
+                }`}
               >
-                All writing <span aria-hidden>→</span>
-              </Link>
-            }
-          />
-          <ul className="mt-12">
-            {recentWriting.map((a) => (
-              <li key={a.slug}>
-                <Link
-                  href={`/writing#${a.slug}`}
-                  className="group grid grid-cols-[auto_1fr] items-baseline gap-6 border-b border-line py-8 transition-colors hover:bg-shell/30 md:grid-cols-[120px_1fr_auto] md:gap-10"
-                >
-                  <span className="font-mono text-xs uppercase tracking-caps text-muted">
-                    {a.date}
+                <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
+                  <span className="bg-ink px-2 py-0.5 text-lemon">
+                    № {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="flex flex-col gap-2">
-                    <span className="font-display text-2xl text-ink md:text-3xl">
-                      {a.title}
-                    </span>
-                    <span className="max-w-reading text-sm text-muted">
-                      {a.dek}
-                    </span>
-                  </span>
-                  <span className="hidden text-xs uppercase tracking-caps text-muted md:inline">
-                    {a.category}
-                  </span>
-                </Link>
+                  <span className="text-muted">Recurring interest</span>
+                </div>
+                <p className="font-display-tight text-[clamp(1.75rem,3.5vw,3rem)] leading-[1] text-ink">
+                  {p.phrase}.
+                </p>
+                <p className="text-sm italic-serif text-muted">— {p.note}</p>
               </li>
             ))}
           </ul>
         </Container>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 md:py-32">
-        <Container size="narrow">
-          <div className="flex flex-col gap-8 border-t border-line pt-16 text-center">
-            <Eyebrow>Next</Eyebrow>
-            <h2 className="font-display text-display-lg text-ink">
-              Working on something in seafood, aquaculture or sustainability?
-            </h2>
-            <p className="mx-auto max-w-reading text-lg text-muted">
-              I take on a small number of projects each year. If the brief is the right fit, I&rsquo;d like to hear about it.
-            </p>
-            <div className="mt-4 flex flex-wrap justify-center gap-4">
-              <Button href="/contact">Get in touch</Button>
-              <Button href={`mailto:${site.email}`} variant="ghost" external>
-                {site.email}
-              </Button>
+      {/* Writing preview */}
+      <section className="bg-chalk py-24 md:py-32">
+        <Container>
+          <div className="mb-16 grid items-end gap-8 md:grid-cols-12">
+            <div className="md:col-span-6">
+              <Eyebrow>§ 04 / Writing</Eyebrow>
+              <h2 className="mt-5 font-display-tight text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[0.95] text-ink">
+                Recent <span className="italic-serif text-electric">notes</span> &amp; essays.
+              </h2>
+            </div>
+            <div className="md:col-span-5 md:col-start-8">
+              <p className="text-base text-muted">
+                Short pieces on communication, feed, welfare and the editorial side of sustainability.
+              </p>
+              <Link
+                href="/writing"
+                className="mt-5 inline-flex items-center gap-2 border-b-2 border-ink pb-0.5 text-sm uppercase tracking-caps text-ink hover:border-electric hover:text-electric"
+              >
+                All writing <span aria-hidden>→</span>
+              </Link>
             </div>
           </div>
+          <ul className="border-t border-ink">
+            {recentWriting.map((a, i) => (
+              <li key={a.slug}>
+                <Link
+                  href={`/writing#${a.slug}`}
+                  className="group grid grid-cols-[2.5rem_1fr] items-baseline gap-6 border-b border-ink py-8 transition-colors hover:bg-lemon md:grid-cols-[3rem_140px_1fr_140px] md:py-10"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-caps text-electric">
+                    №&nbsp;0{i + 1}
+                  </span>
+                  <span className="hidden font-mono text-[11px] uppercase tracking-caps text-muted md:block">
+                    {a.date}
+                  </span>
+                  <span className="flex flex-col gap-2">
+                    <span className="font-display-tight text-2xl text-ink md:text-4xl">
+                      {a.title}
+                    </span>
+                    <span className="max-w-reading text-sm text-muted">
+                      {a.dek}
+                    </span>
+                  </span>
+                  <span className="hidden text-right font-mono text-[11px] uppercase tracking-caps text-muted md:block">
+                    {a.category} · {a.readTime}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
     </>

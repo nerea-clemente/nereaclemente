@@ -22,28 +22,34 @@ export default function WorkPage() {
 
   return (
     <>
-      <section className="pt-16 pb-12 md:pt-24 md:pb-16">
+      <section className="pt-12 pb-12 md:pt-20 md:pb-16">
         <Container>
-          <span className="text-xs uppercase tracking-caps text-tide">
-            Work — 2022 / 2026
-          </span>
-          <h1 className="mt-6 max-w-5xl font-display text-display-xl text-ink">
+          <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
+            <span className="bg-electric px-2 py-0.5 text-paper">
+              ◆ Index
+            </span>
+            <span className="text-muted">/ 2022 — 2026</span>
+          </div>
+          <h1 className="mt-8 max-w-6xl font-display-tight text-[clamp(3rem,8vw,8rem)] leading-[0.92] text-ink">
             A selection of projects across{" "}
-            <span className="italic text-tide">campaigns, editorial</span> and{" "}
-            <span className="italic text-tide">science communication</span>.
+            <span className="italic-serif text-electric">campaigns,</span>{" "}
+            editorial &amp;{" "}
+            <span className="italic-serif text-electric">
+              science communication.
+            </span>
           </h1>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted">
-            Both client work and self-initiated projects. Use the filters below to browse by category, or switch to the index view for a faster scan.
+          <p className="mt-10 max-w-3xl text-lg leading-relaxed text-muted">
+            Both client work and self-initiated projects. Use the filters to browse by category, or switch to index view for a faster scan.
           </p>
         </Container>
       </section>
 
       <section className="py-8">
         <Container>
-          <div className="flex flex-col gap-6 border-y border-line py-5 md:flex-row md:items-center md:justify-between md:gap-4">
+          <div className="flex flex-col gap-6 border-y-2 border-ink py-5 md:flex-row md:items-center md:justify-between md:gap-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="mr-2 text-xs uppercase tracking-caps text-muted">
-                Filter
+              <span className="mr-2 font-mono text-[11px] uppercase tracking-caps text-muted">
+                Filter →
               </span>
               {(["All", ...categories] as Filter[]).map((c) => {
                 const active = filter === c;
@@ -52,10 +58,10 @@ export default function WorkPage() {
                     key={c}
                     type="button"
                     onClick={() => setFilter(c)}
-                    className={`rounded-full border px-3 py-1 text-xs uppercase tracking-caps transition-colors ${
+                    className={`px-3 py-1 font-mono text-[11px] uppercase tracking-caps transition-colors ${
                       active
-                        ? "border-ink bg-ink text-bone"
-                        : "border-line text-muted hover:border-ink hover:text-ink"
+                        ? "bg-ink text-paper"
+                        : "bg-soft text-muted hover:bg-ink hover:text-paper"
                     }`}
                   >
                     {c}
@@ -63,7 +69,7 @@ export default function WorkPage() {
                 );
               })}
             </div>
-            <div className="flex items-center gap-4 text-xs uppercase tracking-caps text-muted">
+            <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-caps text-muted">
               <span>{filtered.length} projects</span>
               <span className="text-line">/</span>
               <div className="flex items-center gap-2">
@@ -72,7 +78,7 @@ export default function WorkPage() {
                   onClick={() => setView("grid")}
                   aria-pressed={view === "grid"}
                   className={`transition-colors ${
-                    view === "grid" ? "text-ink" : "text-muted hover:text-ink"
+                    view === "grid" ? "text-electric" : "text-muted hover:text-ink"
                   }`}
                 >
                   Grid
@@ -83,7 +89,7 @@ export default function WorkPage() {
                   onClick={() => setView("index")}
                   aria-pressed={view === "index"}
                   className={`transition-colors ${
-                    view === "index" ? "text-ink" : "text-muted hover:text-ink"
+                    view === "index" ? "text-electric" : "text-muted hover:text-ink"
                   }`}
                 >
                   Index

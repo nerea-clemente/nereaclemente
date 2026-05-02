@@ -6,32 +6,35 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-32 border-t border-line bg-bone">
+    <footer className="mt-32 bg-marine text-paper">
       <Container>
-        <div className="grid gap-16 py-20 md:grid-cols-12 md:py-28">
-          <div className="md:col-span-6">
-            <p className="max-w-xl font-display text-display-sm text-ink">
-              Working on something at the intersection of seafood, science and story? Let&rsquo;s talk.
+        <div className="grid gap-16 py-24 md:grid-cols-12 md:py-32">
+          <div className="md:col-span-8">
+            <p className="text-[11px] uppercase tracking-caps text-lemon">
+              Open for briefs · 2026
+            </p>
+            <p className="mt-8 max-w-3xl font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.05] tracking-tight">
+              Working on something at the intersection of seafood, science and story?{" "}
+              <span className="italic-serif text-lemon">Tell me about it.</span>
             </p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-8 inline-flex items-center gap-3 border-b border-ink pb-1 text-lg text-ink transition-opacity hover:opacity-70"
+              className="mt-10 inline-flex items-center gap-3 border-b border-lemon pb-1 text-lg text-lemon transition-opacity hover:opacity-80"
             >
-              {site.email}
-              <span aria-hidden>→</span>
+              {site.email} <span aria-hidden>→</span>
             </a>
           </div>
 
-          <div className="md:col-span-3">
-            <div className="text-xs uppercase tracking-caps text-muted">
+          <div className="md:col-span-2">
+            <div className="text-[11px] uppercase tracking-caps text-paper/60">
               Index
             </div>
-            <ul className="mt-6 flex flex-col gap-3 text-base">
+            <ul className="mt-5 flex flex-col gap-2.5 text-base">
               {nav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-ink transition-opacity hover:opacity-60"
+                    className="text-paper transition-opacity hover:opacity-60"
                   >
                     {item.label}
                   </Link>
@@ -40,17 +43,17 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-3">
-            <div className="text-xs uppercase tracking-caps text-muted">
+          <div className="md:col-span-2">
+            <div className="text-[11px] uppercase tracking-caps text-paper/60">
               Elsewhere
             </div>
-            <ul className="mt-6 flex flex-col gap-3 text-base">
+            <ul className="mt-5 flex flex-col gap-2.5 text-base">
               <li>
                 <a
                   href={site.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-ink transition-opacity hover:opacity-60"
+                  className="text-paper transition-opacity hover:opacity-60"
                 >
                   LinkedIn
                 </a>
@@ -60,7 +63,7 @@ export function Footer() {
                   href={site.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-ink transition-opacity hover:opacity-60"
+                  className="text-paper transition-opacity hover:opacity-60"
                 >
                   Seafood on Nerea
                 </a>
@@ -68,7 +71,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-ink transition-opacity hover:opacity-60"
+                  className="text-paper transition-opacity hover:opacity-60"
                 >
                   Email
                 </a>
@@ -77,21 +80,31 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start gap-6 border-t border-line py-10 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-baseline gap-4">
-            <span className="font-script text-3xl text-tide md:text-4xl">
-              Hola — Olá — Hello
-            </span>
-            <span className="text-xs uppercase tracking-caps text-muted">
-              again, soon.
-            </span>
+        {/* Marquee strip */}
+        <div className="overflow-hidden border-t border-paper/15 py-5">
+          <div className="nc-marquee flex w-max gap-12 whitespace-nowrap font-display-wide text-2xl text-paper/70 md:text-3xl">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <span key={i} className="flex items-center gap-12">
+                <span>NEREA CLEMENTE</span>
+                <span className="text-lemon">●</span>
+                <span className="italic-serif text-lemon">
+                  Aquaculture, seafood &amp; sustainability
+                </span>
+                <span className="text-lemon">●</span>
+                <span>EN · ES · GL</span>
+                <span className="text-lemon">●</span>
+              </span>
+            ))}
           </div>
-          <div className="flex flex-col gap-1 text-xs text-muted md:items-end">
-            <span>
-              © {year} {site.name}. Set in Fraunces &amp; Inter.
-            </span>
-            <span>{site.location}</span>
-          </div>
+        </div>
+
+        <div className="flex flex-col gap-2 border-t border-paper/15 py-6 text-[11px] uppercase tracking-caps text-paper/60 md:flex-row md:items-center md:justify-between">
+          <span>
+            © {year} {site.name}. All rights reserved.
+          </span>
+          <span>
+            {site.location} · Set in Bricolage Grotesque &amp; Instrument Serif
+          </span>
         </div>
       </Container>
     </footer>
