@@ -10,19 +10,14 @@ export function WritingContent() {
   const t = useT();
   return (
     <>
-      <section className="pt-12 pb-16 md:pt-20 md:pb-20">
+      <section className="pt-16 pb-12 md:pt-24 md:pb-16">
         <Container>
-          <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-            <span className="bg-sea px-2 py-0.5 text-paper">
-              {t(ui.writing.badge)}
-            </span>
-            <span className="text-muted">{t(ui.writing.badgeMeta)}</span>
-          </div>
-          <h1 className="mt-8 max-w-6xl font-display-tight text-[clamp(3rem,8vw,8rem)] leading-[0.92] text-ink">
-            {t(ui.writing.titleA)}
-            <br />
-            {t(ui.writing.titleB)}
-            <span className="italic-serif text-sea">
+          <p className="italic-serif text-base text-clay md:text-lg">
+            {t(ui.writing.badge)}
+          </p>
+          <h1 className="mt-4 max-w-6xl font-display-tight text-[clamp(2.75rem,7vw,7rem)] leading-[0.95] text-ink">
+            {t(ui.writing.titleA)} {t(ui.writing.titleB)}
+            <span className="italic-serif text-clay">
               {t(ui.writing.titleEm)}
             </span>
           </h1>
@@ -32,50 +27,29 @@ export function WritingContent() {
         </Container>
       </section>
 
-      <section className="bg-blush py-6">
-        <Container>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-caps text-ink">
-            <span>{t(ui.writing.themesLabel)}</span>
-            {ui.writing.themes.map((theme, i) => (
-              <span key={i}>· {t(theme)}</span>
-            ))}
-          </div>
-        </Container>
-      </section>
-
       <section className="py-12 md:py-16">
         <Container>
           <ul className="border-t border-line">
             {articles.map((a, i) => (
               <li key={a.slug} id={a.slug}>
-                <article className="group grid grid-cols-1 gap-6 border-b border-line py-10 transition-colors hover:bg-saffron md:grid-cols-[140px_1fr_180px] md:gap-12 md:py-14">
-                  <div className="flex items-start gap-4 md:flex-col md:gap-2">
-                    <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
-                      №&nbsp;{String(articles.length - i).padStart(2, "0")}
-                    </span>
-                    <span className="font-mono text-[11px] uppercase tracking-caps text-muted">
-                      {t(a.date)}
-                    </span>
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <h2 className="font-display-tight text-[clamp(2rem,4.5vw,3.5rem)] leading-[1] text-ink">
+                <article className="group grid grid-cols-[3rem_1fr] items-baseline gap-6 border-b border-line py-10 transition-colors hover:bg-chalk md:grid-cols-[3rem_140px_1fr_140px] md:gap-12 md:py-14">
+                  <span className="italic-serif text-lg text-muted">
+                    {String(articles.length - i).padStart(2, "0")}
+                  </span>
+                  <span className="hidden italic-serif text-base text-muted md:block">
+                    {t(a.date)}
+                  </span>
+                  <div className="flex flex-col gap-3">
+                    <h2 className="font-display-tight text-[clamp(1.75rem,4vw,3rem)] leading-[1.05] text-ink transition-colors group-hover:text-clay">
                       {t(a.title)}
                     </h2>
-                    <p className="max-w-reading text-lg leading-relaxed text-muted">
+                    <p className="max-w-reading text-base leading-relaxed text-muted">
                       {t(a.dek)}
                     </p>
-                    <div className="mt-2 flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-                      <span className="bg-ink px-2 py-0.5 text-saffron">
-                        {t(articleCategoryLabels[a.category])}
-                      </span>
-                      <span className="text-muted">{t(a.readTime)}</span>
-                    </div>
                   </div>
-                  <div className="flex items-end md:justify-end">
-                    <span className="inline-flex items-center gap-3 border-b-2 border-line pb-1 font-mono text-[11px] uppercase tracking-caps text-muted transition-colors group-hover:border-ink group-hover:text-ink">
-                      {t(ui.common.inProgress)} <span aria-hidden>→</span>
-                    </span>
-                  </div>
+                  <span className="hidden italic-serif text-base text-clay md:block md:text-right">
+                    {t(articleCategoryLabels[a.category])}
+                  </span>
                 </article>
               </li>
             ))}
@@ -87,7 +61,7 @@ export function WritingContent() {
         <Container size="narrow">
           <div className="border-t border-line pt-14">
             <Eyebrow>{t(ui.common.note)}</Eyebrow>
-            <p className="mt-6 font-display-tight text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] text-ink">
+            <p className="mt-6 font-display text-[clamp(1.5rem,2.8vw,2.25rem)] leading-[1.2] text-ink">
               {t(ui.writing.noteText)}
             </p>
           </div>

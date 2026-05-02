@@ -40,7 +40,7 @@ export const ui = {
 
   // Home — hero
   hero: {
-    badge: b("◆ Independent practice", "◆ Práctica independiente"),
+    badge: b("Independent practice", "Práctica independiente"),
     badgeMeta: b("/ Denmark — Valencia", "/ Dinamarca — Valencia"),
     headline: {
       l1: b("An independent", "Una práctica"),
@@ -61,8 +61,8 @@ export const ui = {
   // Home — sections
   home: {
     selectedStrip: b(
-      "◆ Selected projects, 2024 — 2026",
-      "◆ Proyectos seleccionados, 2024 — 2026"
+      "Selected projects, 2024 — 2026",
+      "Proyectos seleccionados, 2024 — 2026"
     ),
     selectedCount: b(
       "07 case studies in the index",
@@ -77,7 +77,7 @@ export const ui = {
       "A short selection across campaigns, editorial and science communication. The full index lives on the work page.",
       "Una pequeña selección entre campañas, editorial y comunicación científica. El índice completo está en la página de proyectos."
     ),
-    profileEyebrow: b("§ 01 / Profile", "§ 01 / Perfil"),
+    profileEyebrow: b("Profile", "Perfil"),
     profileLeadA: b(
       "I'm a marketing and communications professional working mainly with companies and projects in ",
       "Soy una profesional del marketing y la comunicación que trabaja sobre todo con empresas y proyectos de "
@@ -94,7 +94,7 @@ export const ui = {
       "My work sits between strategy and editorial: brand narratives, campaigns, long-form writing, science communication and sustainability reporting. I spend time on site with the people doing the work, then translate that into language buyers, retailers, journalists and the wider public can use. Alongside client work, I run Seafood on Nerea, a personal editorial project, and Women in Aquaculture, a small interview series.",
       "Mi trabajo está entre la estrategia y la edición: narrativas de marca, campañas, textos largos, comunicación científica e informes de sostenibilidad. Paso tiempo en el terreno con las personas que hacen el trabajo y después lo traduzco a un lenguaje que puedan usar compradores, distribuidores, periodistas y el público general. Además del trabajo de cliente, llevo Seafood on Nerea, un proyecto editorial personal, y Mujeres en Acuicultura, una serie de entrevistas."
     ),
-    practiceEyebrow: b("§ 02 / Practice", "§ 02 / Práctica"),
+    practiceEyebrow: b("Practice", "Práctica"),
     practiceTitle: b("What I actually do.", "Lo que hago, en concreto."),
     practiceLede: b(
       "Four overlapping disciplines. Most engagements combine two or three, and most begin with a few weeks of listening before any writing happens.",
@@ -102,7 +102,7 @@ export const ui = {
     ),
     services: b("services", "servicios"),
 
-    manifestoEyebrow: b("◆ Working note", "◆ Nota de trabajo"),
+    manifestoEyebrow: b("Working note", "Nota de trabajo"),
     manifestoMeta: b("Pinned above the desk", "Colgada sobre la mesa"),
     manifestoQuote: b(
       "I'd rather write one careful sentence about a fish farm than ten clever ones about something I don't know. The work begins on the dock, in someone else's vocabulary, and ends on the page in ",
@@ -113,7 +113,7 @@ export const ui = {
     manifestoSign: b("— N.C.", "— N.C."),
     manifestoLocation: b("Denmark · 2026", "Dinamarca · 2026"),
 
-    preocEyebrow: b("§ 03 / Recurring interests", "§ 03 / Intereses recurrentes"),
+    preocEyebrow: b("Recurring interests", "Intereses recurrentes"),
     preocTitleA: b("What I keep", "A lo que vuelvo"),
     preocTitleEm: b("coming back to.", "una y otra vez."),
     preocLede: b(
@@ -122,7 +122,7 @@ export const ui = {
     ),
     preocChip: b("Recurring interest", "Interés recurrente"),
 
-    writingEyebrow: b("§ 04 / Writing", "§ 04 / Escritos"),
+    writingEyebrow: b("Writing", "Escritos"),
     writingTitleA: b("Recent ", "Notas y "),
     writingTitleEm: b("notes", "ensayos"),
     writingTitleB: b(" & essays.", " recientes."),
@@ -134,7 +134,7 @@ export const ui = {
 
   // About
   about: {
-    eyebrow: b("§ Profile / Perfil", "§ Profile / Perfil"),
+    eyebrow: b("Profile / Perfil", "Profile / Perfil"),
     titleL1: b("A communicator", "Una comunicadora"),
     titleL2: b("for sectors", "para sectores"),
     titleL3: b("that are usually", "que casi siempre"),
@@ -149,7 +149,7 @@ export const ui = {
     portraitCaption: b("Denmark, March 2026", "Dinamarca, marzo de 2026"),
     portraitCredit: b("Photo · A. Lund", "Foto · A. Lund"),
 
-    bgEyebrow: b("§ 01 / Background", "§ 01 / Trayectoria"),
+    bgEyebrow: b("Background", "Trayectoria"),
     bgTitle: b("The shorter version.", "La versión corta."),
     bgP1: b(
       "I started in corporate communications inside the aquaculture industry, working across campaigns, press, sustainability reporting and internal communication. That gave me a working understanding of how producers, feed companies, retailers and regulators actually talk to each other — and where the conversation tends to break.",
@@ -168,11 +168,11 @@ export const ui = {
       "Soy de Valencia y vivo en Dinamarca — el registro mediterráneo se queda, aunque el tiempo no. Escribo sobre todo en inglés británico, trabajo internacionalmente y en remoto, con unos días en el terreno para cada proyecto serio."
     ),
 
-    princEyebrow: b("§ 02 / Principles", "§ 02 / Principios"),
+    princEyebrow: b("Principles", "Principios"),
     princTitleA: b("Four working", "Cuatro principios"),
     princTitleEm: b("principles.", "de trabajo."),
 
-    sectorsEyebrow: b("◆ § 03 / Sectors", "◆ § 03 / Sectores"),
+    sectorsEyebrow: b("Sectors", "Sectores"),
     sectorsTitleA: b("Where the", "Dónde aterriza"),
     sectorsTitleEm: b("work", "el trabajo"),
     sectorsTitleB: b(" tends", " "),
@@ -182,7 +182,7 @@ export const ui = {
       "La mayor parte de mi trabajo ha sido en acuicultura y pesca, pero la práctica viaja bien a sectores técnicos cercanos — pesquerías, sistemas alimentarios, ciencias marinas — y a cualquier encargo donde un equipo tiene una historia real y necesita ayuda para contarla sin perder la sustancia."
     ),
 
-    servicesEyebrow: b("§ 04 / Services", "§ 04 / Servicios"),
+    servicesEyebrow: b("Services", "Servicios"),
     servicesTitleA: b("What an engagement", "Cómo se ve"),
     servicesTitleEm: b("looks like.", "un encargo."),
     services: [
@@ -230,7 +230,7 @@ export const ui = {
 
   // Work
   work: {
-    badge: b("◆ Index", "◆ Índice"),
+    badge: b("Index", "Índice"),
     badgeMeta: b("/ 2022 — 2026", "/ 2022 — 2026"),
     titleA: b("A selection of projects across ", "Una selección de proyectos en "),
     titleEm1: b("campaigns,", "campañas,"),
@@ -262,7 +262,7 @@ export const ui = {
 
   // Writing
   writing: {
-    badge: b("◆ Writing & Insights", "◆ Escritos e ideas"),
+    badge: b("Writing & Insights", "Escritos e ideas"),
     badgeMeta: b("/ Vol. 04", "/ Vol. 04"),
     titleA: b("Notes on", "Notas sobre"),
     titleB: b("communication in ", "comunicación en "),
@@ -271,7 +271,7 @@ export const ui = {
       "Short essays, field notes and briefings. Published when the thinking is ready, not on a schedule.",
       "Ensayos cortos, notas de campo y briefings. Publicados cuando la idea está lista, no por calendario."
     ),
-    themesLabel: b("◆ Themes", "◆ Temas"),
+    themesLabel: b("Themes", "Temas"),
     themes: [
       b("Communicating aquaculture to wider audiences", "Comunicar acuicultura al público general"),
       b("Science communication in food systems", "Comunicación científica en sistemas alimentarios"),
@@ -287,7 +287,7 @@ export const ui = {
 
   // Contact
   contact: {
-    badge: b("◆ Contact / Contacto", "◆ Contact / Contacto"),
+    badge: b("Contact / Contacto", "Contact / Contacto"),
     badgeMeta: b("/ Denmark · Valencia", "/ Dinamarca · Valencia"),
     titleA: b("Let's talk", "Hablemos"),
     titleB: b("about the ", "del "),
@@ -296,8 +296,8 @@ export const ui = {
       "The best way to start is a short email with the project, the timing and what you've already got in place. I reply within a few working days. If it's a fit for the next intake, we'll set up a call.",
       "Lo mejor es empezar por un correo breve con el proyecto, los plazos y lo que ya tienes en marcha. Respondo en unos días laborables. Si encaja con la próxima ventana, organizamos una llamada."
     ),
-    direct: b("◆ Direct", "◆ Directo"),
-    cardTitle: b("◆ Briefing card", "◆ Ficha del encargo"),
+    direct: b("Direct", "Directo"),
+    cardTitle: b("Briefing card", "Ficha del encargo"),
     capacity: b("Capacity", "Disponibilidad"),
     capacityValue: b(
       "Selective freelance projects from June 2026. Retainers and editorial leads year-round.",
@@ -326,7 +326,7 @@ export const ui = {
 
   // Currently panel
   currently: {
-    label: b("◆ Currently", "◆ Ahora mismo"),
+    label: b("Currently", "Ahora mismo"),
     items: [
       { label: b("Right now", "Ahora"), value: b("A flat in Denmark", "Un piso en Dinamarca") },
       {
@@ -397,14 +397,14 @@ export const ui = {
       outcomeTitle: b("Where it landed.", "Dónde aterrizó."),
     },
     visuals: b("Selected visuals", "Imágenes seleccionadas"),
-    takeaway: b("◆ Takeaway", "◆ Aprendizaje"),
+    takeaway: b("Takeaway", "Aprendizaje"),
     figure: b("Fig.", "Fig."),
     interestedIn: b("Interested in something in this space? ", "¿Te interesa algo en este terreno? "),
   },
 
   // 404
   notFound: {
-    badge: b("◆ 404", "◆ 404"),
+    badge: b("404", "404"),
     titleA: b("This page has ", "Esta página se ha "),
     titleEm: b("drifted.", "alejado."),
     body: b(

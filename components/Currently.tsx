@@ -7,26 +7,18 @@ export function Currently({ className = "" }: { className?: string }) {
   const t = useT();
   return (
     <aside
-      className={`relative bg-blush p-7 text-ink md:p-9 ${className}`}
+      className={`relative border border-line bg-paper p-7 md:p-9 ${className}`}
     >
-      <div className="flex items-baseline justify-between border-b border-line/15 pb-4">
-        <span className="italic-serif text-2xl text-clay md:text-3xl">
-          {t(ui.currently.label).replace("◆ ", "")}
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-caps text-ink/50">
-          {new Date().toLocaleDateString("en-GB", {
-            month: "short",
-            year: "numeric",
-          })}
-        </span>
-      </div>
-      <dl className="mt-2 flex flex-col">
+      <p className="italic-serif text-2xl text-clay md:text-3xl">
+        {t(ui.currently.label)}
+      </p>
+      <dl className="mt-6 flex flex-col">
         {ui.currently.items.map((item, i) => (
           <div
             key={i}
-            className="grid grid-cols-[7rem_1fr] items-baseline gap-4 border-b border-line/10 py-3 last:border-b-0"
+            className="grid grid-cols-[7rem_1fr] items-baseline gap-4 border-t border-line py-3"
           >
-            <dt className="font-mono text-[10px] uppercase tracking-caps text-ink/55">
+            <dt className="italic-serif text-base text-muted">
               {t(item.label)}
             </dt>
             <dd className="text-base text-ink">{t(item.value)}</dd>

@@ -25,21 +25,18 @@ export default function WorkPage() {
 
   return (
     <>
-      <section className="pt-12 pb-12 md:pt-20 md:pb-16">
+      <section className="pt-16 pb-12 md:pt-24 md:pb-16">
         <Container>
-          <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-            <span className="bg-sea px-2 py-0.5 text-paper">
-              {t(ui.work.badge)}
-            </span>
-            <span className="text-muted">{t(ui.work.badgeMeta)}</span>
-          </div>
-          <h1 className="mt-8 max-w-6xl font-display-tight text-[clamp(3rem,8vw,8rem)] leading-[0.92] text-ink">
+          <p className="italic-serif text-base text-clay md:text-lg">
+            {t(ui.work.badge)} {t(ui.work.badgeMeta)}
+          </p>
+          <h1 className="mt-4 max-w-6xl font-display-tight text-[clamp(2.75rem,7vw,7rem)] leading-[0.95] text-ink">
             {t(ui.work.titleA)}
-            <span className="italic-serif text-sea">
+            <span className="italic-serif text-clay">
               {t(ui.work.titleEm1)}
             </span>
             {t(ui.work.titleMid)}{" "}
-            <span className="italic-serif text-sea">
+            <span className="italic-serif text-clay">
               {t(ui.work.titleEm2)}
             </span>
           </h1>
@@ -52,10 +49,8 @@ export default function WorkPage() {
       <section className="py-8">
         <Container>
           <div className="flex flex-col gap-6 border-y border-line py-5 md:flex-row md:items-center md:justify-between md:gap-4">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="mr-2 font-mono text-[11px] uppercase tracking-caps text-muted">
-                {t(ui.work.filterLabel)}
-              </span>
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 italic-serif text-base">
+              <span className="text-muted">{t(ui.work.filterLabel)}</span>
               {(["All", ...categories] as Filter[]).map((c) => {
                 const active = filter === c;
                 const label =
@@ -65,10 +60,10 @@ export default function WorkPage() {
                     key={c}
                     type="button"
                     onClick={() => setFilter(c)}
-                    className={`px-3 py-1 font-mono text-[11px] uppercase tracking-caps transition-colors ${
+                    className={`transition-colors ${
                       active
-                        ? "bg-ink text-paper"
-                        : "bg-soft text-muted hover:bg-ink hover:text-paper"
+                        ? "text-clay"
+                        : "text-ink hover:text-clay"
                     }`}
                   >
                     {label}
@@ -76,34 +71,32 @@ export default function WorkPage() {
                 );
               })}
             </div>
-            <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-caps text-muted">
+            <div className="flex items-baseline gap-3 italic-serif text-base text-muted">
               <span>
                 {filtered.length} {t(ui.work.countLabel)}
               </span>
-              <span className="text-line">/</span>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setView("grid")}
-                  aria-pressed={view === "grid"}
-                  className={`transition-colors ${
-                    view === "grid" ? "text-sea" : "text-muted hover:text-ink"
-                  }`}
-                >
-                  {t(ui.work.grid)}
-                </button>
-                <span className="text-line">·</span>
-                <button
-                  type="button"
-                  onClick={() => setView("index")}
-                  aria-pressed={view === "index"}
-                  className={`transition-colors ${
-                    view === "index" ? "text-sea" : "text-muted hover:text-ink"
-                  }`}
-                >
-                  {t(ui.work.index)}
-                </button>
-              </div>
+              <span>·</span>
+              <button
+                type="button"
+                onClick={() => setView("grid")}
+                aria-pressed={view === "grid"}
+                className={`transition-colors ${
+                  view === "grid" ? "text-clay" : "text-ink hover:text-clay"
+                }`}
+              >
+                {t(ui.work.grid)}
+              </button>
+              <span>/</span>
+              <button
+                type="button"
+                onClick={() => setView("index")}
+                aria-pressed={view === "index"}
+                className={`transition-colors ${
+                  view === "index" ? "text-clay" : "text-ink hover:text-clay"
+                }`}
+              >
+                {t(ui.work.index)}
+              </button>
             </div>
           </div>
         </Container>

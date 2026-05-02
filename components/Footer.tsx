@@ -11,37 +11,37 @@ export function Footer() {
   const t = useT();
 
   return (
-    <footer className="mt-32 bg-clay text-paper">
+    <footer className="mt-32 border-t border-line bg-paper">
       <Container>
-        <div className="grid gap-16 py-24 md:grid-cols-12 md:py-32">
-          <div className="md:col-span-8">
-            <p className="text-[11px] uppercase tracking-caps text-saffron">
+        <div className="grid gap-16 py-20 md:grid-cols-12 md:py-24">
+          <div className="md:col-span-7">
+            <p className="italic-serif text-base text-clay md:text-lg">
               {t(ui.footer.open)}
             </p>
-            <p className="mt-8 max-w-3xl font-display-tight text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+            <p className="mt-6 max-w-2xl font-display-tight text-[clamp(1.75rem,3.5vw,3rem)] leading-[1.1] text-ink">
               {t(ui.footer.cta)}{" "}
-              <span className="italic-serif text-saffron">
+              <span className="italic-serif text-clay">
                 {t(ui.footer.ctaEm)}
               </span>
             </p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-10 inline-flex items-center gap-3 border-b border-saffron pb-1 text-lg text-saffron transition-opacity hover:opacity-80"
+              className="mt-8 inline-flex items-baseline gap-2 italic-serif text-xl text-ink transition-colors hover:text-clay md:text-2xl"
             >
               {site.email} <span aria-hidden>→</span>
             </a>
           </div>
 
-          <div className="md:col-span-2">
-            <div className="text-[11px] uppercase tracking-caps text-paper/60">
+          <div className="md:col-span-2 md:col-start-9">
+            <div className="italic-serif text-base text-muted">
               {t(ui.footer.index)}
             </div>
-            <ul className="mt-5 flex flex-col gap-2.5 text-base">
+            <ul className="mt-4 flex flex-col gap-2 text-base">
               {ui.nav.primary.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-paper transition-opacity hover:opacity-60"
+                    className="text-ink transition-colors hover:text-clay"
                   >
                     {t(item.label)}
                   </Link>
@@ -50,17 +50,17 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-2">
-            <div className="text-[11px] uppercase tracking-caps text-paper/60">
+          <div className="md:col-span-2 md:col-start-11">
+            <div className="italic-serif text-base text-muted">
               {t(ui.footer.elsewhere)}
             </div>
-            <ul className="mt-5 flex flex-col gap-2.5 text-base">
+            <ul className="mt-4 flex flex-col gap-2 text-base">
               <li>
                 <a
                   href={site.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-paper transition-opacity hover:opacity-60"
+                  className="text-ink transition-colors hover:text-clay"
                 >
                   LinkedIn
                 </a>
@@ -70,47 +70,20 @@ export function Footer() {
                   href={site.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-paper transition-opacity hover:opacity-60"
+                  className="text-ink transition-colors hover:text-clay"
                 >
                   Seafood on Nerea
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-paper transition-opacity hover:opacity-60"
-                >
-                  Email
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="overflow-hidden border-t border-paper/15 py-5">
-          <div className="nc-marquee flex w-max gap-12 whitespace-nowrap font-display-wide text-2xl text-paper/70 md:text-3xl">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <span key={i} className="flex items-center gap-12">
-                <span>NEREA CLEMENTE</span>
-                <span className="text-saffron">●</span>
-                <span className="italic-serif text-saffron">
-                  {t(ui.footer.marqueeTagline)}
-                </span>
-                <span className="text-saffron">●</span>
-                <span>EN · ES · VAL</span>
-                <span className="text-saffron">●</span>
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2 border-t border-paper/15 py-6 text-[11px] uppercase tracking-caps text-paper/60 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-2 border-t border-line py-6 text-sm text-muted md:flex-row md:items-center md:justify-between">
           <span>
-            © {year} {site.name}. {t(ui.footer.rights)}
+            © {year} {site.name}.
           </span>
-          <span>
-            {t(site.location)} · {t(ui.footer.set)}
-          </span>
+          <span className="italic-serif">{t(site.location)}</span>
         </div>
       </Container>
     </footer>

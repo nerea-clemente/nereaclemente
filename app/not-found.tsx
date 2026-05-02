@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { Container } from "@/components/Container";
+import { Button } from "@/components/Button";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
 
@@ -10,12 +10,12 @@ export default function NotFound() {
   return (
     <section className="py-32 md:py-48">
       <Container size="narrow">
-        <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
+        <p className="italic-serif text-base text-clay md:text-lg">
           {t(ui.notFound.badge)}
-        </span>
-        <h1 className="mt-6 font-display-tight text-[clamp(3rem,8vw,7rem)] leading-[0.92] text-ink">
+        </p>
+        <h1 className="mt-4 font-display-tight text-[clamp(2.75rem,7vw,6rem)] leading-[0.95] text-ink">
           {t(ui.notFound.titleA)}
-          <span className="italic-serif text-sea">
+          <span className="italic-serif text-clay">
             {t(ui.notFound.titleEm)}
           </span>
         </h1>
@@ -23,18 +23,10 @@ export default function NotFound() {
           {t(ui.notFound.body)}
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
-          <Link
-            href="/"
-            className="bg-ink px-6 py-3.5 text-[13px] uppercase tracking-caps text-paper hover:bg-sea"
-          >
-            {t(ui.notFound.home)}
-          </Link>
-          <Link
-            href="/work"
-            className="border border-ink px-6 py-3.5 text-[13px] uppercase tracking-caps text-ink hover:bg-ink hover:text-paper"
-          >
+          <Button href="/">{t(ui.notFound.home)}</Button>
+          <Button href="/work" variant="ghost">
             {t(ui.notFound.work)}
-          </Link>
+          </Button>
         </div>
       </Container>
     </section>

@@ -8,22 +8,17 @@ import { site } from "@/lib/site";
 export function ContactContent() {
   const t = useT();
   return (
-    <section className="pt-12 pb-24 md:pt-20 md:pb-32">
+    <section className="pt-16 pb-24 md:pt-24 md:pb-32">
       <Container>
         <div className="grid gap-16 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-7">
-            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-caps">
-              <span className="bg-sea px-2 py-0.5 text-paper">
-                {t(ui.contact.badge)}
-              </span>
-              <span className="text-muted">{t(ui.contact.badgeMeta)}</span>
-            </div>
+            <p className="italic-serif text-base text-clay md:text-lg">
+              {t(ui.contact.badge)} {t(ui.contact.badgeMeta)}
+            </p>
 
-            <h1 className="mt-8 font-display-tight text-[clamp(3rem,8vw,8rem)] leading-[0.92] text-ink">
-              {t(ui.contact.titleA)}
-              <br />
-              {t(ui.contact.titleB)}
-              <span className="italic-serif text-sea">
+            <h1 className="mt-4 font-display-tight text-[clamp(2.75rem,7vw,7rem)] leading-[0.95] text-ink">
+              {t(ui.contact.titleA)} {t(ui.contact.titleB)}
+              <span className="italic-serif text-clay">
                 {t(ui.contact.titleEm)}
               </span>
             </h1>
@@ -34,12 +29,12 @@ export function ContactContent() {
 
             <a
               href={`mailto:${site.email}`}
-              className="group mt-14 inline-flex flex-col gap-3 border-t border-line pt-6"
+              className="group mt-14 block border-t border-line pt-8"
             >
-              <span className="font-mono text-[11px] uppercase tracking-caps text-sea">
+              <span className="italic-serif text-base text-clay">
                 {t(ui.contact.direct)}
               </span>
-              <span className="font-display-tight text-[clamp(2rem,5vw,4rem)] leading-[1] text-ink transition-colors group-hover:text-sea">
+              <span className="mt-2 block font-display-tight text-[clamp(1.75rem,4vw,3rem)] leading-[1.05] text-ink transition-colors group-hover:text-clay">
                 {site.email}{" "}
                 <span
                   aria-hidden
@@ -50,20 +45,21 @@ export function ContactContent() {
               </span>
             </a>
 
-            <div className="mt-10 flex flex-wrap gap-3 font-mono text-[11px] uppercase tracking-caps">
+            <div className="mt-10 flex flex-wrap items-baseline gap-x-5 gap-y-2 italic-serif text-base text-ink">
               <a
                 href={site.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-ink px-3 py-2 text-paper hover:bg-sea"
+                className="transition-colors hover:text-clay"
               >
                 LinkedIn ↗
               </a>
+              <span className="text-muted">·</span>
               <a
                 href={site.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-ink px-3 py-2 text-paper hover:bg-sea"
+                className="transition-colors hover:text-clay"
               >
                 Seafood on Nerea ↗
               </a>
@@ -71,53 +67,52 @@ export function ContactContent() {
           </div>
 
           <aside className="md:col-span-4 md:col-start-9">
-            <div className="bg-ink p-7 text-paper md:p-9">
-              <div className="flex items-center justify-between border-b border-paper/15 pb-4">
-                <span className="font-mono text-[10px] uppercase tracking-caps text-saffron">
-                  {t(ui.contact.cardTitle)}
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-caps text-paper/50">
-                  2026
-                </span>
-              </div>
-              <div className="mt-5 flex flex-col gap-5 text-sm">
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-caps text-paper/50">
+            <div className="border-t border-line pt-8">
+              <p className="italic-serif text-base text-clay">
+                {t(ui.contact.cardTitle)}
+              </p>
+              <dl className="mt-6 flex flex-col divide-y divide-line text-base">
+                <div className="flex flex-col gap-1.5 pb-5">
+                  <dt className="italic-serif text-base text-muted">
                     {t(ui.contact.capacity)}
-                  </div>
-                  <p className="mt-1 text-paper">
+                  </dt>
+                  <dd className="text-ink">
                     {t(ui.contact.capacityValue)}
-                  </p>
+                  </dd>
                 </div>
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-caps text-paper/50">
+                <div className="flex flex-col gap-1.5 py-5">
+                  <dt className="italic-serif text-base text-muted">
                     {t(ui.contact.goodFit)}
-                  </div>
-                  <ul className="mt-1 flex flex-col gap-1 text-paper">
-                    {ui.contact.goodFitItems.map((item, i) => (
-                      <li key={i}>{t(item)}</li>
-                    ))}
-                  </ul>
+                  </dt>
+                  <dd>
+                    <ul className="flex flex-col gap-1 text-ink">
+                      {ui.contact.goodFitItems.map((item, i) => (
+                        <li key={i}>{t(item)}</li>
+                      ))}
+                    </ul>
+                  </dd>
                 </div>
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-caps text-paper/50">
+                <div className="flex flex-col gap-1.5 py-5">
+                  <dt className="italic-serif text-base text-muted">
                     {t(ui.contact.lessFit)}
-                  </div>
-                  <ul className="mt-1 flex flex-col gap-1 text-paper">
-                    {ui.contact.lessFitItems.map((item, i) => (
-                      <li key={i}>{t(item)}</li>
-                    ))}
-                  </ul>
+                  </dt>
+                  <dd>
+                    <ul className="flex flex-col gap-1 text-ink">
+                      {ui.contact.lessFitItems.map((item, i) => (
+                        <li key={i}>{t(item)}</li>
+                      ))}
+                    </ul>
+                  </dd>
                 </div>
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-caps text-paper/50">
+                <div className="flex flex-col gap-1.5 pt-5">
+                  <dt className="italic-serif text-base text-muted">
                     {t(ui.contact.languages)}
-                  </div>
-                  <p className="mt-1 text-paper">
+                  </dt>
+                  <dd className="text-ink">
                     {t(ui.contact.languagesValue)}
-                  </p>
+                  </dd>
                 </div>
-              </div>
+              </dl>
             </div>
           </aside>
         </div>
