@@ -1,11 +1,12 @@
 type Item = { label: string; value: string };
 
 const items: Item[] = [
-  { label: "Right now", value: "A flat near the harbour, A Coruña" },
+  { label: "Right now", value: "A flat in Nørrebro, Copenhagen" },
+  { label: "Missing", value: "Late lunches in El Cabanyal, Valencia" },
   { label: "Reading", value: "A long essay on salt and trade routes" },
-  { label: "Cooking", value: "Razor clams, plancha, lemon" },
+  { label: "Cooking", value: "Arròs a banda, slowly" },
   { label: "Working on", value: "BioFarm, vol. II" },
-  { label: "On loop", value: "Field recordings of Atlantic ports" },
+  { label: "On loop", value: "Field recordings, Baltic & Med ports" },
 ];
 
 export function Currently({ className = "" }: { className?: string }) {

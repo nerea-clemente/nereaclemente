@@ -56,8 +56,8 @@ export default function AboutPage() {
                 </div>
               </div>
               <figcaption className="mt-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-caps text-muted">
-                <span>A Coruña, March 2026</span>
-                <span>Photo · A. Pereira</span>
+                <span>Copenhagen, March 2026</span>
+                <span>Photo · A. Lund</span>
               </figcaption>
             </figure>
           </div>
@@ -81,7 +81,7 @@ export default function AboutPage() {
                   Over the last few years I&rsquo;ve moved towards editorial and strategic work: brand narratives, long-form articles and campaigns, editorial direction on sustainability reports, and interviews with scientists, vets and farm managers. In parallel I run <span className="italic-serif text-ink">Seafood on Nerea</span>, a personal editorial project, and <span className="italic-serif text-ink">Women in Aquaculture</span>, an interview series.
                 </p>
                 <p>
-                  I write in British English, with a Mediterranean register. Based in Spain, working internationally, mostly remotely, with a few days on site for each serious project.
+                  I&rsquo;m from Valencia and based in Copenhagen — the Mediterranean register stays, even when the weather doesn&rsquo;t. I write mainly in British English, work internationally and remotely, with a few days on site for each serious project.
                 </p>
               </div>
             </div>

@@ -117,7 +117,9 @@ export default function ContactPage() {
                     <div className="font-mono text-[10px] uppercase tracking-caps text-paper/50">
                       Languages
                     </div>
-                    <p className="mt-1 text-paper">English · Spanish · Galician</p>
+                    <p className="mt-1 text-paper">
+                      English · Spanish · Valencian · Danish
+                    </p>
                   </div>
                 </div>
               </div>

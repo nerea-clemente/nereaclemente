@@ -91,7 +91,7 @@ export function Footer() {
                   Aquaculture, seafood &amp; sustainability
                 </span>
                 <span className="text-lemon">●</span>
-                <span>EN · ES · GL</span>
+                <span>EN · ES · VAL · DA</span>
                 <span className="text-lemon">●</span>
               </span>
             ))}

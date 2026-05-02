@@ -1,7 +1,7 @@
 export const site = {
   name: "Nerea Clemente",
   role: "Marketing & communications",
-  location: "Based in Spain. Working internationally.",
+  location: "Based in Copenhagen. From Valencia. Working internationally.",
   email: "hello@nereaclemente.com",
   linkedin: "https://www.linkedin.com/in/nereaclemente",
   instagram: "https://www.instagram.com/seafoodonnerea",

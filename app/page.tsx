@@ -31,11 +31,11 @@ export default function HomePage() {
             <span key={i} className="flex items-center gap-10">
               <span>Folio 2026 · Vol. 04</span>
               <span className="text-electric">◆</span>
-              <span>A Coruña · Galicia</span>
+              <span>Copenhagen ↔ Valencia</span>
               <span className="text-electric">◆</span>
               <span>Available from June 2026</span>
               <span className="text-electric">◆</span>
-              <span>EN · ES · GL</span>
+              <span>EN · ES · VAL · DA</span>
               <span className="text-electric">◆</span>
             </span>
           ))}
@@ -51,7 +51,7 @@ export default function HomePage() {
                 <span className="bg-electric px-2 py-0.5 text-paper">
                   ◆ Independent practice
                 </span>
-                <span className="text-muted">/ est. A Coruña, Galicia</span>
+                <span className="text-muted">/ Copenhagen — Valencia</span>
               </div>
 
               <h1 className="nc-fade-up nc-fade-up-1 mt-10 font-display-tight text-[clamp(3.5rem,9vw,9rem)] leading-[0.92] text-ink">
@@ -68,7 +68,7 @@ export default function HomePage() {
               </h1>
 
               <p className="nc-fade-up nc-fade-up-2 mt-12 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-                Run by <span className="text-ink">Nerea Clemente</span>. Mostly long-form: brand narrative, campaigns, science communication and the editorial side of sustainability reporting. In British English, with a Mediterranean tilt.
+                Run by <span className="text-ink">Nerea Clemente</span>, working from Copenhagen with a Mediterranean register from Valencia. Mostly long-form: brand narrative, campaigns, science communication and the editorial side of sustainability reporting.
               </p>
 
               <div className="nc-fade-up nc-fade-up-3 mt-10 flex flex-wrap items-center gap-4">
@@ -228,7 +228,7 @@ export default function HomePage() {
               <footer className="mt-12 flex items-center gap-5 font-mono text-[11px] uppercase tracking-caps text-paper/70">
                 <span className="bg-lemon px-2 py-0.5 text-ink">— N.C.</span>
                 <span className="h-px flex-1 bg-paper/20" />
-                <span>A Coruña · 2026</span>
+                <span>Copenhagen · 2026</span>
               </footer>
             </blockquote>
           </div>
