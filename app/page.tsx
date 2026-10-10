@@ -18,6 +18,22 @@ const selected = featuredProjects.filter(
   (p, i, all) => all.findIndex((q) => q.world === p.world) === i
 );
 
+// Asymmetric poster wall: two large, three smaller.
+const BENTO = [
+  "col-span-2 md:col-span-7",
+  "col-span-2 md:col-span-5",
+  "col-span-1 md:col-span-4",
+  "col-span-1 md:col-span-4",
+  "col-span-2 md:col-span-4",
+];
+const ASPECT = [
+  "aspect-[4/3] md:aspect-[7/6]",
+  "aspect-[4/3] md:aspect-[5/6]",
+  "aspect-[4/5]",
+  "aspect-[4/5]",
+  "aspect-[4/3] md:aspect-[4/5]",
+];
+
 export default function HomePage() {
   const t = useT();
   const [hovered, setHovered] = useState<World | null>(null);
@@ -75,11 +91,11 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Entrances to the five worlds */}
-          <ul className="nc-fade-up nc-fade-up-3 mt-14 grid grid-cols-2 gap-2 sm:grid-cols-3 md:mt-20 md:grid-cols-5 md:gap-3">
+          {/* Entrances to the five worlds — a wall of posters */}
+          <ul className="nc-fade-up nc-fade-up-3 mt-14 grid grid-cols-2 gap-x-3 gap-y-6 md:mt-20 md:grid-cols-12 md:gap-x-5 md:gap-y-10">
             {worlds.map((w, i) => (
-              <li key={w.slug} className={i === worlds.length - 1 ? "col-span-2 sm:col-span-1" : ""}>
-                <WorldTile world={w} onHover={setHovered} />
+              <li key={w.slug} className={BENTO[i]}>
+                <WorldTile world={w} onHover={setHovered} aspect={ASPECT[i]} compact={i > 1} />
               </li>
             ))}
           </ul>

@@ -3,19 +3,21 @@
 import Link from "next/link";
 import type { World } from "@/lib/worlds";
 import { useT } from "@/lib/i18n/context";
+import { WorldPoster } from "./WorldPoster";
 
-/** Coloured entrance block for one world: number, name and visual register. */
+/** Entrance to one world: its poster, then number, name and register. */
 export function WorldTile({
   world,
   onHover,
-  size = "default",
+  aspect = "aspect-[4/5]",
+  compact = false,
 }: {
   world: World;
   onHover?: (world: World | null) => void;
-  size?: "default" | "tall";
+  aspect?: string;
+  compact?: boolean;
 }) {
   const t = useT();
-  const playful = world.slug === "playground";
   return (
     <Link
       href={`/worlds/${world.slug}`}
@@ -23,28 +25,30 @@ export function WorldTile({
       onMouseLeave={() => onHover?.(null)}
       onFocus={() => onHover?.(world)}
       onBlur={() => onHover?.(null)}
-      className={`group relative flex flex-col justify-between overflow-hidden p-4 transition-transform duration-500 ease-soft hover:-translate-y-1 md:p-5 ${
-        size === "tall" ? "min-h-[15rem] md:min-h-[22rem]" : "min-h-[9rem] md:min-h-[12rem]"
-      }`}
-      style={{ backgroundColor: world.palette.deep, color: world.palette.on }}
+      className="group flex h-full flex-col"
     >
-      <span className="font-display-tight text-2xl md:text-3xl">{world.n}</span>
-      <span className="flex flex-col gap-1">
-        <span
-          className={`font-display text-base leading-tight md:text-lg ${
-            playful ? "inline-block origin-left transition-transform duration-500 ease-soft group-hover:-rotate-3" : ""
-          }`}
-        >
-          {t(world.name)}
+      <div className={`relative ${aspect} w-full overflow-hidden`}>
+        <div className="absolute inset-0 transition-transform duration-700 ease-soft group-hover:scale-[1.03]">
+          <WorldPoster
+            world={world}
+            title={t(world.poster.title)}
+            caption={compact ? undefined : t(world.poster.caption)}
+            fragments={t(world.poster.fragments)}
+            kicker={`${world.n} / ${world.style}`}
+          />
+        </div>
+      </div>
+      <div className="flex items-baseline justify-between gap-3 border-b border-ink py-3">
+        <span className="flex items-baseline gap-3">
+          <span className="serif text-xl" style={{ color: world.palette.text }}>
+            {world.n}
+          </span>
+          <span className="font-display text-base text-ink md:text-lg">{t(world.name)}</span>
         </span>
-        <span className="label opacity-75">{world.style}</span>
-      </span>
-      {/* A quiet second tone slides in on hover */}
-      <span
-        aria-hidden
-        className="absolute bottom-0 right-0 h-1.5 w-0 transition-all duration-500 ease-soft group-hover:w-full"
-        style={{ backgroundColor: world.palette.light }}
-      />
+        <span aria-hidden className="text-ink transition-transform duration-300 group-hover:translate-x-1">
+          →
+        </span>
+      </div>
     </Link>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeader";
 import { Button } from "@/components/Button";
+import { WorldPoster } from "@/components/WorldPoster";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
 import { getProject, projects } from "@/lib/projects";
@@ -78,20 +79,14 @@ export function CaseStudyContent({ slug }: { slug: string }) {
       {/* Cover in the colour of the primary world. Real visuals keep their own colours. */}
       <section className="pb-16 md:pb-24">
         <Container>
-          <div className="relative aspect-[16/9] w-full overflow-hidden bg-w-deep text-w-on">
-            <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-14">
-              <span className="label opacity-80">
-                {world.n} / {world.style} — {format}
-              </span>
-              <h2 className="font-display-tight text-[clamp(2.5rem,8vw,8rem)] leading-[0.88]">
-                {t(project.title)}
-              </h2>
-            </div>
-            <div className="absolute bottom-0 left-0 grid w-full grid-cols-4" aria-hidden>
-              {[world.palette.deep, world.palette.mid, world.palette.light, world.palette.tint].map((c) => (
-                <span key={c} className="block h-2 md:h-3" style={{ backgroundColor: c }} />
-              ))}
-            </div>
+          <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/9]">
+            <WorldPoster
+              world={world}
+              title={t(project.title)}
+              caption={t(project.client)}
+              fragments={t(project.disciplines)}
+              kicker={`${world.n} / ${world.style} — ${format}`}
+            />
           </div>
         </Container>
       </section>

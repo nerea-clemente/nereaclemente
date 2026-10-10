@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Project } from "@/lib/projects";
 import { getWorld, worldStyle, type World } from "@/lib/worlds";
 import { useT } from "@/lib/i18n/context";
+import { WorldPoster } from "./WorldPoster";
 import { ui } from "@/lib/i18n/strings";
 
 type Variant = "default" | "featured" | "compact";
@@ -102,21 +103,17 @@ function ProjectTile({
 }) {
   const t = useT();
   const aspect = large ? "aspect-[16/11]" : "aspect-[4/5]";
-
   return (
-    <div className={`relative ${aspect} overflow-hidden bg-w-deep text-w-on`}>
-      <div className="absolute inset-0 flex flex-col justify-between p-6 transition-transform duration-700 ease-soft group-hover:scale-[1.01] md:p-10">
-        <span className="label opacity-80">
-          {world.n} / {world.style}
-        </span>
-        <h4 className="font-display-tight text-[clamp(2.25rem,5vw,4.75rem)] leading-[0.95]">
-          {t(project.title)}
-        </h4>
+    <div className={`relative ${aspect} overflow-hidden`}>
+      <div className="absolute inset-0 transition-transform duration-700 ease-soft group-hover:scale-[1.03]">
+        <WorldPoster
+          world={world}
+          title={t(project.title)}
+          caption={`${t(ui.categoryLabels[project.category])} · ${project.year}`}
+          fragments={t(project.disciplines)}
+          kicker={`${world.n} / ${world.style}`}
+        />
       </div>
-      <span
-        aria-hidden
-        className="absolute bottom-0 left-0 h-2 w-1/4 bg-w-light transition-all duration-700 ease-soft group-hover:w-full"
-      />
     </div>
   );
 }

@@ -29,6 +29,12 @@ export type World = {
   lede: Bilingual;
   description: Bilingual;
   shows: Bilingual<string[]>;
+  /** Copy for the world's typographic poster. */
+  poster: {
+    title: Bilingual;
+    caption: Bilingual;
+    fragments: Bilingual<string[]>;
+  };
 };
 
 export const worlds: World[] = [
@@ -58,6 +64,11 @@ export const worlds: World[] = [
       ["Science communication", "Educational content", "Sustainability", "Sector campaigns"],
       ["Comunicación científica", "Contenido educativo", "Sostenibilidad", "Campañas sectoriales"]
     ),
+    poster: {
+      title: b("Seafood", "Seafood"),
+      caption: b("From the farm to the page.", "De la granja a la página."),
+      fragments: b(["Science", "Feed", "Sustainability"], ["Ciencia", "Pienso", "Sostenibilidad"]),
+    },
   },
   {
     slug: "brand",
@@ -85,6 +96,11 @@ export const worlds: World[] = [
       ["Positioning", "Brand strategy", "Campaigns", "Identity", "International marketing"],
       ["Posicionamiento", "Estrategia de marca", "Campañas", "Identidad", "Marketing internacional"]
     ),
+    poster: {
+      title: b("Brand", "Marca"),
+      caption: b("Strategy before style.", "Estrategia antes que estilo."),
+      fragments: b(["Positioning", "Identity", "Campaigns", "Markets"], ["Posicionamiento", "Identidad", "Campañas", "Mercados"]),
+    },
   },
   {
     slug: "ai",
@@ -112,6 +128,11 @@ export const worlds: World[] = [
       ["AI agents", "Automations", "Internal tools", "Solutions for companies"],
       ["Agentes de IA", "Automatizaciones", "Herramientas internas", "Soluciones para empresas"]
     ),
+    poster: {
+      title: b("AI & Automation", "IA y Automatización"),
+      caption: b("Problem → process → useful", "Problema → proceso → útil"),
+      fragments: b(["Agents", "Flows", "Tools"], ["Agentes", "Flujos", "Herramientas"]),
+    },
   },
   {
     slug: "content",
@@ -139,6 +160,11 @@ export const worlds: World[] = [
       ["Creative campaigns", "Storytelling", "Social media", "Copywriting", "Design & video"],
       ["Campañas creativas", "Storytelling", "Redes sociales", "Copywriting", "Diseño y vídeo"]
     ),
+    poster: {
+      title: b("Creative & Content", "Creatividad y Contenido"),
+      caption: b("The real pieces lead.", "Las piezas reales mandan."),
+      fragments: b(["Story", "Social", "Copy", "Video"], ["Historia", "Social", "Copy", "Vídeo"]),
+    },
   },
   {
     slug: "playground",
@@ -166,6 +192,11 @@ export const worlds: World[] = [
       ["Visual experiments", "Personal designs", "Side projects", "AI tests"],
       ["Experimentos visuales", "Diseños personales", "Pequeños proyectos", "Pruebas de IA"]
     ),
+    poster: {
+      title: b("Playground", "Playground"),
+      caption: b("experimental", "experimental"),
+      fragments: b(["Tests", "Toys", "Ideas"], ["Pruebas", "Juegos", "Ideas"]),
+    },
   },
 ];
 

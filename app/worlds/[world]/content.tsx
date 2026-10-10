@@ -5,6 +5,7 @@ import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeader";
 import { ProjectCard } from "@/components/ProjectCard";
 import { WorldTile } from "@/components/WorldTile";
+import { WorldPoster, worldFont, worldFontSmall, pixelSafe } from "@/components/WorldPoster";
 import { Button } from "@/components/Button";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
@@ -26,51 +27,43 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
 
   return (
     <div style={worldStyle(world)}>
-      {/* World header */}
-      <section className="world-ease relative overflow-hidden bg-w-deep text-w-on">
-        <Container>
-          <div className="flex items-center justify-between py-4">
-            <span className="label opacity-80">
-              {t(ui.world.label)} {world.n} / {world.style}
-            </span>
-            <Link href="/work" className="label opacity-80 hover:opacity-100">
-              {t(ui.caseStudy.backIndex)}
-            </Link>
-          </div>
-          <div aria-hidden className="h-px bg-current opacity-25" />
-
-          <div className="pt-16 pb-20 md:pt-24 md:pb-28">
-            <h1 className="flex flex-wrap items-baseline gap-x-6 gap-y-2 leading-[0.92]">
-              <span className="serif text-[clamp(4rem,12vw,11rem)]">{world.n}</span>
-              {playful ? (
-                <PlayfulName text={t(world.name)} />
-              ) : (
-                <span className="font-display-tight text-[clamp(3rem,8.5vw,8rem)]">
-                  {t(world.name)}
+      {/* World header: the poster, full bleed */}
+      <section className="relative">
+        <div className="relative h-[78svh] min-h-[480px] max-h-[920px] w-full">
+          <WorldPoster
+            world={world}
+            title={t(world.poster.title)}
+            caption={t(world.poster.caption)}
+            fragments={t(world.poster.fragments)}
+            kicker={`${t(ui.world.label)} ${world.n} / ${world.style}`}
+          />
+        </div>
+        <div className="world-ease bg-w-deep text-w-on">
+          <Container>
+            <div className="flex items-center justify-between py-4">
+              <Link href="/work" className="label opacity-80 hover:opacity-100">
+                {t(ui.caseStudy.backIndex)}
+              </Link>
+              <span className="label opacity-80">{world.style}</span>
+            </div>
+            <div aria-hidden className="h-px bg-current opacity-25" />
+            <div className="grid gap-8 pt-10 pb-14 md:grid-cols-12 md:items-end md:pt-14 md:pb-20">
+              <h1 className="flex flex-wrap items-baseline gap-x-5 md:col-span-7">
+                <span className="serif text-[clamp(3rem,7vw,6rem)] leading-none">{world.n}</span>
+                <span className={`${worldFont[slug]} text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.9]`}>
+                  {slug === "ai" ? pixelSafe(t(world.name)) : t(world.name)}
                 </span>
-              )}
-            </h1>
-            <p className="mt-10 max-w-2xl font-display text-xl leading-snug md:text-2xl">
-              {t(world.lede)}
-            </p>
+              </h1>
+              <p className="font-display text-xl leading-snug md:col-span-5 md:text-2xl">
+                {t(world.lede)}
+              </p>
+            </div>
+          </Container>
+          <div className="grid grid-cols-4" aria-hidden>
+            {[p.deep, p.mid, p.light, p.tint].map((c) => (
+              <span key={c} className="block h-3 md:h-4" style={{ backgroundColor: c }} />
+            ))}
           </div>
-        </Container>
-
-        {playful && (
-          <span
-            aria-hidden
-            className="nc-wobble absolute bottom-24 right-6 hidden rounded-full px-5 py-3 label md:block lg:right-16"
-            style={{ backgroundColor: p.light, color: "#141414" }}
-          >
-            ✶ experimental ✶
-          </span>
-        )}
-
-        {/* Palette strip */}
-        <div className="grid grid-cols-4" aria-hidden>
-          {[p.deep, p.mid, p.light, p.tint].map((c) => (
-            <span key={c} className="block h-3 md:h-4" style={{ backgroundColor: c }} />
-          ))}
         </div>
       </section>
 
@@ -87,12 +80,16 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
                 {t(world.shows).map((item, i) => (
                   <li
                     key={item}
-                    className={`flex items-baseline gap-4 border-b border-ink/15 py-3 text-lg text-ink ${
-                      playful ? (i % 2 ? "md:translate-x-3" : "md:-translate-x-1") : ""
+                    className={`flex items-baseline gap-4 border-b border-ink/15 py-3 text-ink ${
+                      playful ? (i % 2 ? "md:translate-x-4 md:rotate-1" : "md:-translate-x-1 md:-rotate-1") : ""
                     }`}
                   >
-                    <span className="serif text-w-text">{String(i + 1).padStart(2, "0")}</span>
-                    {item}
+                    <span className="serif text-lg text-w-text">{String(i + 1).padStart(2, "0")}</span>
+                    <span
+                      className={`${worldFontSmall[slug]} text-[clamp(1.5rem,2.4vw,2.25rem)] ${playful && i % 2 ? "serif italic font-normal text-w-text" : ""}`}
+                    >
+                      {slug === "ai" ? pixelSafe(item) : item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -105,7 +102,9 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
       <section className="py-20 md:py-28">
         <Container>
           <div className="mb-12 flex items-baseline justify-between border-b border-ink pb-4">
-            <Eyebrow className="!text-ink">{t(ui.world.casesLabel)}</Eyebrow>
+            <h2 className={`${worldFont[slug]} text-[clamp(2.5rem,6vw,5rem)] leading-none text-w-text`}>
+              {t(ui.world.casesLabel)}
+            </h2>
             <span className="label text-muted">
               {String(primary.length).padStart(2, "0")}
             </span>
@@ -176,32 +175,12 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
           <ul className="mt-6 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
             {others.map((w) => (
               <li key={w.slug}>
-                <WorldTile world={w} />
+                <WorldTile world={w} compact />
               </li>
             ))}
           </ul>
         </Container>
       </section>
     </div>
-  );
-}
-
-/** Playground only: letters that refuse to sit perfectly still. */
-function PlayfulName({ text }: { text: string }) {
-  const tilt = ["-rotate-6", "rotate-3", "-rotate-2", "rotate-6", "rotate-0", "-rotate-3"];
-  return (
-    <span className="font-display-tight text-[clamp(3rem,8.5vw,8rem)]" aria-label={text}>
-      {[...text].map((ch, i) => (
-        <span
-          key={i}
-          aria-hidden
-          className={`inline-block transition-transform duration-500 ease-soft hover:-translate-y-2 ${tilt[i % tilt.length]} ${
-            i % 4 === 1 ? "serif font-normal" : ""
-          }`}
-        >
-          {ch}
-        </span>
-      ))}
-    </span>
   );
 }
