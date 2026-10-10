@@ -6,39 +6,45 @@ export const principles = [
   {
     n: "01",
     title: b(
-      "Start with the people, not the deck.",
-      "Empezar por las personas, no por la presentación."
+      "People first, slides later.",
+      "Primero las personas, luego las diapositivas."
     ),
     body: b(
-      "The best work comes from time with the people actually doing it — on a farm, inside a team, behind a product. I listen before I write, design or build anything.",
-      "El mejor trabajo sale de pasar tiempo con quienes lo hacen de verdad — en una granja, dentro de un equipo, detrás de un producto. Escucho antes de escribir, diseñar o construir nada."
+      "The best ideas come from time with the people doing the work — on a farm, in a team, behind a product. I listen a lot before I make anything.",
+      "Las mejores ideas salen de pasar tiempo con quien hace el trabajo: en una granja, en un equipo, detrás de un producto. Escucho mucho antes de hacer nada."
     ),
   },
   {
     n: "02",
-    title: b("Translate, do not simplify.", "Traducir, no simplificar."),
+    title: b(
+      "Clear, never dumbed down.",
+      "Claro, nunca simplón."
+    ),
     body: b(
-      "Clarity is an editorial craft. Precision survives the edit when the first draft starts from the primary source.",
-      "La claridad es un oficio editorial. La precisión sobrevive a la edición cuando el primer borrador parte de la fuente primaria."
+      "Making something clear is a craft. I go back to the source so the detail survives the edit.",
+      "Hacer algo claro es un oficio. Vuelvo a la fuente para que el detalle sobreviva a la edición."
     ),
   },
   {
     n: "03",
     title: b(
-      "Keep the uncertainty visible.",
-      "Mantener visible la incertidumbre."
+      "Honest beats impressive.",
+      "Mejor honesto que espectacular."
     ),
     body: b(
-      "Greenwash happens in the gap between what is known and what is claimed. I keep that gap named and honest.",
-      "El greenwash vive en el hueco entre lo que se sabe y lo que se afirma. Mantenemos ese hueco nombrado y honesto."
+      "Greenwashing lives in the gap between what we know and what we claim. I'd rather say less and mean it.",
+      "El greenwashing vive en el hueco entre lo que sabemos y lo que decimos. Prefiero decir menos y que sea verdad."
     ),
   },
   {
     n: "04",
-    title: b("One argument, several pieces.", "Un argumento, varias piezas."),
+    title: b(
+      "One idea, told many ways.",
+      "Una idea, contada de muchas formas."
+    ),
     body: b(
-      "A campaign is an argument held across formats. Editorial discipline beats volume, and compounds over a year.",
-      "Una campaña es un argumento sostenido en varios formatos. La disciplina editorial gana al volumen y se acumula a lo largo del año."
+      "A good campaign is one idea that keeps showing up in different outfits. Consistency beats volume, every time.",
+      "Una buena campaña es una idea que aparece una y otra vez con ropa distinta. La constancia gana al volumen, siempre."
     ),
   },
 ];

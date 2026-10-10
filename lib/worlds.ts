@@ -53,12 +53,12 @@ export const worlds: World[] = [
       on: "#FFFFFF",
     },
     lede: b(
-      "Sector knowledge, science, sustainability and communication — from the farm to the page.",
-      "Conocimiento sectorial, ciencia, sostenibilidad y comunicación — de la granja a la página."
+      "Where it all started: fish farms, science and sustainability — told so people actually care.",
+      "Donde empezó todo: piscifactorías, ciencia y sostenibilidad, contadas para que a la gente le importen."
     ),
     description: b(
-      "Years of working inside aquaculture and seafood: translating research, feed trials and sustainability data into communication that buyers, journalists and the wider public can actually use.",
-      "Años trabajando dentro de la acuicultura y el sector del mar: traducir investigación, ensayos de pienso y datos de sostenibilidad a una comunicación que compradores, periodistas y público general puedan usar de verdad."
+      "This is home. I've spent years inside aquaculture and seafood, translating research, feed trials and sustainability data into stories that buyers, journalists and curious people can actually use.",
+      "Esta es mi casa. He pasado años dentro de la acuicultura y el sector del mar, traduciendo investigación, ensayos de pienso y datos de sostenibilidad a historias que compradores, periodistas y gente curiosa pueden usar de verdad."
     ),
     shows: b(
       ["Science communication", "Educational content", "Sustainability", "Sector campaigns"],
@@ -85,12 +85,12 @@ export const worlds: World[] = [
       on: "#FFFFFF",
     },
     lede: b(
-      "Positioning, brand strategy, campaigns and international marketing.",
-      "Posicionamiento, estrategia de marca, campañas y marketing internacional."
+      "Figuring out what a brand really stands for — and helping it say so, out loud.",
+      "Descubrir qué defiende de verdad una marca y ayudarla a decirlo en voz alta."
     ),
     description: b(
-      "Working out what a company or project actually stands for before writing a single word — then building the narrative, identity and campaigns that carry it across markets.",
-      "Descubrir qué representa de verdad una empresa o un proyecto antes de escribir una sola palabra — y después construir la narrativa, la identidad y las campañas que lo llevan a otros mercados."
+      "Before any logo or campaign, I like to sit with the hard question: what do you actually stand for? Then I build the story, the positioning and the campaigns that carry it — across markets and languages.",
+      "Antes de cualquier logo o campaña, me gusta sentarme con la pregunta difícil: ¿qué defiendes de verdad? Después construyo la historia, el posicionamiento y las campañas que lo llevan a otros mercados e idiomas."
     ),
     shows: b(
       ["Positioning", "Brand strategy", "Campaigns", "Identity", "International marketing"],
@@ -117,12 +117,12 @@ export const worlds: World[] = [
       on: "#FFFFFF",
     },
     lede: b(
-      "Connected systems, experimentation and practical solutions.",
-      "Sistemas conectados, experimentación y soluciones prácticas."
+      "Small, useful systems that give people their time back.",
+      "Sistemas pequeños y útiles que devuelven tiempo a las personas."
     ),
     description: b(
-      "AI agents, automations and internal tools built for real teams. Each case shows the problem, the process and why it is useful — not the hype around it.",
-      "Agentes de IA, automatizaciones y herramientas internas pensadas para equipos reales. Cada caso muestra el problema, el proceso y por qué es útil — no el ruido alrededor."
+      "I build AI agents, automations and internal tools for real teams. No robots, no buzzwords: each case shows the problem, how I solved it and why it made someone's week easier.",
+      "Construyo agentes de IA, automatizaciones y herramientas internas para equipos reales. Sin robots ni palabras de moda: cada caso cuenta el problema, cómo lo resolví y por qué le hizo la semana más fácil a alguien."
     ),
     shows: b(
       ["AI agents", "Automations", "Internal tools", "Solutions for companies"],
@@ -149,12 +149,12 @@ export const worlds: World[] = [
       on: "#141414",
     },
     lede: b(
-      "Campaigns, storytelling, social media, copywriting, design and video.",
-      "Campañas, storytelling, redes sociales, copywriting, diseño y vídeo."
+      "Campaigns, stories, social, copy, design and video — my loudest, most colourful side.",
+      "Campañas, historias, redes, copy, diseño y vídeo: mi lado más ruidoso y colorido."
     ),
     description: b(
-      "The most energetic, visual and expressive side of the work. The real pieces lead — the colour of this world only frames them.",
-      "La parte más energética, visual y expresiva del trabajo. Las piezas reales son las protagonistas — el color de este mundo solo las enmarca."
+      "This is where I get to play with words and pictures. The real pieces are the stars here — the orange is just the frame.",
+      "Aquí es donde juego con palabras e imágenes. Las piezas reales son las protagonistas; el naranja solo es el marco."
     ),
     shows: b(
       ["Creative campaigns", "Storytelling", "Social media", "Copywriting", "Design & video"],
@@ -181,12 +181,12 @@ export const worlds: World[] = [
       on: "#FFFFFF",
     },
     lede: b(
-      "A space to explore ideas, experiment and follow creative curiosity.",
-      "Un espacio para explorar ideas, experimentar y seguir la curiosidad creativa."
+      "My sandbox: ideas, experiments and things I make just for fun.",
+      "Mi patio de juegos: ideas, experimentos y cosas que hago solo por diversión."
     ),
     description: b(
-      "Visual experiments, personal designs, small side projects, AI tests and things made purely for the pleasure of making them.",
-      "Experimentos visuales, diseños personales, pequeños proyectos, pruebas de IA e ideas hechas por el puro placer de crear."
+      "Visual experiments, personal designs, little side projects, AI tests — the things I make on a Sunday because I can't help it. None of it had a brief, and that's the point.",
+      "Experimentos visuales, diseños personales, pequeños proyectos, pruebas de IA: las cosas que hago un domingo porque no puedo evitarlo. Nada de esto tuvo brief, y ahí está la gracia."
     ),
     shows: b(
       ["Visual experiments", "Personal designs", "Side projects", "AI tests"],
