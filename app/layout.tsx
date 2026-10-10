@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Poppins, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Manrope, Instrument_Serif } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { LocaleProvider } from "@/lib/i18n/context";
 import { siteMeta } from "@/lib/site";
 import "./globals.css";
 
-const display = Poppins({
+const sans = Manrope({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-sans",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const serif = Instrument_Serif({
@@ -19,12 +19,6 @@ const serif = Instrument_Serif({
   display: "swap",
   weight: "400",
   style: ["normal", "italic"],
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -52,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${serif.variable} ${mono.variable}`}
+      className={`${sans.variable} ${serif.variable}`}
     >
       <body className="flex min-h-screen flex-col">
         <a

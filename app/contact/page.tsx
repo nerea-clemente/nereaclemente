@@ -4,7 +4,7 @@ import { ContactContent } from "./content";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch about campaigns, editorial, sustainability reporting or science communication work.",
+    "Get in touch about brand strategy, campaigns, content, AI tools or communication for seafood and aquaculture.",
 };
 
 export default function ContactPage() {

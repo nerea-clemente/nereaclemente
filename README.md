@@ -8,7 +8,7 @@ Editorial, minimal, Mediterranean. Built to be extended with real projects and w
 
 - **Next.js 14** (App Router) with TypeScript
 - **Tailwind CSS** with a bespoke editorial scale and colour palette
-- **next/font** — Fraunces (display serif) & Inter (body) & JetBrains Mono
+- **next/font** — Manrope & Instrument Serif
 
 Everything static-renderable. No CMS wired in; project and writing content live as typed data in `lib/` so pages stay easy to edit without touching templates.
 
@@ -69,12 +69,17 @@ Each project supports these sections — only `overview`, `context`, `role`, `ap
 
 Add a new entry to `articles` in `lib/writing.ts`. The writing page renders the list automatically. When a full article is ready, swap the placeholder behaviour for a link or dedicated page.
 
-## Design system
+## Design system — "One mind. Many worlds."
 
-- **Palette**: `bone`, `shell`, `sand` (warm neutrals) · `ink` (near-black) · `sea`, `deep` (deep teal) · `clay`, `rust` (terracotta accent) · `muted`, `line` (secondary).
-- **Typography**: Fraunces for display, Inter for body, JetBrains Mono for small meta and numbers.
-- **Scale**: fluid `display-xl / lg / md / sm` set in `tailwind.config.ts`.
-- **Motion**: subtle — staggered fade-up on the home hero and gentle hover transitions. Respects `prefers-reduced-motion`.
+Based on the visual direction document (October 2026): a black & white editorial base, with colour reserved for five worlds. Roughly 70% editorial, 30% playful.
+
+- **Worlds** (`lib/worlds.ts`): 01 Seafood & Aquaculture (Ocean Editorial), 02 Brand & Strategy (Bold Editorial), 03 AI & Automation (Organic Technology), 04 Creative & Content (Playful Editorial), 05 Playground (Creative Chaos). Each has a four-tone palette plus an accessible text colour.
+- **Projects** have one primary `world` (card colour, where the case lives) and optional secondary `tags`.
+- **World colour** is applied through CSS variables (`worldStyle()`), exposed as Tailwind `w-deep / w-mid / w-light / w-tint / w-text / w-on`. Outside a world they fall back to ink.
+- **Typography**: Manrope (sans, navigation, text, labels) + Instrument Serif (editorial contrast).
+- **Navigation**: WORK / ABOUT / CONTACT on every page; a small dot takes the colour of the active world.
+- **Routes**: `/worlds/[world]` for each world, `/work` filters by world, `/work/[slug]` for cases.
+- **Motion**: subtle colour transitions between worlds; respects `prefers-reduced-motion`.
 
 ## Tone and language
 

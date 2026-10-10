@@ -7,87 +7,84 @@ import { Container } from "./Container";
 import { useLocale, useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
 import { site } from "@/lib/site";
+import { worlds } from "@/lib/worlds";
+import { useActiveWorld } from "@/lib/useActiveWorld";
 
 export function Navigation() {
   const pathname = usePathname();
   const t = useT();
   const { locale, setLocale } = useLocale();
+  const world = useActiveWorld();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (open) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
 
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    pathname.startsWith(href) ||
+    (href === "/work" && pathname.startsWith("/worlds"));
+
+  // The small indicator takes the colour of the active world; ink elsewhere.
+  const dot = world?.palette.deep ?? "#141414";
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-40 border-b transition-colors duration-300 ease-soft ${
-          scrolled
-            ? "border-line/80 bg-paper/90 backdrop-blur"
-            : "border-transparent bg-paper/0"
-        }`}
-      >
+      <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
         <Container>
-          <div className="flex h-16 items-center justify-between md:h-20">
-            <Link
-              href="/"
-              className="group flex items-baseline gap-3"
-              aria-label="Home"
-            >
-              <span className="font-display text-lg text-ink md:text-xl">
-                Nerea Clemente
+          <div className="flex h-16 items-center justify-between md:h-[72px]">
+            <Link href="/" className="flex items-center gap-3" aria-label="Nerea Clemente — Home">
+              <span
+                aria-hidden
+                className="world-ease block h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: dot }}
+              />
+              <span className="label text-ink">
+                NC <span className="text-muted">/</span> Nerea Clemente
               </span>
-              <span className="hidden italic-serif text-base text-clay md:inline">
-                — {t(site.role)}
-              </span>
+              {world && (
+                <span className="label hidden text-muted lg:inline">
+                  <span className="sr-only">{t(ui.nav.activeWorld)}: </span>
+                  — {world.n} {t(world.short)}
+                </span>
+              )}
             </Link>
 
-            <div className="hidden items-center gap-8 md:flex">
+            <div className="hidden items-center gap-10 md:flex">
               <nav aria-label="Primary">
-                <ul className="flex items-center gap-7">
-                  {ui.nav.primary.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className={`group relative text-[12px] uppercase tracking-caps transition-colors ${
-                          isActive(item.href)
-                            ? "text-ink"
-                            : "text-muted hover:text-ink"
-                        }`}
-                      >
-                        {t(item.label)}
-                        <span
-                          className={`absolute -bottom-1 left-0 block h-px bg-ink transition-all duration-300 ease-soft ${
-                            isActive(item.href)
-                              ? "w-full"
-                              : "w-0 group-hover:w-full"
+                <ul className="flex items-center gap-8">
+                  {ui.nav.primary.map((item) => {
+                    const active = isActive(item.href);
+                    return (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          aria-current={active ? "page" : undefined}
+                          className={`group relative label transition-colors ${
+                            active ? "text-ink" : "text-muted hover:text-ink"
                           }`}
-                        />
-                      </Link>
-                    </li>
-                  ))}
+                        >
+                          {t(item.label)}
+                          <span
+                            aria-hidden
+                            className={`world-ease absolute -bottom-1.5 left-0 block h-[2px] transition-all duration-300 ease-soft ${
+                              active ? "w-full" : "w-0 group-hover:w-full"
+                            }`}
+                            style={{ backgroundColor: dot }}
+                          />
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
-
               <LangToggle
                 locale={locale}
                 setLocale={setLocale}
@@ -95,28 +92,27 @@ export function Navigation() {
               />
             </div>
 
-            <div className="flex items-center gap-3 md:hidden">
+            <div className="flex items-center gap-4 md:hidden">
               <LangToggle
                 locale={locale}
                 setLocale={setLocale}
                 ariaLabel={t(ui.nav.toggleLabel)}
-                compact
               />
               <button
                 type="button"
-                aria-label={open ? "Close menu" : "Open menu"}
+                aria-label={open ? t(ui.nav.menuClose) : t(ui.nav.menuOpen)}
                 aria-expanded={open}
                 onClick={() => setOpen((v) => !v)}
                 className="flex h-10 w-10 flex-col items-center justify-center gap-1.5"
               >
                 <span
-                  className={`block h-px w-6 bg-ink transition-transform duration-300 ease-soft ${
-                    open ? "translate-y-[3px] rotate-45" : ""
+                  className={`block h-[2px] w-6 bg-ink transition-transform duration-300 ease-soft ${
+                    open ? "translate-y-[4px] rotate-45" : ""
                   }`}
                 />
                 <span
-                  className={`block h-px w-6 bg-ink transition-transform duration-300 ease-soft ${
-                    open ? "-translate-y-[3px] -rotate-45" : ""
+                  className={`block h-[2px] w-6 bg-ink transition-transform duration-300 ease-soft ${
+                    open ? "-translate-y-[4px] -rotate-45" : ""
                   }`}
                 />
               </button>
@@ -127,7 +123,7 @@ export function Navigation() {
 
       <div
         className={`fixed inset-0 z-30 md:hidden ${
-          open ? "pointer-events-auto" : "pointer-events-none"
+          open ? "visible" : "invisible pointer-events-none"
         }`}
         aria-hidden={!open}
       >
@@ -137,25 +133,18 @@ export function Navigation() {
           }`}
         />
         <div
-          className={`relative flex h-full flex-col justify-between pt-24 pb-12 transition-transform duration-500 ease-soft ${
-            open ? "translate-y-0" : "-translate-y-4"
+          className={`relative flex h-full flex-col justify-between pt-24 pb-10 transition-all duration-500 ease-soft ${
+            open ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
           }`}
         >
           <Container>
             <nav aria-label="Mobile">
-              <ul className="flex flex-col gap-6">
-                {ui.nav.primary.map((item, i) => (
-                  <li
-                    key={item.href}
-                    className={`transition-all duration-500 ease-soft ${
-                      open
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-4 opacity-0"
-                    }`}
-                    style={{ transitionDelay: `${80 + i * 60}ms` }}
-                  >
+              <ul className="flex flex-col gap-4">
+                {ui.nav.primary.map((item) => (
+                  <li key={item.href}>
                     <Link
                       href={item.href}
+                      tabIndex={open ? 0 : -1}
                       className="font-display-tight text-5xl text-ink"
                     >
                       {t(item.label)}
@@ -164,16 +153,32 @@ export function Navigation() {
                 ))}
               </ul>
             </nav>
+            <ul className="mt-12 grid grid-cols-5 gap-2">
+              {worlds.map((w) => (
+                <li key={w.slug}>
+                  <Link
+                    href={`/worlds/${w.slug}`}
+                    tabIndex={open ? 0 : -1}
+                    className="flex aspect-square items-start p-2 label"
+                    style={{ backgroundColor: w.palette.deep, color: w.palette.on }}
+                    aria-label={t(w.name)}
+                  >
+                    {w.n}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </Container>
           <Container>
-            <div className="flex flex-col gap-2 text-sm text-muted">
-              <a href={`mailto:${site.email}`} className="text-ink">
+            <div className="flex flex-col gap-2 text-sm">
+              <a href={`mailto:${site.email}`} tabIndex={open ? 0 : -1} className="text-ink">
                 {site.email}
               </a>
               <a
                 href={site.linkedin}
                 target="_blank"
                 rel="noreferrer"
+                tabIndex={open ? 0 : -1}
                 className="text-ink"
               >
                 LinkedIn
@@ -190,40 +195,28 @@ function LangToggle({
   locale,
   setLocale,
   ariaLabel,
-  compact = false,
 }: {
   locale: "en" | "es";
   setLocale: (l: "en" | "es") => void;
   ariaLabel: string;
-  compact?: boolean;
 }) {
   return (
-    <div
-      role="group"
-      aria-label={ariaLabel}
-      className={`flex items-baseline gap-1.5 ${compact ? "text-xs" : "text-sm"}`}
-    >
-      <button
-        type="button"
-        onClick={() => setLocale("en")}
-        aria-pressed={locale === "en"}
-        className={`italic-serif transition-colors ${
-          locale === "en" ? "text-clay" : "text-muted hover:text-ink"
-        }`}
-      >
-        en
-      </button>
-      <span className="text-muted">/</span>
-      <button
-        type="button"
-        onClick={() => setLocale("es")}
-        aria-pressed={locale === "es"}
-        className={`italic-serif transition-colors ${
-          locale === "es" ? "text-clay" : "text-muted hover:text-ink"
-        }`}
-      >
-        es
-      </button>
+    <div role="group" aria-label={ariaLabel} className="flex items-center gap-1.5 label">
+      {(["en", "es"] as const).map((l, i) => (
+        <span key={l} className="flex items-center gap-1.5">
+          {i > 0 && <span className="text-line">/</span>}
+          <button
+            type="button"
+            onClick={() => setLocale(l)}
+            aria-pressed={locale === l}
+            className={`transition-colors ${
+              locale === l ? "text-ink" : "text-muted hover:text-ink"
+            }`}
+          >
+            {l}
+          </button>
+        </span>
+      ))}
     </div>
   );
 }

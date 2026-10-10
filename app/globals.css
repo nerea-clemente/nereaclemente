@@ -3,10 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Poppins", system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
-  --font-sans: "Poppins", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  /* Neutral defaults: outside a world, accents fall back to black & white. */
+  --w-deep: #141414;
+  --w-mid: #5f5f5b;
+  --w-light: #dadad4;
+  --w-tint: #f0f0eb;
+  --w-text: #141414;
+  --w-on: #fafaf7;
 }
 
 html {
@@ -19,38 +22,57 @@ html {
 body {
   background-color: theme("colors.paper");
   color: theme("colors.ink");
-  font-family: var(--font-display);
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 400;
 }
 
 ::selection {
-  background: theme("colors.blush");
-  color: theme("colors.ink");
+  background: theme("colors.ink");
+  color: theme("colors.paper");
+}
+
+/* Bold sans headline — the editorial voice */
+.font-display-tight {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
 }
 
 .font-display {
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.font-display-tight {
-  font-family: var(--font-display);
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
-.font-display-wide {
-  font-family: var(--font-display);
+/* Editorial serif — the contrast */
+.serif {
+  font-family: var(--font-serif), Georgia, serif;
   font-weight: 400;
-  letter-spacing: 0.005em;
+  letter-spacing: -0.01em;
 }
 
 .italic-serif {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif), Georgia, serif;
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.005em;
+}
+
+/* Small uppercase labels: "NC / NEREA CLEMENTE", "WORLD 01 / OCEAN EDITORIAL" */
+.label {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Colour changes between worlds are always eased, never abrupt. */
+.world-ease {
+  transition-property: color, background-color, border-color, fill;
+  transition-duration: 600ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes nc-fade-up {
@@ -72,12 +94,20 @@ body {
 .nc-fade-up-3 { animation-delay: 0.3s; }
 .nc-fade-up-4 { animation-delay: 0.45s; }
 
-@keyframes nc-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+@keyframes nc-spin {
+  to { transform: rotate(360deg); }
 }
-.nc-marquee {
-  animation: nc-marquee 60s linear infinite;
+.nc-spin {
+  animation: nc-spin 24s linear infinite;
+}
+
+/* Playground: a little looser, still legible */
+@keyframes nc-wobble {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+.nc-wobble {
+  animation: nc-wobble 5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -87,7 +117,16 @@ body {
   .nc-fade-up-2,
   .nc-fade-up-3,
   .nc-fade-up-4,
-  .nc-marquee {
+  .nc-spin,
+  .nc-wobble {
     animation: none;
+  }
+  .world-ease {
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }

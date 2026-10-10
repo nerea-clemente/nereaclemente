@@ -1,4 +1,5 @@
 import type { Bilingual } from "./i18n/types";
+import type { WorldSlug } from "./worlds";
 
 const b = <T,>(en: T, es: T): Bilingual<T> => ({ en, es });
 
@@ -13,13 +14,17 @@ export type ProjectCategory =
 
 export type GalleryItem = {
   caption: Bilingual;
-  tone: "sea" | "shell" | "clay" | "sand" | "deep";
 };
 
 export type Project = {
   slug: string;
   year: string;
+  /** Format of the work — campaign, editorial, etc. */
   category: ProjectCategory;
+  /** Primary world: sets the card colour and where the case lives. */
+  world: WorldSlug;
+  /** Secondary worlds the case also touches. */
+  tags?: WorldSlug[];
   client: Bilingual;
   disciplines: Bilingual<string[]>;
   title: Bilingual;
@@ -40,6 +45,8 @@ export const projects: Project[] = [
     slug: "biofarm-campaign",
     year: "2024",
     category: "Campaign",
+    world: "brand",
+    tags: ["seafood", "content"],
     title: b("BioFarm", "BioFarm"),
     client: b("BioFarm Aquaculture", "BioFarm Aquaculture"),
     disciplines: b(
@@ -105,10 +112,10 @@ export const projects: Project[] = [
       "La buena comunicación en acuicultura empieza en la granja, no en la presentación. El trabajo es traducir, no inventar."
     ),
     gallery: [
-      { caption: b("Campaign manifesto spread", "Doble página del manifiesto"), tone: "sea" },
-      { caption: b("Press kit, cover page", "Dossier de prensa, portada"), tone: "shell" },
-      { caption: b("Origin, Method, Responsibility", "Origen, Método, Responsabilidad"), tone: "clay" },
-      { caption: b("Sales deck, opening chapter", "Presentación comercial, capítulo de apertura"), tone: "deep" },
+      { caption: b("Campaign manifesto spread", "Doble página del manifiesto") },
+      { caption: b("Press kit, cover page", "Dossier de prensa, portada") },
+      { caption: b("Origin, Method, Responsibility", "Origen, Método, Responsabilidad") },
+      { caption: b("Sales deck, opening chapter", "Presentación comercial, capítulo de apertura") },
     ],
     featured: true,
   },
@@ -116,6 +123,8 @@ export const projects: Project[] = [
     slug: "science-communication",
     year: "2023 — present",
     category: "Science communication",
+    world: "seafood",
+    tags: ["content"],
     title: b("Science communication practice", "Práctica de comunicación científica"),
     client: b("Various clients and in-house", "Varios clientes y trabajo interno"),
     disciplines: b(
@@ -184,6 +193,8 @@ export const projects: Project[] = [
     slug: "better-feed-better-food",
     year: "2024",
     category: "Campaign",
+    world: "seafood",
+    tags: ["content", "brand"],
     title: b("Better Feed, Better Food", "Better Feed, Better Food"),
     client: b("Feed sector coalition", "Coalición del sector del pienso"),
     disciplines: b(
@@ -254,6 +265,8 @@ export const projects: Project[] = [
     slug: "sustainability-report",
     year: "2024",
     category: "Editorial",
+    world: "seafood",
+    tags: ["brand"],
     title: b("Sustainability report, editorial lead", "Informe de sostenibilidad, dirección editorial"),
     client: b("Aquaculture producer", "Productor acuícola"),
     disciplines: b(
@@ -323,6 +336,8 @@ export const projects: Project[] = [
     slug: "women-in-aquaculture",
     year: "2023 — present",
     category: "Initiative",
+    world: "content",
+    tags: ["seafood", "brand"],
     title: b("Women in Aquaculture", "Mujeres en Acuicultura"),
     client: b("Independent initiative", "Iniciativa independiente"),
     disciplines: b(
@@ -391,6 +406,8 @@ export const projects: Project[] = [
     slug: "seafood-on-nerea",
     year: "2022 — present",
     category: "Personal",
+    world: "content",
+    tags: ["seafood", "playground"],
     title: b("Seafood on Nerea", "Seafood on Nerea"),
     client: b("Personal project", "Proyecto personal"),
     disciplines: b(
@@ -459,6 +476,8 @@ export const projects: Project[] = [
     slug: "speculative-seafarm",
     year: "2024",
     category: "Speculative",
+    world: "brand",
+    tags: ["seafood", "playground"],
     title: b("SeaFarm — speculative rebrand", "SeaFarm — rebranding especulativo"),
     client: b("Speculative", "Especulativo"),
     disciplines: b(
@@ -523,6 +542,14 @@ export const projects: Project[] = [
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
+
+/** Cases whose primary world is `world`, followed by those tagged with it. */
+export function projectsInWorld(world: WorldSlug) {
+  return [
+    ...projects.filter((p) => p.world === world),
+    ...projects.filter((p) => p.world !== world && p.tags?.includes(world)),
+  ];
+}
 
 export const categories: ProjectCategory[] = [
   "Campaign",

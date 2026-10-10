@@ -8,24 +8,16 @@ export const siteMeta = {
   linkedin: "https://www.linkedin.com/in/nereaclemente",
   instagram: "https://www.instagram.com/seafoodonnerea",
   url: "https://nereaclemente.com",
-  taglineEn:
-    "Marketing, content and communication for aquaculture, seafood and sustainability.",
+  taglineEn: "One mind. Many worlds.",
   subtaglineEn:
-    "An independent communications practice run by Nerea Clemente, working from Denmark with a Mediterranean register from Valencia.",
+    "Portfolio of Nerea Clemente — strategy, creativity, innovation and everything in between. Seafood & aquaculture, brand & strategy, AI & automation, creative & content, and a playground.",
 };
 
 export const site = {
   ...siteMeta,
-  role: b(
-    "Marketing & communications",
-    "Marketing y comunicación"
-  ),
+  tagline: b("One mind. Many worlds.", "One mind. Many worlds."),
   location: b(
     "Based in Denmark. From Valencia. Working internationally.",
     "En Dinamarca, de Valencia. Trabaja internacionalmente."
-  ),
-  tagline: b(
-    "Marketing, content and communication for aquaculture, seafood and sustainability.",
-    "Marketing, contenido y comunicación para acuicultura, pesca y sostenibilidad."
   ),
 };

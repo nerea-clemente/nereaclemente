@@ -1,59 +1,34 @@
 import { ReactNode } from "react";
 
-type SectionHeaderProps = {
-  eyebrow?: string;
-  title: ReactNode;
-  lede?: ReactNode;
-  align?: "left" | "split";
-  meta?: ReactNode;
-  className?: string;
-};
-
-export function SectionHeader({
-  eyebrow,
-  title,
-  lede,
-  align = "left",
-  meta,
+/** Small uppercase label, e.g. "WORLD 01 / OCEAN EDITORIAL". */
+export function Eyebrow({
+  children,
   className = "",
-}: SectionHeaderProps) {
-  if (align === "split") {
-    return (
-      <header className={`grid gap-8 border-t border-line pt-8 md:grid-cols-[1fr_1.5fr] md:gap-16 ${className}`}>
-        <div className="flex flex-col gap-4">
-          {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-          {meta && <div className="text-sm text-muted">{meta}</div>}
-        </div>
-        <div className="flex flex-col gap-6">
-          <h2 className="font-display text-display-md text-ink">{title}</h2>
-          {lede && (
-            <p className="max-w-reading text-lg leading-relaxed text-muted">
-              {lede}
-            </p>
-          )}
-        </div>
-      </header>
-    );
-  }
-
-  return (
-    <header className={`flex flex-col gap-5 border-t border-line pt-8 ${className}`}>
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="font-display text-display-md text-ink">{title}</h2>
-      {lede && (
-        <p className="max-w-reading text-lg leading-relaxed text-muted">
-          {lede}
-        </p>
-      )}
-    </header>
-  );
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return <span className={`label text-muted ${className}`}>{children}</span>;
 }
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+/** Bold sans line + serif line: the "One mind. / Many worlds." pairing. */
+export function SplitTitle({
+  a,
+  b,
+  as: Tag = "h2",
+  className = "",
+  serifClassName = "",
+}: {
+  a: ReactNode;
+  b: ReactNode;
+  as?: "h1" | "h2" | "h3";
+  className?: string;
+  serifClassName?: string;
+}) {
   return (
-    <span className="inline-flex items-center gap-2 italic-serif text-base text-clay md:text-lg">
-      <span aria-hidden>—</span>
-      {children}
-    </span>
+    <Tag className={`leading-[0.98] text-ink ${className}`}>
+      <span className="block font-display-tight">{a}</span>
+      <span className={`block serif ${serifClassName}`}>{b}</span>
+    </Tag>
   );
 }

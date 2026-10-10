@@ -4,21 +4,18 @@ import { ReactNode } from "react";
 type ButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "ghost" | "quiet" | "lemon";
+  variant?: "primary" | "ghost" | "quiet";
   external?: boolean;
   className?: string;
 };
 
 const base =
-  "inline-flex items-center gap-3 text-[13px] uppercase tracking-caps font-medium rounded-full transition-all duration-300 ease-soft";
+  "inline-flex items-center gap-3 label transition-all duration-300 ease-soft";
 
 const variants = {
-  primary: "bg-ink px-7 py-3.5 text-paper hover:bg-clay",
-  lemon: "bg-blush px-7 py-3.5 text-ink hover:bg-clay hover:text-paper",
-  ghost:
-    "border border-ink/40 px-7 py-3.5 text-ink hover:border-clay hover:text-clay",
-  quiet:
-    "rounded-none border-b border-clay pb-1 text-ink hover:border-ink hover:text-clay hover:gap-5",
+  primary: "bg-ink px-6 py-3.5 text-paper hover:bg-w-deep hover:text-w-on",
+  ghost: "border border-ink px-6 py-3.5 text-ink hover:bg-ink hover:text-paper",
+  quiet: "border-b border-ink pb-1 text-ink hover:gap-5",
 };
 
 export function Button({
