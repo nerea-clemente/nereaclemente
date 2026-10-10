@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Instrument_Serif, Anton, Silkscreen } from "next/font/google";
+import { Manrope, Instrument_Serif, Anton, Silkscreen, Rubik } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { LocaleProvider } from "@/lib/i18n/context";
@@ -21,11 +21,13 @@ const serif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
-// Accent faces: Anton for Creative & Content headlines, Silkscreen for AI labels.
+// Accent faces: Rubik for Seafood, Anton for Creative & Content, Silkscreen for AI labels.
 const anton = Anton({ subsets: ["latin"], variable: "--font-anton", weight: "400", preload: false });
 const pixel = Silkscreen({ subsets: ["latin"], variable: "--font-pixel", weight: "400", preload: false });
 
-const fontVars = `${anton.variable} ${pixel.variable}`;
+const rubik = Rubik({ subsets: ["latin"], variable: "--font-rubik", weight: ["700", "900"], preload: false });
+
+const fontVars = `${anton.variable} ${pixel.variable} ${rubik.variable}`;
 
 export const metadata: Metadata = {
   title: {

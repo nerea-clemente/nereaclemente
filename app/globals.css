@@ -133,10 +133,11 @@ body {
 
 /* ---------- World display registers ---------- */
 .wf-seafood {
-  font-family: var(--font-serif), Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 0.95;
+  font-family: var(--font-rubik), sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  line-height: 0.86;
 }
 .wf-brand {
   font-family: var(--font-sans), sans-serif;
@@ -184,4 +185,63 @@ body {
   .nc-dash {
     animation: none;
   }
+}
+
+/* ---------- Seafood: water surfaces ---------- */
+/* Fluid, relaxed blue — a glow of light through water, slow drifting caustics. */
+.water {
+  background-color: #1679b8;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><filter id='c'><feTurbulence type='turbulence' baseFrequency='0.0035 0.016' numOctaves='3' seed='11'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.6 0 0 0 -0.55'/></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>"),
+    radial-gradient(120% 90% at 50% 38%, #a9dcf2 0%, #5fb3e2 30%, #1d84c4 62%, #0b4a80 100%);
+  background-size: 160% 160%, 100% 100%;
+  background-blend-mode: soft-light, normal;
+  animation: nc-water 46s ease-in-out infinite alternate;
+}
+
+/* Same water, pale: for section backgrounds in the Seafood world */
+.water-light {
+  background-color: #e3f3fa;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><filter id='c'><feTurbulence type='turbulence' baseFrequency='0.0035 0.016' numOctaves='3' seed='11'/><feColorMatrix values='0 0 0 0 0.51  0 0 0 0 0.83  0 0 0 0 0.94  1.4 0 0 0 -0.6'/></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>"),
+    linear-gradient(180deg, #edf7fb 0%, #d5edf8 100%);
+  background-size: 160% 160%, 100% 100%;
+  animation: nc-water 60s ease-in-out infinite alternate;
+}
+
+/* Page surface for the Seafood world: never cold white */
+.surface-seafood {
+  background: linear-gradient(180deg, #e8f5fb 0%, #f3fafd 40%, #e3f2fa 100%);
+  color: #0b2f4f;
+}
+.surface-seafood .text-muted {
+  color: #3d6683;
+}
+.surface-seafood .border-line {
+  border-color: #b9dcee;
+}
+
+@keyframes nc-water {
+  from { background-position: 0% 0%, center; }
+  to { background-position: 100% 60%, center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .water,
+  .water-light {
+    animation: none;
+  }
+}
+
+/* Seafood: deep-sea ink and the rounded heavy face carry through the section */
+.surface-seafood .text-ink {
+  color: #0b2f4f;
+}
+.surface-seafood .font-display-tight {
+  font-family: var(--font-rubik), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+.surface-seafood .border-ink {
+  border-color: #0b4a80;
 }

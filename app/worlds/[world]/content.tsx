@@ -24,9 +24,10 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
   const next = worlds[(idx + 1) % worlds.length];
   const others = worlds.filter((w) => w.slug !== slug);
   const p = world.palette;
+  const sea = slug === "seafood";
 
   return (
-    <div style={worldStyle(world)}>
+    <div style={worldStyle(world)} className={sea ? "surface-seafood" : ""}>
       {/* World header: the poster, full bleed */}
       <section className="relative">
         <div className="relative h-[78svh] min-h-[480px] max-h-[920px] w-full">
@@ -38,7 +39,7 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
             kicker={`${t(ui.world.label)} ${world.n} / ${world.style}`}
           />
         </div>
-        <div className="world-ease bg-w-deep text-w-on">
+        <div className={`world-ease text-w-on ${sea ? "bg-gradient-to-b from-[#0b4a80] to-w-deep" : "bg-w-deep"}`}>
           <Container>
             <div className="flex items-center justify-between py-4">
               <Link href="/work" className="label opacity-80 hover:opacity-100">
@@ -68,7 +69,7 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
       </section>
 
       {/* Description */}
-      <section className="world-ease bg-w-tint py-20 md:py-28">
+      <section className={`world-ease py-20 md:py-28 ${sea ? "water-light" : "bg-w-tint"}`}>
         <Container>
           <div className="grid gap-12 md:grid-cols-12">
             <p className="font-display text-[clamp(1.5rem,2.8vw,2.25rem)] leading-[1.25] text-ink md:col-span-7">

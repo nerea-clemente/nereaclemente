@@ -159,50 +159,61 @@ function Meta({ kicker, fragments }: { kicker?: string; fragments: string[] }) {
 }
 
 /* ---------------------------------------------- 01 · Ocean Editorial */
-/* Idea: the headline is half under water — below the waterline the letters
-   refract. On hover the tide rises. */
+/* Idea: chunky, chopped letters (SEA / FOOD) floating on fluid, luminous
+   water; a quiet serif line in the middle, like a breath. */
+
+function chop(text: string) {
+  const ws = words(text.toUpperCase());
+  const letters = text.replace(/\s/g, "").length;
+  if (letters > 11) return ws;
+  return ws.flatMap((w) => {
+    const clean = w.replace(/\s/g, "");
+    if (clean.length <= 4) return [clean];
+    // Up to 8 letters: break near the middle, shorter half first (SEA / FOOD)
+    if (clean.length <= 8) {
+      const c = Math.floor(clean.length / 2);
+      return [clean.slice(0, c), clean.slice(c)];
+    }
+    const parts: string[] = [];
+    for (let i = 0; i < clean.length; i += 4) parts.push(clean.slice(i, i + 4));
+    if (parts.length > 1 && parts[parts.length - 1].length === 1) parts[parts.length - 2] += parts.pop();
+    return parts;
+  });
+}
 
 function SeafoodCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
-  const p = world.palette;
-  const lines = words(title);
-  const size = fit(lines, { charW: 0.48, lineH: 0.92, w: 0.86, h: 0.6, max: 30 });
-  const currents = Array.from({ length: 6 }, (_, i) => {
-    const y = 10 + i * 15;
-    let d = `M -5 ${y}`;
-    for (let x = -5; x <= 205; x += 5) d += ` L ${x} ${(y + Math.sin(x / 20 + i * 0.9) * 2.2).toFixed(2)}`;
-    return d;
-  });
-  const line: CSSProperties = { ...serif, lineHeight: 0.92 };
-  const ease = "transition-[clip-path,top] duration-700 ease-soft";
+  const lines = chop(title);
+  const ice: CSSProperties = {
+    fontFamily: "var(--font-rubik), sans-serif",
+    fontWeight: 900,
+    textTransform: "uppercase",
+    letterSpacing: "-0.035em",
+    lineHeight: 0.84,
+    backgroundImage: "linear-gradient(180deg, #ffffff 0%, #e6f6fd 45%, #b7e2f5 100%)",
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    color: "transparent",
+    filter: "drop-shadow(0 0.03em 0.08em rgba(8,59,102,0.35))",
+  };
   return (
-    <Cover
-      title={title}
-      bg={`linear-gradient(180deg, ${p.deep} 0%, #0A4677 100%)`}
-      fg={p.tint}
-      top={<Meta kicker={kicker} fragments={fragments} />}
-      foot={cap ? <span className="italic-serif" style={{ fontSize: "max(13px, 3.4cqmin)" }}>{cap}</span> : undefined}
-    >
-      <div className="relative" style={size}>
-        {/* Above the surface */}
-        <div className={`${ease} [clip-path:inset(0_0_0.34em_0)] group-hover:[clip-path:inset(0_0_0.56em_0)]`}>
-          <Lines lines={lines} style={{ ...line, color: p.tint }} />
+    <div role="img" aria-label={title} className="poster water absolute inset-0 overflow-hidden" style={{ color: world.palette.tint }}>
+      <div aria-hidden className="absolute inset-0 flex flex-col p-[5cqmin]">
+        <div className="flex items-start justify-between gap-4" style={label}>
+          <Meta kicker={kicker} fragments={fragments} />
         </div>
-        {/* Below the surface: lighter, shifted, slightly squashed */}
-        <div
-          className={`absolute inset-0 ${ease} [clip-path:inset(calc(100%-0.34em)_0_0_0)] group-hover:[clip-path:inset(calc(100%-0.56em)_0_0_0)]`}
-          style={{ background: `linear-gradient(180deg, ${p.mid}55, ${p.deep}00)` }}
-        >
-          <Lines lines={lines} style={{ ...line, color: p.light, opacity: 0.85, transform: "translateX(0.04em) skewX(-8deg)" }} />
+        <div className="mt-[3cqmin] transition-transform duration-[1200ms] ease-soft group-hover:-translate-y-[1.2cqmin]">
+          <Lines lines={lines} style={{ ...ice, ...fit(lines, { charW: 0.74, lineH: 0.84, w: 0.88, h: 0.58, max: 34 }) }} />
         </div>
-        {/* Waterline and currents */}
-        <div className={`absolute inset-x-0 bottom-[0.34em] h-px ${ease} transition-[bottom] group-hover:bottom-[0.56em]`} style={{ background: p.light }} />
-        <svg viewBox="0 0 200 100" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-[0.34em] w-full opacity-60">
-          {currents.map((d, i) => (
-            <path key={i} d={d} fill="none" stroke={p.light} strokeWidth="1" vectorEffect="non-scaling-stroke" />
-          ))}
-        </svg>
+        {cap && (
+          <p
+            className="mx-auto mt-auto max-w-[70%] text-center uppercase"
+            style={{ ...serif, fontSize: "max(11px, 2.6cqmin)", letterSpacing: "0.14em", lineHeight: 1.5, color: "#f4fbff" }}
+          >
+            {cap}
+          </p>
+        )}
       </div>
-    </Cover>
+    </div>
   );
 }
 

@@ -24,7 +24,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
   const format = t(ui.categoryLabels[project.category]);
 
   return (
-    <div style={worldStyle(world)}>
+    <div style={worldStyle(world)} className={world.slug === "seafood" ? "surface-seafood" : ""}>
       <section className="pt-12 pb-8 md:pt-20">
         <Container>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 label text-muted">
@@ -114,7 +114,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
       </section>
 
       {project.gallery && project.gallery.length > 0 && (
-        <section className="mt-16 bg-w-tint py-20 md:py-28">
+        <section className={`mt-16 py-20 md:py-28 ${world.slug === "seafood" ? "water-light" : "bg-w-tint"}`}>
           <Container>
             <Eyebrow className="!text-w-text">{t(ui.caseStudy.visuals)}</Eyebrow>
             <div className="mt-10 grid gap-6 md:grid-cols-2 md:gap-8">
