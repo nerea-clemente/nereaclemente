@@ -5,7 +5,7 @@ import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeader";
 import { ProjectCard } from "@/components/ProjectCard";
 import { WorldTile } from "@/components/WorldTile";
-import { WorldPoster, worldFont, worldFontSmall, pixelSafe } from "@/components/WorldPoster";
+import { WorldPoster, worldFont } from "@/components/WorldPoster";
 import { Button } from "@/components/Button";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
@@ -51,7 +51,7 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
               <h1 className="flex flex-wrap items-baseline gap-x-5 md:col-span-7">
                 <span className="serif text-[clamp(3rem,7vw,6rem)] leading-none">{world.n}</span>
                 <span className={`${worldFont[slug]} text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.9]`}>
-                  {slug === "ai" ? pixelSafe(t(world.name)) : t(world.name)}
+                  {t(world.name)}
                 </span>
               </h1>
               <p className="font-display text-xl leading-snug md:col-span-5 md:text-2xl">
@@ -81,40 +81,20 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
                   <li
                     key={item}
                     className={`flex items-baseline gap-4 border-b border-ink/15 py-3 text-ink ${
-                      playful ? (i % 2 ? "md:translate-x-4 md:rotate-1" : "md:-translate-x-1 md:-rotate-1") : ""
+                      ""
                     }`}
                   >
                     <span className="serif text-lg text-w-text">{String(i + 1).padStart(2, "0")}</span>
                     <span
-                      className={`${worldFontSmall[slug]} text-[clamp(1.5rem,2.4vw,2.25rem)] ${playful && i % 2 ? "serif italic font-normal text-w-text" : ""}`}
+                      className={`${worldFont[slug]} text-[clamp(1.5rem,2.4vw,2.25rem)]`}
                     >
-                      {slug === "ai" ? pixelSafe(item) : item}
+                      {item}
                     </span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        </Container>
-      </section>
-
-      {/* The rest of the world's visual language */}
-      <section className="bg-w-tint pb-20 md:pb-28">
-        <Container>
-          <ul className="grid gap-3 md:grid-cols-2 md:gap-5">
-            {[1, 2].map((v) => (
-              <li key={v} className="relative aspect-[4/5] overflow-hidden">
-                <WorldPoster
-                  world={world}
-                  title={t(world.poster.title)}
-                  caption={t(world.poster.caption)}
-                  fragments={t(world.poster.fragments)}
-                  kicker={`${world.n} / ${world.style}`}
-                  variant={v}
-                />
-              </li>
-            ))}
-          </ul>
         </Container>
       </section>
 

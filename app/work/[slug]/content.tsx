@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeader";
 import { Button } from "@/components/Button";
-import { WorldPoster, posterVariant } from "@/components/WorldPoster";
+import { WorldPoster } from "@/components/WorldPoster";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
 import { getProject, projects } from "@/lib/projects";
@@ -86,7 +86,6 @@ export function CaseStudyContent({ slug }: { slug: string }) {
               caption={t(project.client)}
               fragments={t(project.disciplines)}
               kicker={`${world.n} / ${world.style} — ${format}`}
-              variant={posterVariant(project.slug)}
             />
           </div>
         </Container>

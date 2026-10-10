@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Project } from "@/lib/projects";
 import { getWorld, worldStyle, type World } from "@/lib/worlds";
 import { useT } from "@/lib/i18n/context";
-import { WorldPoster, posterVariant } from "./WorldPoster";
+import { WorldPoster } from "./WorldPoster";
 import { ui } from "@/lib/i18n/strings";
 
 type Variant = "default" | "featured" | "compact";
@@ -112,7 +112,6 @@ function ProjectTile({
           caption={`${t(ui.categoryLabels[project.category])} · ${project.year}`}
           fragments={t(project.disciplines)}
           kicker={`${world.n} / ${world.style}`}
-          variant={posterVariant(project.slug)}
         />
       </div>
     </div>

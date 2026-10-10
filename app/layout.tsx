@@ -1,15 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Manrope,
-  Instrument_Serif,
-  Big_Shoulders_Display,
-  Bricolage_Grotesque,
-  Anton,
-  Silkscreen,
-  Bungee_Shade,
-  Bungee_Outline,
-  Rubik,
-} from "next/font/google";
+import { Manrope, Instrument_Serif, Anton, Silkscreen } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { LocaleProvider } from "@/lib/i18n/context";
@@ -31,17 +21,11 @@ const serif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
-// Display faces, one register per world. Not preloaded: only the pages that use them fetch them.
-const sea = Big_Shoulders_Display({ subsets: ["latin"], variable: "--font-sea", weight: ["800", "900"], preload: false });
-const brand = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-brand", weight: ["300", "800"], preload: false });
+// Accent faces: Anton for Creative & Content headlines, Silkscreen for AI labels.
 const anton = Anton({ subsets: ["latin"], variable: "--font-anton", weight: "400", preload: false });
-const pixel = Silkscreen({ subsets: ["latin"], variable: "--font-pixel", weight: ["400", "700"], preload: false });
-const shade = Bungee_Shade({ subsets: ["latin"], variable: "--font-shade", weight: "400", preload: false });
-const outline = Bungee_Outline({ subsets: ["latin"], variable: "--font-outline", weight: "400", preload: false });
+const pixel = Silkscreen({ subsets: ["latin"], variable: "--font-pixel", weight: "400", preload: false });
 
-const rubik = Rubik({ subsets: ["latin"], variable: "--font-rubik", weight: ["700", "900"], style: ["normal", "italic"], preload: false });
-
-const fontVars = [sea, brand, anton, pixel, shade, outline, rubik].map((f) => f.variable).join(" ");
+const fontVars = `${anton.variable} ${pixel.variable}`;
 
 export const metadata: Metadata = {
   title: {
