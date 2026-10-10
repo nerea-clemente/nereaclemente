@@ -163,3 +163,25 @@ body {
 .poster {
   container-type: size;
 }
+
+@keyframes nc-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.nc-blink {
+  animation: nc-blink 1.1s steps(1) infinite;
+}
+
+@keyframes nc-dash {
+  to { stroke-dashoffset: -24; }
+}
+.nc-dash {
+  animation: nc-dash 2.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nc-blink,
+  .nc-dash {
+    animation: none;
+  }
+}

@@ -159,48 +159,72 @@ function Meta({ kicker, fragments }: { kicker?: string; fragments: string[] }) {
 }
 
 /* ---------------------------------------------- 01 · Ocean Editorial */
-/* Mood: water, transparency, calm editorial serif. Gesture: a few fine currents. */
+/* Idea: the headline is half under water — below the waterline the letters
+   refract. On hover the tide rises. */
 
 function SeafoodCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
   const p = world.palette;
   const lines = words(title);
-  const currents = Array.from({ length: 7 }, (_, i) => {
-    const y = 20 + i * 9;
+  const size = fit(lines, { charW: 0.48, lineH: 0.92, w: 0.86, h: 0.6, max: 30 });
+  const currents = Array.from({ length: 6 }, (_, i) => {
+    const y = 10 + i * 15;
     let d = `M -5 ${y}`;
-    for (let x = -5; x <= 205; x += 5) d += ` L ${x} ${(y + Math.sin(x / 22 + i * 0.8) * 2.4).toFixed(2)}`;
+    for (let x = -5; x <= 205; x += 5) d += ` L ${x} ${(y + Math.sin(x / 20 + i * 0.9) * 2.2).toFixed(2)}`;
     return d;
   });
+  const line: CSSProperties = { ...serif, lineHeight: 0.92 };
+  const ease = "transition-[clip-path,top] duration-700 ease-soft";
   return (
     <Cover
       title={title}
-      bg={`linear-gradient(180deg, ${p.deep} 0%, #0A4677 60%, #0E5A93 100%)`}
+      bg={`linear-gradient(180deg, ${p.deep} 0%, #0A4677 100%)`}
       fg={p.tint}
       top={<Meta kicker={kicker} fragments={fragments} />}
       foot={cap ? <span className="italic-serif" style={{ fontSize: "max(13px, 3.4cqmin)" }}>{cap}</span> : undefined}
-      layer={
-        <svg viewBox="0 0 200 100" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-[55%] w-full">
+    >
+      <div className="relative" style={size}>
+        {/* Above the surface */}
+        <div className={`${ease} [clip-path:inset(0_0_0.34em_0)] group-hover:[clip-path:inset(0_0_0.56em_0)]`}>
+          <Lines lines={lines} style={{ ...line, color: p.tint }} />
+        </div>
+        {/* Below the surface: lighter, shifted, slightly squashed */}
+        <div
+          className={`absolute inset-0 ${ease} [clip-path:inset(calc(100%-0.34em)_0_0_0)] group-hover:[clip-path:inset(calc(100%-0.56em)_0_0_0)]`}
+          style={{ background: `linear-gradient(180deg, ${p.mid}55, ${p.deep}00)` }}
+        >
+          <Lines lines={lines} style={{ ...line, color: p.light, opacity: 0.85, transform: "translateX(0.04em) skewX(-8deg)" }} />
+        </div>
+        {/* Waterline and currents */}
+        <div className={`absolute inset-x-0 bottom-[0.34em] h-px ${ease} transition-[bottom] group-hover:bottom-[0.56em]`} style={{ background: p.light }} />
+        <svg viewBox="0 0 200 100" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-[0.34em] w-full opacity-60">
           {currents.map((d, i) => (
-            <path key={i} d={d} fill="none" stroke={p.light} strokeOpacity={0.12 + i * 0.05} strokeWidth="1" vectorEffect="non-scaling-stroke" />
+            <path key={i} d={d} fill="none" stroke={p.light} strokeWidth="1" vectorEffect="non-scaling-stroke" />
           ))}
         </svg>
-      }
-    >
-      <Lines lines={lines} style={{ ...serif, lineHeight: 0.92, ...fit(lines, { charW: 0.48, lineH: 0.92, w: 0.86, h: 0.62, max: 30 }) }} />
+      </div>
     </Cover>
   );
 }
 
 /* ------------------------------------------------ 02 · Bold Editorial */
-/* Mood: granate and dusty pink, confident sans, asymmetric rhythm. */
+/* Idea: a magazine cover split in two — the headline changes colour as it
+   crosses into the darker panel. */
 
 function BrandCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
   const p = world.palette;
   const ws = words(title.toUpperCase());
-  // Asymmetric: first half sits left, second half hangs right
   const cut = Math.ceil(ws.length / 2);
   const left = ws.length === 1 ? [ws[0]] : ws.slice(0, cut);
   const right = ws.length === 1 ? [] : ws.slice(cut);
-  const size = fit([...left, ...right], { charW: 0.7, lineH: 0.88, w: 0.88, h: 0.66, max: 26 });
+  const size = fit([...left, ...right], { charW: 0.7, lineH: 0.88, w: 0.9, h: 0.66, max: 26 });
+  // The split sits at 64% of the cover; the gradient stop follows it.
+  const split = "calc(64cqw - 5cqmin)";
+  const two: CSSProperties = {
+    backgroundImage: `linear-gradient(90deg, ${p.light} ${split}, ${p.tint} ${split})`,
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    color: "transparent",
+  };
   return (
     <Cover
       title={title}
@@ -208,16 +232,20 @@ function BrandCover({ world, title, caption: cap, fragments = [], kicker }: Post
       fg={p.tint}
       top={<Meta kicker={kicker} fragments={fragments} />}
       foot={cap ? <span className="serif" style={{ fontSize: "max(13px, 3.4cqmin)" }}>{cap}</span> : undefined}
-      layer={<div className="absolute inset-y-0 right-0 w-[34%]" style={{ background: p.deep, opacity: 0.45 }} />}
-    >
-      <div style={{ ...sans800, color: p.light, lineHeight: 0.88, ...size }}>
-        {left.map((l, i) => (
-          <span key={i} className="block whitespace-nowrap">
-            {l}
+      layer={
+        <div className="absolute inset-y-0 left-[64%] right-0" style={{ background: p.deep }}>
+          <span
+            className="absolute right-[3cqmin] top-1/2 origin-right -translate-y-1/2 rotate-90 whitespace-nowrap italic-serif"
+            style={{ fontSize: "max(12px, 3cqmin)", color: p.light }}
+          >
+            Nº {world.n} — {world.style}
           </span>
-        ))}
-        {right.map((l, i) => (
-          <span key={i} className="block whitespace-nowrap text-right">
+        </div>
+      }
+    >
+      <div className="w-full transition-[letter-spacing] duration-700 ease-soft group-hover:tracking-[-0.02em]" style={{ ...sans800, lineHeight: 0.88, ...size }}>
+        {[...left.map((l) => ({ l, r: false })), ...right.map((l) => ({ l, r: true }))].map(({ l, r }, i) => (
+          <span key={i} className={`block whitespace-nowrap ${r ? "text-right" : ""}`} style={two}>
             {l}
           </span>
         ))}
@@ -227,7 +255,7 @@ function BrandCover({ world, title, caption: cap, fragments = [], kicker }: Post
 }
 
 /* -------------------------------------------- 03 · Organic Technology */
-/* Mood: forest and lime, systems, modules. Gesture: a quiet module grid. */
+/* Idea: a system at work — a small flow of nodes and a blinking cursor. */
 
 function AiCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
   const p = world.palette;
@@ -249,42 +277,73 @@ function AiCover({ world, title, caption: cap, fragments = [], kicker }: PosterP
       layer={
         <>
           <div
-            className="absolute inset-0 opacity-[0.18]"
-            style={{
-              backgroundImage: `radial-gradient(${p.light} 1px, transparent 1.2px)`,
-              backgroundSize: "4cqmin 4cqmin",
-            }}
+            className="absolute inset-0 opacity-[0.16]"
+            style={{ backgroundImage: `radial-gradient(${p.light} 1px, transparent 1.2px)`, backgroundSize: "4cqmin 4cqmin" }}
           />
-          {/* Three nested modules, top right */}
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="absolute border"
-              style={{
-                right: `${5 + i * 3.5}cqmin`,
-                top: `${12 + i * 3.5}cqmin`,
-                width: `${30 - i * 7}cqmin`,
-                height: `${30 - i * 7}cqmin`,
-                borderColor: p.light,
-                opacity: 0.35 + i * 0.25,
-                background: i === 2 ? p.light : undefined,
-              }}
+          {/* Flow: input → process → output */}
+          <svg viewBox="0 0 100 60" className="absolute right-[5cqmin] top-[11cqmin] h-[24cqmin] w-[40cqmin]">
+            <path
+              d="M8 12 H 40 V 30 H 62 V 48 H 92"
+              fill="none"
+              stroke={p.light}
+              strokeWidth="1"
+              strokeDasharray="3 3"
+              className="nc-dash"
             />
-          ))}
+            {[
+              [8, 12],
+              [40, 30],
+              [62, 30],
+              [92, 48],
+            ].map(([x, y], i) => (
+              <rect
+                key={i}
+                x={x - 4}
+                y={y - 4}
+                width="8"
+                height="8"
+                fill={i === 3 ? p.light : p.deep}
+                stroke={p.light}
+                strokeWidth="1"
+                className={i === 3 ? "origin-center transition-transform duration-500 group-hover:scale-125" : ""}
+                style={{ transformBox: "fill-box" }}
+              />
+            ))}
+          </svg>
         </>
       }
     >
-      <Lines lines={lines} style={{ ...sans800, color: p.light, lineHeight: 0.9, ...fit(lines, { charW: 0.64, lineH: 0.9, w: 0.86, h: 0.5, max: 22 }) }} />
+      <div style={{ ...sans800, color: p.light, lineHeight: 0.9, ...fit(lines, { charW: 0.64, lineH: 0.9, w: 0.82, h: 0.5, max: 22 }) }}>
+        {lines.map((l, i) => (
+          <span key={i} className="block whitespace-nowrap">
+            {l}
+            {i === lines.length - 1 && (
+              <span className="nc-blink ml-[0.08em] inline-block h-[0.72em] w-[0.42em] align-baseline" style={{ background: p.light }} />
+            )}
+          </span>
+        ))}
+      </div>
     </Cover>
   );
 }
 
 /* ---------------------------------------------- 04 · Playful Editorial */
-/* Mood: orange, energy, big condensed headlines and small fragments. */
+/* Idea: a collage — two cut-out "prints" taped over a big condensed headline. */
 
 function ContentCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
   const p = world.palette;
   const lines = words(title.toUpperCase());
+  const print = (bg: string, rot: string, hover: string, cls: string, n: string) => (
+    <div
+      className={`absolute border-[0.6cqmin] border-white shadow-[0_1.2cqmin_2.4cqmin_rgba(0,0,0,0.18)] transition-transform duration-700 ease-soft ${hover} ${cls}`}
+      style={{ background: bg, transform: `rotate(${rot})` }}
+    >
+      <span className="absolute bottom-[0.8cqmin] left-[1cqmin] italic-serif" style={{ fontSize: "max(10px, 2.4cqmin)", color: "#141414" }}>
+        {n}
+      </span>
+      <span className="absolute -top-[1.6cqmin] left-1/2 h-[3cqmin] w-[9cqmin] -translate-x-1/2 -rotate-3 bg-white/70" />
+    </div>
+  );
   return (
     <Cover
       title={title}
@@ -297,15 +356,21 @@ function ContentCover({ world, title, caption: cap, fragments = [], kicker }: Po
           <span className="text-right">{fragments.slice(0, 3).join(" · ")}</span>
         </>
       }
-      layer={<div className="absolute right-[5cqmin] top-[12cqmin] h-[20%] w-[26%]" style={{ background: p.light }} />}
+      layer={
+        <>
+          {print(`linear-gradient(160deg, ${p.light}, ${p.mid})`, "-5deg", "group-hover:rotate-[-9deg]", "right-[8cqmin] top-[12cqmin] h-[26%] w-[30%]", "fig. 1")}
+          {print(`linear-gradient(200deg, ${p.tint}, ${p.light})`, "6deg", "group-hover:rotate-[10deg] group-hover:translate-x-[1cqmin]", "right-[26cqmin] top-[24cqmin] h-[18%] w-[22%]", "fig. 2")}
+        </>
+      }
     >
-      <Lines lines={lines} style={{ ...anton, lineHeight: 0.88, ...fit(lines, { charW: 0.48, lineH: 0.88, w: 0.82, h: 0.66, max: 34 }) }} />
+      <Lines lines={lines} style={{ ...anton, lineHeight: 0.88, ...fit(lines, { charW: 0.48, lineH: 0.88, w: 0.82, h: 0.6, max: 34 }) }} />
     </Cover>
   );
 }
 
 /* --------------------------------------------------- 05 · Creative Chaos */
-/* Mood: lilac and violet, curiosity. Gesture: letters that alternate fill and outline. */
+/* Idea: letters that won't sit the same way twice — fill, outline, italic —
+   and jump when you come close. */
 
 function PlaygroundCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
   const p = world.palette;
@@ -320,32 +385,47 @@ function PlaygroundCover({ world, title, caption: cap, fragments = [], kicker }:
       layer={
         <>
           <div className="absolute -right-[8%] -top-[10%] aspect-square w-[55%] rounded-full" style={{ background: p.light }} />
+          <svg viewBox="0 0 100 100" className="nc-spin absolute right-[10cqmin] top-[12cqmin] h-[22cqmin] w-[22cqmin]">
+            <path
+              d="M50 4 C 54 34, 66 46, 96 50 C 66 54, 54 66, 50 96 C 46 66, 34 54, 4 50 C 34 46, 46 34, 50 4 Z"
+              fill={p.deep}
+            />
+          </svg>
           <span
-            className="nc-wobble absolute right-[8cqmin] top-[18%] rounded-full px-[2.4cqmin] py-[1.2cqmin]"
-            style={{ ...label, background: p.deep, color: "#fff" }}
+            className="nc-wobble absolute left-[5cqmin] top-[34%] rounded-full px-[2.4cqmin] py-[1.2cqmin]"
+            style={{ ...label, background: "#fff", color: p.deep, border: `1px solid ${p.deep}` }}
           >
-            ✶ {world.n}
+            ✶ {world.style}
           </span>
         </>
       }
     >
-      <div style={{ ...sans800, lineHeight: 0.92, ...fit(lines, { charW: 0.64, lineH: 0.92, w: 0.86, h: 0.6, max: 24 }) }}>
+      <div style={{ ...sans800, lineHeight: 0.92, ...fit(lines, { charW: 0.64, lineH: 0.92, w: 0.86, h: 0.56, max: 24 }) }}>
         {lines.map((l, li) => (
           <span key={li} className="block whitespace-nowrap">
-            {[...l].map((ch, i) => (
-              <span
-                key={i}
-                style={
-                  (i + li) % 3 === 1
-                    ? { color: "transparent", WebkitTextStroke: `0.025em ${p.deep}` }
-                    : (i + li) % 3 === 2
-                      ? { ...serif, fontStyle: "italic", color: p.mid }
-                      : { color: p.deep }
-                }
-              >
-                {ch}
-              </span>
-            ))}
+            {[...l].map((ch, i) => {
+              const k = (i + li) % 3;
+              return (
+                <span
+                  key={i}
+                  className="inline-block transition-transform duration-500 ease-soft group-hover:[transform:translateY(var(--jump))_rotate(var(--tilt))]"
+                  style={
+                    {
+                      "--jump": `${i % 2 ? -0.12 : -0.05}em`,
+                      "--tilt": `${((i % 3) - 1) * 4}deg`,
+                      transitionDelay: `${i * 30}ms`,
+                      ...(k === 1
+                        ? { color: "transparent", WebkitTextStroke: `0.025em ${p.deep}` }
+                        : k === 2
+                          ? { ...serif, fontStyle: "italic", color: p.mid }
+                          : { color: p.deep }),
+                    } as unknown as CSSProperties
+                  }
+                >
+                  {ch}
+                </span>
+              );
+            })}
           </span>
         ))}
       </div>
