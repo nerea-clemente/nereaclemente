@@ -98,6 +98,26 @@ export function WorldContent({ slug }: { slug: WorldSlug }) {
         </Container>
       </section>
 
+      {/* The rest of the world's visual language */}
+      <section className="bg-w-tint pb-20 md:pb-28">
+        <Container>
+          <ul className="grid gap-3 md:grid-cols-2 md:gap-5">
+            {[1, 2].map((v) => (
+              <li key={v} className="relative aspect-[4/5] overflow-hidden">
+                <WorldPoster
+                  world={world}
+                  title={t(world.poster.title)}
+                  caption={t(world.poster.caption)}
+                  fragments={t(world.poster.fragments)}
+                  kicker={`${world.n} / ${world.style}`}
+                  variant={v}
+                />
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
       {/* Cases */}
       <section className="py-20 md:py-28">
         <Container>

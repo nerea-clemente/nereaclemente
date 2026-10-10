@@ -8,6 +8,7 @@ import {
   Silkscreen,
   Bungee_Shade,
   Bungee_Outline,
+  Rubik,
 } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -19,7 +20,7 @@ const sans = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["200", "400", "500", "600", "700", "800"],
 });
 
 const serif = Instrument_Serif({
@@ -38,7 +39,9 @@ const pixel = Silkscreen({ subsets: ["latin"], variable: "--font-pixel", weight:
 const shade = Bungee_Shade({ subsets: ["latin"], variable: "--font-shade", weight: "400", preload: false });
 const outline = Bungee_Outline({ subsets: ["latin"], variable: "--font-outline", weight: "400", preload: false });
 
-const fontVars = [sea, brand, anton, pixel, shade, outline].map((f) => f.variable).join(" ");
+const rubik = Rubik({ subsets: ["latin"], variable: "--font-rubik", weight: ["700", "900"], style: ["normal", "italic"], preload: false });
+
+const fontVars = [sea, brand, anton, pixel, shade, outline, rubik].map((f) => f.variable).join(" ");
 
 export const metadata: Metadata = {
   title: {

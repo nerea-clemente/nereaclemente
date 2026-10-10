@@ -16,6 +16,9 @@ export type WorldPalette = {
   text: string;
   /** Text colour on top of `deep`. */
   on: string;
+  /** Extra poster colours taken from the references (used sparingly). */
+  accent: string;
+  accent2: string;
 };
 
 export type World = {
@@ -51,6 +54,8 @@ export const worlds: World[] = [
       tint: "#EDF7FB",
       text: "#083B66",
       on: "#FFFFFF",
+      accent: "#C9ECFA",
+      accent2: "#1A3FD1",
     },
     lede: b(
       "Sector knowledge, science, sustainability and communication — from the farm to the page.",
@@ -83,6 +88,8 @@ export const worlds: World[] = [
       tint: "#F7ECE7",
       text: "#421F36",
       on: "#FFFFFF",
+      accent: "#F07EAA",
+      accent2: "#D21F7E",
     },
     lede: b(
       "Positioning, brand strategy, campaigns and international marketing.",
@@ -115,6 +122,8 @@ export const worlds: World[] = [
       tint: "#E5F4E8",
       text: "#153F32",
       on: "#FFFFFF",
+      accent: "#5CF0A8",
+      accent2: "#3FB950",
     },
     lede: b(
       "Connected systems, experimentation and practical solutions.",
@@ -147,6 +156,8 @@ export const worlds: World[] = [
       tint: "#FFF1E4",
       text: "#B23F14",
       on: "#141414",
+      accent: "#7DF0B0",
+      accent2: "#3B2F2B",
     },
     lede: b(
       "Campaigns, storytelling, social media, copywriting, design and video.",
@@ -179,6 +190,8 @@ export const worlds: World[] = [
       tint: "#F0E9FC",
       text: "#5A2FB8",
       on: "#FFFFFF",
+      accent: "#F5A54A",
+      accent2: "#3DD6A0",
     },
     lede: b(
       "A space to explore ideas, experiment and follow creative curiosity.",
