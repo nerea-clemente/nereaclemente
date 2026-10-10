@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - claude/build-portfolio-website-vzYnE
+      - claude/trusting-maxwell-3r8qtt
   workflow_dispatch:
 
 permissions:
