@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { RealWork } from "./RealWork";
 import { Photo, Sparkle } from "@/components/kit";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
@@ -21,8 +22,8 @@ const c = {
   topics: b(["Science", "Sustainability", "Communication"], ["Ciencia", "Sostenibilidad", "Comunicación"]),
   call1: b("Curiosity drives change", "La curiosidad mueve el cambio"),
   call2: b("Healthier fish", "Peces más sanos"),
-  call3: b("Brighter oceans", "Océanos más vivos"),
-  call4: b("A closer look at a brighter tomorrow.", "Una mirada de cerca a un mañana mejor."),
+  call3: b("Clearer science", "Ciencia más clara"),
+  call4: b("A closer look at what happens under the surface.", "Una mirada de cerca a lo que pasa bajo la superficie."),
   selected: b("Selected work", "Trabajo seleccionado"),
   selectedSide: b(
     "Visual stories at the intersection of science, sustainability and a healthier ocean.",
@@ -30,7 +31,7 @@ const c = {
   ),
   concept: b("Concept preview", "Concept preview"),
   close: b("Let's talk seafood.", "Hablemos de seafood."),
-  closeSub: b("Creative ideas for a healthier blue tomorrow.", "Ideas creativas para un mañana azul más sano."),
+  closeSub: b("Science, people and the sea — told clearly.", "Ciencia, personas y mar, contados con claridad."),
 };
 
 const CASES = [
@@ -165,6 +166,8 @@ export function SeafoodWorld() {
           </ol>
         </Container>
       </section>
+
+      <RealWork slug="seafood" />
 
       {/* Closing */}
       <section style={{ backgroundColor: p.page }}>

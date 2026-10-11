@@ -27,8 +27,8 @@ export function SplitTitle({
 }) {
   return (
     <Tag className={`leading-[0.98] text-ink ${className}`}>
-      <span className="block font-display-tight">{a}</span>
-      <span className={`block serif ${serifClassName}`}>{b}</span>
+      <span className="display block">{a}</span>
+      <span className={`italic-serif block leading-[0.9] ${serifClassName}`}>{b}</span>
     </Tag>
   );
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeader";
 import { Button } from "@/components/Button";
-import { WorldPoster } from "@/components/WorldPoster";
+import { ProjectCover } from "@/components/ProjectCover";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
 import { getProject, projects } from "@/lib/projects";
@@ -24,7 +24,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
   const format = t(ui.categoryLabels[project.category]);
 
   return (
-    <div style={worldStyle(world)} className={world.slug === "seafood" ? "surface-seafood" : ""}>
+    <div style={worldStyle(world)}>
       <section className="pt-12 pb-8 md:pt-20">
         <Container>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 label text-muted">
@@ -80,13 +80,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
       <section className="pb-16 md:pb-24">
         <Container>
           <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/9]">
-            <WorldPoster
-              world={world}
-              title={t(project.title)}
-              caption={t(project.client)}
-              fragments={t(project.disciplines)}
-              kicker={`${world.n} / ${world.style} — ${format}`}
-            />
+            <ProjectCover project={project} />
           </div>
         </Container>
       </section>
@@ -114,7 +108,7 @@ export function CaseStudyContent({ slug }: { slug: string }) {
       </section>
 
       {project.gallery && project.gallery.length > 0 && (
-        <section className={`mt-16 py-20 md:py-28 ${world.slug === "seafood" ? "water-light" : "bg-w-tint"}`}>
+        <section className="mt-16 bg-w-tint py-20 md:py-28">
           <Container>
             <Eyebrow className="!text-w-text">{t(ui.caseStudy.visuals)}</Eyebrow>
             <div className="mt-10 grid gap-6 md:grid-cols-2 md:gap-8">

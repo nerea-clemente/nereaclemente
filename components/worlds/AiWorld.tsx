@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Container } from "@/components/Container";
+import { RealWork } from "./RealWork";
 import { Asterisk, Hand, Photo } from "@/components/kit";
 import { useT } from "@/lib/i18n/context";
 import type { Bilingual } from "@/lib/i18n/types";
@@ -19,7 +20,7 @@ const c = {
     "Ideas, tools and people in better connection. Exploring how AI and automation can create simpler, more human ways of working.",
     "Ideas, herramientas y personas mejor conectadas. Explorando cómo la IA y la automatización pueden crear formas de trabajar más sencillas y más humanas."
   ),
-  note1: b("Simpler steps. Brighter work.", "Pasos más simples. Trabajo más brillante."),
+  note1: b("Fewer clicks. More thinking.", "Menos clics. Más pensar."),
   note2: b("Turn ideas into action.", "Convierte ideas en acción."),
   note3: b("Connect people, tools and ideas.", "Conecta personas, herramientas e ideas."),
   flow: b(["Idea", "Input", "Process", "Output", "Real possibilities"], ["Idea", "Entrada", "Proceso", "Resultado", "Posibilidades reales"]),
@@ -229,6 +230,8 @@ export function AiWorld() {
           </div>
         ))}
       </section>
+
+      <RealWork slug="ai" />
 
       {/* Closing */}
       <section className="relative overflow-hidden">

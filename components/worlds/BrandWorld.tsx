@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { RealWork } from "./RealWork";
 import { Asterisk, Hand, Photo } from "@/components/kit";
 import { useT } from "@/lib/i18n/context";
 import type { Bilingual } from "@/lib/i18n/types";
@@ -13,18 +14,18 @@ const c = {
   label: b("Brand & Strategy", "Marca y Estrategia"),
   h1a: b("Connecting", "Uniendo"),
   h1b: b("the dots.", "los puntos."),
-  topics: b(["Ideas", "People", "Markets", "A brighter", "tomorrow"], ["Ideas", "Personas", "Mercados", "Un mañana", "mejor"]),
+  topics: b(["Ideas", "People", "Markets", "Direction"], ["Ideas", "Personas", "Mercados", "Rumbo"]),
   card1: b(["Ideas", "Culture", "Audiences", "Action"], ["Ideas", "Cultura", "Audiencias", "Acción"]),
-  card2: b("Different people. Brighter possibilities.", "Personas distintas. Posibilidades mejores."),
-  note1: b("Strategy for a more connected tomorrow.", "Estrategia para un mañana más conectado."),
+  card2: b("Different people. One clear story.", "Personas distintas. Una historia clara."),
+  note1: b("Strategy people can actually use.", "Estrategia que la gente pueda usar de verdad."),
   note2: b("Ideas to people to progress.", "De las ideas a las personas, y al progreso."),
   concept: b("Concept preview", "Concept preview"),
   selected: b("Selected work", "Trabajo seleccionado"),
   selectedSide: b("Three ways I help brands create connection and lasting impact.", "Tres formas en las que ayudo a las marcas a conectar y dejar huella."),
-  bandTitle: b("Strategic thinking for a more connected tomorrow.", "Pensamiento estratégico para un mañana más conectado."),
+  bandTitle: b("Strategy is deciding what matters — then saying it clearly.", "La estrategia es decidir qué importa y luego decirlo claro."),
   bandText: b(
-    "I'm Nerea Clemente, a marketing and strategy professional with a passion for building brands that make a positive impact. I combine strategic clarity with creative thinking to help ideas grow, connect and create meaningful change.",
-    "Soy Nerea Clemente, profesional del marketing y la estrategia con pasión por construir marcas que dejan un impacto positivo. Combino claridad estratégica y pensamiento creativo para que las ideas crezcan, conecten y generen un cambio con sentido."
+    "I help brands work out what they really stand for, then turn it into positioning, campaigns and messages that travel across markets and languages.",
+    "Ayudo a las marcas a descubrir qué defienden de verdad y a convertirlo en posicionamiento, campañas y mensajes que viajan entre mercados e idiomas."
   ),
   aboutMe: b("About me", "Sobre mí"),
   close: b("Let's find your direction.", "Encontremos tu dirección."),
@@ -108,18 +109,20 @@ export function BrandWorld() {
           </div>
           <div className="mt-8 grid gap-8 md:grid-cols-3">
             {CASES.map((cs) => (
-              <Link key={cs.photo} href="/contact" className="group block">
+              <div key={cs.photo} className="group block">
                 <div className="aspect-[6/5] overflow-hidden">
                   <Photo name={cs.photo} alt={t(cs.title)} className="transition-transform duration-700 ease-soft group-hover:scale-105" />
                 </div>
                 <h3 className="mt-4 text-lg font-semibold">{t(cs.title)}</h3>
                 <p className="text-sm opacity-80">{t(cs.text)}</p>
-                <span aria-hidden className="mt-2 block text-xl transition-transform group-hover:translate-x-1">→</span>
-              </Link>
+                <p className="label mt-3 opacity-70">{t(c.concept)}</p>
+              </div>
             ))}
           </div>
         </Container>
       </section>
+
+      <RealWork slug="brand" />
 
       {/* Maroon band */}
       <section style={{ backgroundColor: p.deep, color: "#F7E1E7" }}>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Container } from "@/components/Container";
+import { RealWork } from "./RealWork";
 import { Asterisk, Hand, Photo } from "@/components/kit";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
@@ -14,11 +15,11 @@ const b = <T,>(en: T, es: T): Bilingual<T> => ({ en, es });
 const c = {
   h1: b(["Made to", "make you", "look."], ["Hecho para", "que", "mires."]),
   sub: b("Content, campaigns and stories that connect.", "Contenido, campañas e historias que conectan."),
-  note1: b("Same ideas, brighter places", "Mismas ideas, sitios más luminosos"),
+  note1: b("Small ideas, big reach", "Ideas pequeñas, mucho alcance"),
   side: b(["Social", "Video", "Words", "Ideas", "People", "Culture"], ["Social", "Vídeo", "Palabras", "Ideas", "Personas", "Cultura"]),
   selected: b("Selected work", "Trabajo seleccionado"),
   concept: b("Concept preview", "Concept preview"),
-  closeNote: b("Same ideas, brighter places", "Mismas ideas, sitios más luminosos"),
+  closeNote: b("Made for the scroll, built to last", "Hecho para el scroll, pensado para durar"),
   close: b("Let's make something worth sharing.", "Hagamos algo que merezca compartirse."),
 };
 
@@ -52,7 +53,7 @@ export function ContentWorld() {
                 <span key={l} className="block">{l}</span>
               ))}
             </h1>
-            <Asterisk className="absolute right-[4%] top-[42%] h-24 w-24 md:h-32 md:w-32" color={p.deep} />
+            <Asterisk className="absolute right-[4%] top-[42%] hidden h-24 w-24 md:block md:h-32 md:w-32" color={p.deep} />
             <div className="mt-8 flex items-start gap-8">
               <p className="max-w-[14rem] text-lg leading-snug">{t(c.sub)}</p>
               <Hand arrow="right" className="w-28 rotate-[-4deg] text-lg uppercase">
@@ -107,6 +108,8 @@ export function ContentWorld() {
           </ol>
         </Container>
       </section>
+
+      <RealWork slug="content" />
 
       {/* Closing on warm water */}
       <section

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { RealWork } from "./RealWork";
 import { Hand, Photo, RoundArrow, Sparkle } from "@/components/kit";
 import { useT } from "@/lib/i18n/context";
 import type { Bilingual } from "@/lib/i18n/types";
@@ -90,7 +91,7 @@ export function PlaygroundWorld() {
         <Container className="py-10 md:py-14">
           <div className="grid gap-8 md:grid-cols-3 md:gap-0 md:divide-x" style={{ borderColor: `${p.ink}33` }}>
             {CARDS.map((card, i) => (
-              <Link key={card.photo} href="/contact" className="group block md:px-6 first:md:pl-0 last:md:pr-0" style={{ borderColor: `${p.ink}33` }}>
+              <div key={card.photo} className="group block md:px-6 first:md:pl-0 last:md:pr-0" style={{ borderColor: `${p.ink}33` }}>
                 <p className="serif border-b pb-2 text-lg" style={{ borderColor: `${p.ink}33` }}>
                   <span className="font-semibold">0{i + 1}</span> / {t(card.title)}
                 </p>
@@ -102,12 +103,14 @@ export function PlaygroundWorld() {
                   <span className="serif">2026</span>
                   <RoundArrow />
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
           <p className="mt-8 text-xs opacity-75">{t(c.footnote)}</p>
         </Container>
       </section>
+
+      <RealWork slug="playground" bg="#EFE7FD" />
 
       {/* Closing */}
       <section style={{ backgroundColor: p.page }}>

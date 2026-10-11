@@ -17,7 +17,7 @@ const copy = {
     "Estrategia, creatividad, innovación y todo lo que hay entre medias."
   ),
   bandA: b("Ideas from different worlds", "Ideas de mundos distintos"),
-  bandB: b("for a more connected tomorrow.", "para un mañana más conectado."),
+  bandB: b("One way of thinking.", "Una sola forma de pensar."),
   bandSide: b(
     "Strategic marketing, branding, creative content, aquaculture specialisation and practical AI work.",
     "Marketing estratégico, branding, contenido creativo, especialización en acuicultura y trabajo práctico con IA."
@@ -34,11 +34,11 @@ const copy = {
 
 // The world collage: photo, crop focus, grid placement and a slight tilt.
 const TILES: Record<string, { photo: string; cls: string; tilt: string }> = {
-  seafood: { photo: "home-seafood", cls: "md:col-span-6 md:row-span-1 aspect-[16/10]", tilt: "" },
-  brand: { photo: "home-brand", cls: "md:col-span-5 md:col-start-8 aspect-[16/10]", tilt: "md:rotate-[2.5deg]" },
-  ai: { photo: "home-ai", cls: "md:col-span-4 aspect-[5/4] md:-mt-6", tilt: "md:-rotate-[1.5deg]" },
-  content: { photo: "home-content", cls: "md:col-span-4 aspect-[5/4] md:mt-6", tilt: "md:-rotate-[3deg]" },
-  playground: { photo: "home-playground", cls: "md:col-span-4 aspect-[5/4] md:-mt-2", tilt: "md:rotate-[1.5deg]" },
+  seafood: { photo: "home-seafood", cls: "col-span-2 md:col-span-6 aspect-[16/10]", tilt: "" },
+  brand: { photo: "home-brand", cls: "aspect-square md:col-span-5 md:col-start-8 md:aspect-[16/10]", tilt: "md:rotate-[2.5deg]" },
+  ai: { photo: "home-ai", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:-mt-6", tilt: "md:-rotate-[1.5deg]" },
+  content: { photo: "home-content", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:mt-6", tilt: "md:-rotate-[3deg]" },
+  playground: { photo: "home-playground", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:-mt-2", tilt: "md:rotate-[1.5deg]" },
 };
 
 const WORK = [
@@ -77,7 +77,7 @@ export default function HomePage() {
       {/* Five worlds collage */}
       <section className="pt-10 md:pt-14">
         <Container>
-          <div className="relative grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-12 md:gap-x-5 md:gap-y-5">
+          <div className="relative grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-x-5 md:gap-y-5">
             {worlds.map((w) => {
               const tile = TILES[w.slug];
               return (

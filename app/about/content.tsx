@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Eyebrow, SplitTitle } from "@/components/SectionHeader";
 import { Button } from "@/components/Button";
+import { Photo } from "@/components/kit";
 import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
 import { principles } from "@/lib/expertise";
@@ -31,21 +32,10 @@ export function AboutContent() {
             </div>
             <figure className="md:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-soft">
-                <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8">
-                  <span className="label text-muted">{t(ui.about.portraitTag)}</span>
-                  <div className="flex items-end justify-between">
-                    <div className="font-display-tight text-7xl leading-[0.85] text-ink md:text-8xl">
-                      NC
-                    </div>
-                    <div className="text-right label text-muted">
-                      <div>{t(ui.about.portraitPlaceholder)}</div>
-                      <div>{t(ui.about.portraitNote)}</div>
-                    </div>
-                  </div>
-                </div>
+                <Photo name="portrait" alt="Nerea Clemente" position="center 30%" className="grayscale" />
                 <div className="absolute bottom-0 left-0 grid w-full grid-cols-5" aria-hidden>
                   {worlds.map((w) => (
-                    <span key={w.slug} className="block h-2" style={{ backgroundColor: w.palette.deep }} />
+                    <span key={w.slug} className="block h-2" style={{ backgroundColor: w.palette.mid }} />
                   ))}
                 </div>
               </div>
@@ -115,20 +105,19 @@ export function AboutContent() {
               <span className="serif">{t(ui.about.worldsTitleEm)}</span>
             </h2>
           </div>
-          <ul className="grid gap-px border border-line bg-line md:grid-cols-5">
+          <ul className="grid grid-cols-2 gap-3 md:grid-cols-5">
             {worlds.map((w) => (
-              <li key={w.slug} className="bg-paper">
-                <Link
-                  href={`/worlds/${w.slug}`}
-                  className="group flex h-full flex-col gap-4 p-6 transition-colors duration-500 ease-soft hover:bg-[var(--hover)]"
-                  style={{ ["--hover" as string]: w.palette.tint }}
-                >
-                  <span aria-hidden className="block h-10 w-10" style={{ backgroundColor: w.palette.deep }} />
-                  <span className="serif text-3xl" style={{ color: w.palette.text }}>
-                    {w.n}
-                  </span>
-                  <span className="font-display-tight text-xl leading-tight text-ink">{t(w.name)}</span>
-                  <span className="text-sm leading-relaxed text-muted">{t(w.lede)}</span>
+              <li key={w.slug} className={w.slug === "seafood" ? "col-span-2 md:col-span-1" : ""}>
+                <Link href={`/worlds/${w.slug}`} className="group block">
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Photo name={`home-${w.slug}`} className="transition-transform duration-700 ease-soft group-hover:scale-105" />
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <span className="cond absolute bottom-3 left-3 text-xl leading-[0.95] text-white">
+                      <span className="block">{w.n}</span>
+                      {t(w.short)}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{t(w.lede)}</p>
                 </Link>
               </li>
             ))}

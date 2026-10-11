@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Project } from "@/lib/projects";
 import { getWorld, worldStyle, type World } from "@/lib/worlds";
 import { useT } from "@/lib/i18n/context";
-import { WorldPoster } from "./WorldPoster";
+import { ProjectCover } from "./ProjectCover";
 import { ui } from "@/lib/i18n/strings";
 
 type Variant = "default" | "featured" | "compact";
@@ -105,15 +105,7 @@ function ProjectTile({
   const aspect = large ? "aspect-[16/11]" : "aspect-[4/5]";
   return (
     <div className={`relative ${aspect} overflow-hidden`}>
-      <div className="absolute inset-0 transition-transform duration-700 ease-soft group-hover:scale-[1.03]">
-        <WorldPoster
-          world={world}
-          title={t(project.title)}
-          caption={`${t(ui.categoryLabels[project.category])} · ${project.year}`}
-          fragments={t(project.disciplines)}
-          kicker={`${world.n} / ${world.style}`}
-        />
-      </div>
+      <ProjectCover project={project} />
     </div>
   );
 }
