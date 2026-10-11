@@ -1,219 +1,162 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { Container } from "@/components/Container";
-import { Eyebrow, SplitTitle } from "@/components/SectionHeader";
-import { ProjectCard } from "@/components/ProjectCard";
-import { WorldTile } from "@/components/WorldTile";
-import { Button } from "@/components/Button";
+import { Asterisk, Photo } from "@/components/kit";
 import { useT } from "@/lib/i18n/context";
-import { ui } from "@/lib/i18n/strings";
-import { featuredProjects } from "@/lib/projects";
-import { worlds, type World } from "@/lib/worlds";
-import { site } from "@/lib/site";
+import type { Bilingual } from "@/lib/i18n/types";
+import { worlds } from "@/lib/worlds";
 
-// One featured case per world, so the selection shows the range.
-const selected = featuredProjects.filter(
-  (p, i, all) => all.findIndex((q) => q.world === p.world) === i
-);
+const b = <T,>(en: T, es: T): Bilingual<T> => ({ en, es });
 
-// Asymmetric poster wall: two large, three smaller.
-const BENTO = [
-  "col-span-2 md:col-span-7",
-  "col-span-2 md:col-span-5",
-  "col-span-1 md:col-span-4",
-  "col-span-1 md:col-span-4",
-  "col-span-2 md:col-span-4",
-];
-const ASPECT = [
-  "aspect-[4/3] md:aspect-[7/6]",
-  "aspect-[4/3] md:aspect-[5/6]",
-  "aspect-[4/5]",
-  "aspect-[4/5]",
-  "aspect-[4/3] md:aspect-[4/5]",
+const copy = {
+  l1: b("One mind.", "One mind."),
+  l2: b("Many worlds.", "Many worlds."),
+  side: b(
+    "Strategy, creativity, innovation & everything in between.",
+    "Estrategia, creatividad, innovación y todo lo que hay entre medias."
+  ),
+  bandA: b("Ideas from different worlds", "Ideas de mundos distintos"),
+  bandB: b("for a more connected tomorrow.", "para un mañana más conectado."),
+  bandSide: b(
+    "Strategic marketing, branding, creative content, aquaculture specialisation and practical AI work.",
+    "Marketing estratégico, branding, contenido creativo, especialización en acuicultura y trabajo práctico con IA."
+  ),
+  selected: b("Selected work", "Trabajo seleccionado"),
+  viewAll: b("View all", "Ver todo"),
+  concept: b("Concept preview", "Concept preview"),
+  aboutTitle: b("A little more about me.", "Un poco más sobre mí."),
+  aboutText: b(
+    "Marketing, communication and creative thinking across industries and ideas.",
+    "Marketing, comunicación y pensamiento creativo entre sectores e ideas."
+  ),
+};
+
+// The world collage: photo, crop focus, grid placement and a slight tilt.
+const TILES: Record<string, { photo: string; cls: string; tilt: string }> = {
+  seafood: { photo: "home-seafood", cls: "md:col-span-6 md:row-span-1 aspect-[16/10]", tilt: "" },
+  brand: { photo: "home-brand", cls: "md:col-span-5 md:col-start-8 aspect-[16/10]", tilt: "md:rotate-[2.5deg]" },
+  ai: { photo: "home-ai", cls: "md:col-span-4 aspect-[5/4] md:-mt-6", tilt: "md:-rotate-[1.5deg]" },
+  content: { photo: "home-content", cls: "md:col-span-4 aspect-[5/4] md:mt-6", tilt: "md:-rotate-[3deg]" },
+  playground: { photo: "home-playground", cls: "md:col-span-4 aspect-[5/4] md:-mt-2", tilt: "md:rotate-[1.5deg]" },
+};
+
+const WORK = [
+  { photo: "work-fish", title: b("Fish Health 101", "Fish Health 101"), href: "/worlds/seafood" },
+  { photo: "work-ai", title: b("AI claim review", "Revisión de reclamaciones con IA"), href: "/worlds/ai" },
+  { photo: "work-campaign", title: b("Campaigns & social", "Campañas y redes"), href: "/worlds/content" },
 ];
 
 export default function HomePage() {
   const t = useT();
-  const [hovered, setHovered] = useState<World | null>(null);
 
   return (
     <>
-      {/* Hero — black & white; the worlds bring the colour */}
-      <section className="pt-14 pb-16 md:pt-24 md:pb-24">
+      {/* Name first, loud */}
+      <section className="pt-6 md:pt-10">
         <Container>
-          <div className="flex items-center justify-between border-b border-line pb-4">
-            <Eyebrow className="nc-fade-up">Valencia — Denmark</Eyebrow>
-            <Eyebrow className="nc-fade-up">{t(ui.hero.label)}</Eyebrow>
-          </div>
-
-          <div className="relative">
-            <h1 className="nc-fade-up nc-fade-up-1 mt-10 text-[clamp(3.5rem,11vw,10.5rem)] leading-[0.92] text-ink md:mt-16">
-              <span className="block font-display-tight">{t(ui.hero.l1)}</span>
-              <span
-                className="world-ease block serif"
-                style={{ color: hovered?.palette.text }}
-              >
-                {t(ui.hero.l2)}
-              </span>
-            </h1>
-
-            {/* A small playful detail: a rotating sticker */}
-            <div
-              aria-hidden
-              className="nc-fade-up nc-fade-up-3 absolute right-0 top-0 hidden h-36 w-36 md:block lg:h-44 lg:w-44"
-            >
-              <svg viewBox="0 0 200 200" className="nc-spin h-full w-full">
-                <defs>
-                  <path id="nc-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
-                </defs>
-                <text className="label" style={{ fontSize: 15, letterSpacing: "0.2em" }} fill="#141414">
-                  <textPath href="#nc-circle">
-                    {`${t(ui.hero.sticker)} ${t(ui.hero.sticker)} ${t(ui.hero.sticker)}`}
-                  </textPath>
-                </text>
-              </svg>
-              <span className="absolute inset-0 m-auto grid h-12 w-12 grid-cols-2 gap-0.5 rotate-12">
-                {worlds.slice(0, 4).map((w) => (
-                  <span key={w.slug} style={{ backgroundColor: w.palette.deep }} />
-                ))}
-              </span>
-            </div>
-          </div>
-
-          <div className="nc-fade-up nc-fade-up-2 mt-10 grid gap-6 md:mt-14 md:grid-cols-12">
-            <p className="font-display text-xl leading-snug text-ink md:col-span-5 md:text-2xl">
-              {t(ui.hero.sub)}
+          <h1 className="sr-only">Nerea Clemente — One mind. Many worlds.</h1>
+          <p aria-hidden className="nc-fade-up cond whitespace-nowrap text-[min(14.1vw,13.5rem)] leading-[0.82] text-ink">
+            Nerea Clemente
+          </p>
+          <div className="nc-fade-up nc-fade-up-1 mt-4 grid gap-6 border-t-2 border-ink pt-5 md:mt-6 md:grid-cols-12 md:items-end">
+            <p aria-hidden className="text-ink md:col-span-9">
+              <span className="display block text-[clamp(3rem,8.5vw,8.5rem)]">{t(copy.l1)}</span>
+              <span className="italic-serif block text-[clamp(3.2rem,9vw,9rem)] leading-[0.85]">{t(copy.l2)}</span>
             </p>
-            <p className="max-w-reading text-base leading-relaxed text-muted md:col-span-5 md:col-start-8 md:text-lg">
-              {t(ui.hero.intro)}
-            </p>
+            <Link href="/about" className="group md:col-span-3 md:pb-4">
+              <span className="serif block text-lg leading-snug text-ink md:text-xl">{t(copy.side)}</span>
+              <span aria-hidden className="mt-3 inline-block text-2xl transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
           </div>
-
-          {/* Entrances to the five worlds — a wall of posters */}
-          <ul className="nc-fade-up nc-fade-up-3 mt-14 grid grid-cols-2 gap-x-3 gap-y-6 md:mt-20 md:grid-cols-12 md:gap-x-5 md:gap-y-10">
-            {worlds.map((w, i) => (
-              <li key={w.slug} className={BENTO[i]}>
-                <WorldTile world={w} onHover={setHovered} aspect={ASPECT[i]} compact={i > 1} />
-              </li>
-            ))}
-          </ul>
         </Container>
       </section>
 
-      {/* What each world is */}
-      <section className="py-20 md:py-28">
+      {/* Five worlds collage */}
+      <section className="pt-10 md:pt-14">
         <Container>
-          <div className="mb-12 grid gap-8 md:grid-cols-12 md:items-end">
-            <div className="md:col-span-6">
-              <Eyebrow>{t(ui.home.worldsLabel)}</Eyebrow>
-              <SplitTitle
-                className="mt-4 text-[clamp(2.25rem,5vw,4rem)]"
-                a={t(ui.home.worldsTitleA)}
-                b={t(ui.home.worldsTitleB)}
-              />
-            </div>
-            <p className="max-w-reading text-base leading-relaxed text-muted md:col-span-5 md:col-start-8">
-              {t(ui.home.worldsLede)}
-            </p>
-          </div>
-
-          <ul className="border-t border-ink">
-            {worlds.map((w) => (
-              <li key={w.slug}>
+          <div className="relative grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-12 md:gap-x-5 md:gap-y-5">
+            {worlds.map((w) => {
+              const tile = TILES[w.slug];
+              return (
                 <Link
+                  key={w.slug}
                   href={`/worlds/${w.slug}`}
-                  className="group grid grid-cols-[auto_1fr] items-baseline gap-x-5 gap-y-2 border-b border-line py-7 md:grid-cols-[4rem_1fr_1.2fr_auto] md:gap-10 md:py-9"
+                  className={`group relative block overflow-hidden lift transition-transform duration-500 ease-soft hover:-translate-y-1 ${tile.cls} ${tile.tilt}`}
                 >
-                  <span className="serif text-3xl md:text-4xl" style={{ color: w.palette.text }}>
-                    {w.n}
-                  </span>
-                  <span className="flex flex-col gap-1">
-                    <span className="font-display-tight text-2xl text-ink md:text-3xl">{t(w.name)}</span>
-                    <span className="label text-muted">{w.style}</span>
-                  </span>
-                  <span className="col-span-2 max-w-reading text-base leading-relaxed text-muted md:col-span-1">
-                    {t(w.lede)}
-                  </span>
-                  <span
-                    className="hidden items-center gap-2 label transition-all group-hover:gap-4 md:inline-flex"
-                    style={{ color: w.palette.text }}
-                  >
-                    {t(ui.home.enter)} <span aria-hidden>→</span>
+                  <Photo name={tile.photo} alt="" className="transition-transform duration-700 ease-soft group-hover:scale-105" />
+                  <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                  <span className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 text-white md:p-5">
+                    <span className="cond text-[clamp(1.25rem,2.1vw,1.9rem)] leading-[0.95]">
+                      <span className="block">{w.n}</span>
+                      {t(w.name).replace(" y ", " & ")}
+                    </span>
+                    <span aria-hidden className="text-2xl transition-transform group-hover:translate-x-1">→</span>
                   </span>
                 </Link>
-              </li>
-            ))}
-          </ul>
+              );
+            })}
+            {/* The asterisk ties the worlds together */}
+            <Asterisk className="pointer-events-none absolute left-[54%] top-[26%] hidden h-32 w-32 -translate-x-1/2 -translate-y-1/2 text-ink md:block lg:h-40 lg:w-40" />
+          </div>
+        </Container>
+      </section>
+
+      {/* Black band */}
+      <section className="mt-12 md:mt-16">
+        <Container>
+          <Link href="/about" className="group grid gap-6 bg-ink px-6 py-8 text-paper md:grid-cols-12 md:items-center md:px-10 md:py-10">
+            <p className="serif text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.05] md:col-span-7">
+              {t(copy.bandA)}
+              <br />
+              {t(copy.bandB)}
+            </p>
+            <div className="flex items-end justify-between gap-6 border-paper/30 md:col-span-5 md:border-l md:pl-8">
+              <p className="serif text-base leading-snug text-paper/85 md:text-lg">{t(copy.bandSide)}</p>
+              <span aria-hidden className="text-2xl transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </Link>
         </Container>
       </section>
 
       {/* Selected work */}
-      <section className="py-20 md:py-28">
+      <section className="pt-14 md:pt-20">
         <Container>
-          <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-              <Eyebrow>{t(ui.home.selectedLabel)}</Eyebrow>
-              <SplitTitle
-                className="mt-4 text-[clamp(2.25rem,5vw,4rem)]"
-                a={t(ui.home.selectedTitleA)}
-                b={t(ui.home.selectedTitleB)}
-              />
-            </div>
-            <Button href="/work" variant="quiet">
-              {t(ui.common.allProjects)}
-            </Button>
+          <div className="mb-6 flex items-end justify-between">
+            <h2 className="serif text-[clamp(1.75rem,3vw,2.5rem)] text-ink">{t(copy.selected)}</h2>
+            <Link href="/work" className="label text-ink hover:underline">
+              {t(copy.viewAll)} →
+            </Link>
           </div>
-          <div className="flex flex-col gap-20 md:gap-28">
-            {selected.map((p) => (
-              <ProjectCard key={p.slug} project={p} variant="featured" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {WORK.map((w) => (
+              <Link key={w.photo} href={w.href} className="group block">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <Photo name={w.photo} className="transition-transform duration-700 ease-soft group-hover:scale-105" />
+                </div>
+                <p className="serif mt-3 text-xl text-ink md:text-2xl">{t(w.title)}</p>
+                <p className="label mt-1 text-muted">{t(copy.concept)}</p>
+              </Link>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* Personal introduction */}
-      <section className="bg-ink py-24 text-paper md:py-32">
+      {/* About */}
+      <section className="pb-20 pt-14 md:pb-28 md:pt-20">
         <Container>
-          <div className="grid gap-10 md:grid-cols-12">
-            <div className="md:col-span-3">
-              <span className="label text-paper/60">{t(ui.home.profileLabel)}</span>
+          <Link href="/about" className="group grid overflow-hidden bg-soft md:grid-cols-12">
+            <div className="aspect-[16/9] md:col-span-7 md:aspect-auto md:min-h-[320px]">
+              <Photo name="portrait" alt="Nerea Clemente" position="center 35%" className="grayscale" />
             </div>
-            <div className="md:col-span-9">
-              <p className="font-display text-[clamp(1.75rem,3.2vw,2.75rem)] leading-[1.15]">
-                {t(ui.home.profileLeadA)}
-                <span className="serif">{t(ui.home.profileLeadEm)}</span>
-                {t(ui.home.profileLeadB)}
-              </p>
-              <p className="mt-8 max-w-reading text-lg leading-relaxed text-paper/75">
-                {t(ui.home.profileBody)}
-              </p>
-              <Link
-                href="/about"
-                className="mt-10 inline-flex items-center gap-3 border-b border-paper pb-1 label text-paper transition-all hover:gap-5"
-              >
-                {t(ui.common.moreAbout)} <span aria-hidden>→</span>
-              </Link>
+            <div className="flex flex-col justify-center gap-4 p-8 md:col-span-5 md:p-12">
+              <h2 className="serif text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.05] text-ink">{t(copy.aboutTitle)}</h2>
+              <p className="serif text-lg leading-snug text-ink/80 md:text-xl">{t(copy.aboutText)}</p>
+              <span aria-hidden className="self-end text-2xl transition-transform group-hover:translate-x-1">→</span>
             </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Contact */}
-      <section className="py-24 md:py-32">
-        <Container size="narrow">
-          <Eyebrow>{t(ui.home.contactLabel)}</Eyebrow>
-          <p className="mt-6 font-display-tight text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] text-ink">
-            {t(ui.home.contactA)}
-            <span className="serif font-normal">{t(ui.home.contactEm)}</span>
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="/contact">{t(ui.common.contact)}</Button>
-            <Button href={`mailto:${site.email}`} variant="ghost" external>
-              {site.email}
-            </Button>
-          </div>
+          </Link>
         </Container>
       </section>
     </>

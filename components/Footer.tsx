@@ -6,101 +6,62 @@ import { useT } from "@/lib/i18n/context";
 import { ui } from "@/lib/i18n/strings";
 import { site } from "@/lib/site";
 import { worlds } from "@/lib/worlds";
+import type { Bilingual } from "@/lib/i18n/types";
+
+const connect: Bilingual = { en: "Let's connect.", es: "Conectemos." };
 
 export function Footer() {
   const year = new Date().getFullYear();
   const t = useT();
 
-  const index = [
-    { href: "/", label: ui.footer.home },
-    ...ui.nav.primary,
-    { href: "/writing", label: ui.footer.writing },
-  ];
-
   return (
-    <footer className="mt-32 border-t border-ink bg-paper">
-      {/* The five worlds, always one click away */}
-      <div className="grid grid-cols-5" aria-hidden>
-        {worlds.map((w) => (
-          <span key={w.slug} className="block h-2" style={{ backgroundColor: w.palette.deep }} />
-        ))}
-      </div>
+    <footer className="bg-ink text-paper">
       <Container>
-        <div className="grid gap-14 py-16 md:grid-cols-12 md:py-24">
-          <div className="md:col-span-6">
-            <span className="label text-muted">{t(ui.footer.open)}</span>
-            <p className="mt-6 text-[clamp(2.25rem,5vw,4rem)] leading-[0.98] text-ink">
-              <span className="block font-display-tight">{t(ui.footer.ctaA)}</span>
-              <span className="block serif">{t(ui.footer.ctaB)}</span>
-            </p>
-            <a
-              href={`mailto:${site.email}`}
-              className="mt-8 inline-flex items-center gap-2 border-b border-ink pb-1 text-lg text-ink transition-all hover:gap-4 md:text-xl"
-            >
-              {site.email} <span aria-hidden>→</span>
-            </a>
-          </div>
-
-          <FooterColumn title={t(ui.footer.index)} className="md:col-span-2 md:col-start-8">
-            {index.map((item) => (
+        <Link href="/contact" className="group flex items-center justify-between gap-6 border-b border-paper/20 py-8 md:py-10">
+          <span className="serif text-[clamp(2rem,4vw,3.25rem)] leading-none">{t(connect)}</span>
+          <span className="flex items-center gap-3 text-sm text-paper/80 md:text-base">
+            <span className="hidden sm:inline">nereaclemente.com / {year}</span>
+            <span aria-hidden className="text-2xl transition-transform group-hover:translate-x-1">→</span>
+          </span>
+        </Link>
+        <div className="flex flex-col gap-6 py-8 text-sm md:flex-row md:items-start md:justify-between">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {ui.nav.primary.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-ink hover:underline">
+                <Link href={item.href} className="label text-paper/80 hover:text-paper">
                   {t(item.label)}
                 </Link>
               </li>
             ))}
-          </FooterColumn>
-
-          <FooterColumn title={t(ui.footer.worlds)} className="md:col-span-2">
+            <li>
+              <Link href="/writing" className="label text-paper/80 hover:text-paper">
+                {t(ui.footer.writing)}
+              </Link>
+            </li>
+          </ul>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
             {worlds.map((w) => (
               <li key={w.slug}>
-                <Link href={`/worlds/${w.slug}`} className="group flex items-center gap-2 text-ink">
-                  <span aria-hidden className="h-2 w-2 rounded-full" style={{ backgroundColor: w.palette.deep }} />
-                  <span className="group-hover:underline">{t(w.short)}</span>
+                <Link href={`/worlds/${w.slug}`} className="flex items-center gap-2 text-paper/80 hover:text-paper">
+                  <span aria-hidden className="h-2 w-2 rounded-full" style={{ backgroundColor: w.palette.mid }} />
+                  {t(w.short)}
                 </Link>
               </li>
             ))}
-          </FooterColumn>
-
-          <FooterColumn title={t(ui.footer.elsewhere)} className="md:col-span-1">
-            <li>
-              <a href={site.linkedin} target="_blank" rel="noreferrer" className="text-ink hover:underline">
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href={site.instagram} target="_blank" rel="noreferrer" className="text-ink hover:underline">
-                Instagram
-              </a>
-            </li>
-          </FooterColumn>
-        </div>
-
-        <div className="flex flex-col gap-2 border-t border-line py-6 label text-muted md:flex-row md:items-center md:justify-between">
-          <span>
-            © {year} {site.name}
-          </span>
-          <span>{t(site.location)}</span>
-          <span>{t(ui.footer.set)}</span>
+          </ul>
+          <div className="flex gap-5">
+            <a href={`mailto:${site.email}`} className="text-paper/80 hover:text-paper">
+              Email
+            </a>
+            <a href={site.linkedin} target="_blank" rel="noreferrer" className="text-paper/80 hover:text-paper">
+              LinkedIn
+            </a>
+            <a href={site.instagram} target="_blank" rel="noreferrer" className="text-paper/80 hover:text-paper">
+              Instagram
+            </a>
+          </div>
         </div>
       </Container>
     </footer>
-  );
-}
-
-function FooterColumn({
-  title,
-  className = "",
-  children,
-}: {
-  title: string;
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className={className}>
-      <span className="label text-muted">{title}</span>
-      <ul className="mt-4 flex flex-col gap-2 text-base">{children}</ul>
-    </div>
   );
 }

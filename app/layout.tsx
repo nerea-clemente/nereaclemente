@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Instrument_Serif, Anton, Silkscreen, Rubik } from "next/font/google";
+import { Manrope, Instrument_Serif, Anton, Silkscreen, Rubik, Inter_Tight, Caveat } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { LocaleProvider } from "@/lib/i18n/context";
@@ -22,12 +22,16 @@ const serif = Instrument_Serif({
 });
 
 // Accent faces: Rubik for Seafood, Anton for Creative & Content, Silkscreen for AI labels.
-const anton = Anton({ subsets: ["latin"], variable: "--font-anton", weight: "400", preload: false });
+const anton = Anton({ subsets: ["latin"], variable: "--font-anton", weight: "400", display: "swap" });
 const pixel = Silkscreen({ subsets: ["latin"], variable: "--font-pixel", weight: "400", preload: false });
 
 const rubik = Rubik({ subsets: ["latin"], variable: "--font-rubik", weight: ["700", "900"], preload: false });
 
-const fontVars = `${anton.variable} ${pixel.variable} ${rubik.variable}`;
+// Inter Tight: heavy display headlines. Caveat: handwritten notes.
+const display = Inter_Tight({ subsets: ["latin"], variable: "--font-display", weight: ["700", "800", "900"], display: "swap" });
+const hand = Caveat({ subsets: ["latin"], variable: "--font-hand", weight: ["500", "600", "700"], display: "swap" });
+
+const fontVars = `${anton.variable} ${pixel.variable} ${rubik.variable} ${display.variable} ${hand.variable}`;
 
 export const metadata: Metadata = {
   title: {

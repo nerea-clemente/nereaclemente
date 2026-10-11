@@ -33,11 +33,16 @@ export function Navigation() {
     (href === "/work" && pathname.startsWith("/worlds"));
 
   // The small indicator takes the colour of the active world; ink elsewhere.
-  const dot = world?.palette.deep ?? "#141414";
+  const dot = world?.palette.mid ?? "#141414";
+  // On a world page the bar takes that world's paper and ink.
+  const bar = world ? { backgroundColor: world.palette.page, color: world.palette.ink } : undefined;
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
+      <header
+        className={`world-ease sticky top-0 z-40 ${world ? "border-b border-black/10" : "border-b border-line bg-paper/95 backdrop-blur"}`}
+        style={bar}
+      >
         <Container>
           <div className="flex h-16 items-center justify-between md:h-[72px]">
             <Link href="/" className="flex items-center gap-3" aria-label="Nerea Clemente — Home">
@@ -46,11 +51,9 @@ export function Navigation() {
                 className="world-ease block h-2.5 w-2.5 rounded-full"
                 style={{ backgroundColor: dot }}
               />
-              <span className="label text-ink">
-                NC <span className="text-muted">/</span> Nerea Clemente
-              </span>
+              <span className="cond text-[1.35rem] leading-none tracking-[0.01em]">Nerea Clemente</span>
               {world && (
-                <span className="label hidden text-muted lg:inline">
+                <span className="label hidden opacity-60 lg:inline">
                   <span className="sr-only">{t(ui.nav.activeWorld)}: </span>
                   — {world.n} {t(world.short)}
                 </span>
@@ -67,8 +70,8 @@ export function Navigation() {
                         <Link
                           href={item.href}
                           aria-current={active ? "page" : undefined}
-                          className={`group relative label transition-colors ${
-                            active ? "text-ink" : "text-muted hover:text-ink"
+                          className={`group relative label transition-opacity ${
+                            active ? "" : "opacity-60 hover:opacity-100"
                           }`}
                         >
                           {t(item.label)}
@@ -209,8 +212,8 @@ function LangToggle({
             type="button"
             onClick={() => setLocale(l)}
             aria-pressed={locale === l}
-            className={`transition-colors ${
-              locale === l ? "text-ink" : "text-muted hover:text-ink"
+            className={`transition-opacity ${
+              locale === l ? "" : "opacity-50 hover:opacity-100"
             }`}
           >
             {l}

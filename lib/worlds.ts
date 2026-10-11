@@ -16,6 +16,10 @@ export type WorldPalette = {
   text: string;
   /** Text colour on top of `deep`. */
   on: string;
+  /** Page background of the world's section. */
+  page: string;
+  /** Headline / ink colour on the page background. */
+  ink: string;
 };
 
 export type World = {
@@ -45,12 +49,14 @@ export const worlds: World[] = [
     short: b("Seafood", "Seafood"),
     style: "Ocean Editorial",
     palette: {
-      deep: "#083B66",
-      mid: "#1679B8",
-      light: "#83D3EF",
-      tint: "#EDF7FB",
-      text: "#083B66",
+      deep: "#0B1F4D",
+      mid: "#2F7DF0",
+      light: "#9CCBF5",
+      tint: "#E6F2FB",
+      text: "#0B3A8C",
       on: "#FFFFFF",
+      page: "#D9ECF8",
+      ink: "#0B1F4D",
     },
     lede: b(
       "Where it all started: fish farms, science and sustainability — told so people actually care.",
@@ -77,12 +83,14 @@ export const worlds: World[] = [
     short: b("Brand", "Marca"),
     style: "Bold Editorial",
     palette: {
-      deep: "#421F36",
-      mid: "#762D46",
-      light: "#DCA9BA",
-      tint: "#F7ECE7",
-      text: "#421F36",
+      deep: "#4A0F25",
+      mid: "#7A1E3E",
+      light: "#E9A9BC",
+      tint: "#F7E1E7",
+      text: "#5C1430",
       on: "#FFFFFF",
+      page: "#F2C6D1",
+      ink: "#3E0B1E",
     },
     lede: b(
       "Figuring out what a brand really stands for — and helping it say so, out loud.",
@@ -109,12 +117,14 @@ export const worlds: World[] = [
     short: b("AI", "IA"),
     style: "Organic Technology",
     palette: {
-      deep: "#153F32",
-      mid: "#40866B",
-      light: "#BCEC78",
-      tint: "#E5F4E8",
-      text: "#153F32",
+      deep: "#0F3D2A",
+      mid: "#3E7D57",
+      light: "#C6EC6A",
+      tint: "#EEF7EA",
+      text: "#0F3D2A",
       on: "#FFFFFF",
+      page: "#E2F1DC",
+      ink: "#0F3D2A",
     },
     lede: b(
       "Small, useful systems that give people their time back.",
@@ -141,12 +151,14 @@ export const worlds: World[] = [
     short: b("Content", "Contenido"),
     style: "Playful Editorial",
     palette: {
-      deep: "#E85D2A",
-      mid: "#F48D71",
-      light: "#F8C4A2",
-      tint: "#FFF1E4",
+      deep: "#F0642E",
+      mid: "#F58A5C",
+      light: "#FBC7AA",
+      tint: "#FDE7DA",
       text: "#B23F14",
       on: "#141414",
+      page: "#FBD3BE",
+      ink: "#141414",
     },
     lede: b(
       "Campaigns, stories, social, copy, design and video — my loudest, most colourful side.",
@@ -173,12 +185,14 @@ export const worlds: World[] = [
     short: b("Playground", "Playground"),
     style: "Creative Chaos",
     palette: {
-      deep: "#6436C8",
-      mid: "#9565E0",
-      light: "#C9B5F0",
-      tint: "#F0E9FC",
-      text: "#5A2FB8",
+      deep: "#2B0F6B",
+      mid: "#6A35D8",
+      light: "#C8B0F4",
+      tint: "#EFE7FD",
+      text: "#4A1FB0",
       on: "#FFFFFF",
+      page: "#C8B0F4",
+      ink: "#2B0F6B",
     },
     lede: b(
       "My sandbox: ideas, experiments and things I make just for fun.",
