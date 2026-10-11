@@ -33,12 +33,12 @@ const copy = {
 };
 
 // The world collage: photo, crop focus, grid placement and a slight tilt.
-const TILES: Record<string, { photo: string; cls: string; tilt: string }> = {
-  seafood: { photo: "home-seafood", cls: "col-span-2 md:col-span-6 aspect-[16/10]", tilt: "" },
-  brand: { photo: "home-brand", cls: "aspect-square md:col-span-5 md:col-start-8 md:aspect-[16/10]", tilt: "md:rotate-[2.5deg]" },
-  ai: { photo: "home-ai", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:-mt-6", tilt: "md:-rotate-[1.5deg]" },
-  content: { photo: "home-content", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:mt-6", tilt: "md:-rotate-[3deg]" },
-  playground: { photo: "home-playground", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:-mt-2", tilt: "md:rotate-[1.5deg]" },
+const TILES: Record<string, { pos: string; photo: string; cls: string; tilt: string }> = {
+  seafood: { pos: "70% 45%", photo: "home-seafood", cls: "col-span-2 md:col-span-6 aspect-[16/10]", tilt: "" },
+  brand: { pos: "65% 55%", photo: "home-brand", cls: "aspect-square md:col-span-5 md:col-start-8 md:aspect-[16/10]", tilt: "md:rotate-[2.5deg]" },
+  ai: { pos: "72% 45%", photo: "home-ai", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:-mt-6", tilt: "md:-rotate-[1.5deg]" },
+  content: { pos: "72% 40%", photo: "home-content", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:mt-6", tilt: "md:-rotate-[3deg]" },
+  playground: { pos: "68% 55%", photo: "home-playground", cls: "aspect-square md:col-span-4 md:aspect-[5/4] md:-mt-2", tilt: "md:rotate-[1.5deg]" },
 };
 
 const WORK = [
@@ -86,7 +86,7 @@ export default function HomePage() {
                   href={`/worlds/${w.slug}`}
                   className={`group relative block overflow-hidden lift transition-transform duration-500 ease-soft hover:-translate-y-1 ${tile.cls} ${tile.tilt}`}
                 >
-                  <Photo name={tile.photo} alt="" className="transition-transform duration-700 ease-soft group-hover:scale-105" />
+                  <Photo name={tile.photo} alt="" position={tile.pos} className="transition-transform duration-700 ease-soft group-hover:scale-105" />
                   <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                   <span className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 text-white md:p-5">
                     <span className="cond text-[clamp(1.25rem,2.1vw,1.9rem)] leading-[0.95]">

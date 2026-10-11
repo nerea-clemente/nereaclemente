@@ -110,7 +110,7 @@ export function AboutContent() {
               <li key={w.slug} className={w.slug === "seafood" ? "col-span-2 md:col-span-1" : ""}>
                 <Link href={`/worlds/${w.slug}`} className="group block">
                   <div className="relative aspect-[4/5] overflow-hidden">
-                    <Photo name={`home-${w.slug}`} className="transition-transform duration-700 ease-soft group-hover:scale-105" />
+                    <Photo name={`home-${w.slug}`} position="70% 50%" className="transition-transform duration-700 ease-soft group-hover:scale-105" />
                     <span className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <span className="cond absolute bottom-3 left-3 text-xl leading-[0.95] text-white">
                       <span className="block">{w.n}</span>

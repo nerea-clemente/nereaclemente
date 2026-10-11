@@ -17,16 +17,16 @@ Todas las fotos van en `public/images/provisional/`. Para cambiar una, basta con
 
 Una imagen que resuma cada mundo. Horizontales (16:10) o cuadradas.
 
-- [ ] ⭐ `home-seafood.jpg` — Peces / agua / granja marina. Azules.
-- [ ] ⭐ `home-brand.jpg` — Algo de marca: papelería, presentación, revista, detalle de una campaña. Tonos granate/rosa si es posible.
-- [ ] ⭐ `home-ai.jpg` — Pantalla con una herramienta o automatización tuya (captura real vale). Verdes.
-- [ ] ⭐ `home-content.jpg` — Rodaje, foto de redes, persona creando contenido. Naranjas.
-- [ ] ⭐ `home-playground.jpg` — Un experimento visual tuyo, 3D, collage o lo que quieras. Morados.
+- [x] ⭐ `home-seafood.jpg` — Peces / agua / granja marina. Azules.
+- [x] ⭐ `home-brand.jpg` — Algo de marca: papelería, presentación, revista, detalle de una campaña. Tonos granate/rosa si es posible.
+- [x] ⭐ `home-ai.jpg` — Pantalla con una herramienta o automatización tuya (captura real vale). Verdes.
+- [x] ⭐ `home-content.jpg` — Rodaje, foto de redes, persona creando contenido. Naranjas.
+- [x] ⭐ `home-playground.jpg` — Un experimento visual tuyo, 3D, collage o lo que quieras. Morados.
 
 ## 3. Home — trabajo seleccionado (3 fotos)
 
-- [ ] `work-fish.jpg` — Imagen del proyecto de salud de peces (o el que quieras destacar de Seafood).
-- [ ] `work-ai.jpg` — Captura de tu herramienta de IA.
+- [x] `work-fish.jpg` — Imagen del proyecto de salud de peces (o el que quieras destacar de Seafood).
+- [x] `work-ai.jpg` — Captura de tu herramienta de IA.
 - [ ] `work-campaign.jpg` — Imagen de una campaña / pieza de redes.
 
 > Si prefieres destacar otros proyectos, dime cuáles y cambio los títulos.
