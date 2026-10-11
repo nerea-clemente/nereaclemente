@@ -10,7 +10,7 @@ export const siteMeta = {
   url: "https://nereaclemente.com",
   taglineEn: "One mind. Many worlds.",
   subtaglineEn:
-    "Portfolio of Nerea Clemente — strategy, creativity, innovation and everything in between. Seafood & aquaculture, brand & strategy, AI & automation, creative & content, and a playground.",
+    "Portfolio of Nerea Clemente: strategy, creativity, innovation and everything in between. Seafood & aquaculture, brand & strategy, AI & automation, creative & content, and a playground.",
 };
 
 export const site = {

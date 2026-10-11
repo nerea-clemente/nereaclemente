@@ -6,11 +6,11 @@ const b = <T,>(en: T, es: T): Bilingual<T> => ({ en, es });
 export type WorldSlug = "seafood" | "brand" | "ai" | "content" | "playground";
 
 export type WorldPalette = {
-  /** Main colour — tiles, covers, world headers. */
+  /** Main colour: tiles, covers, world headers. */
   deep: string;
   mid: string;
   light: string;
-  /** Lightest tint — section backgrounds. */
+  /** Lightest tint: section backgrounds. */
   tint: string;
   /** Accessible text colour on white (AA for body text). */
   text: string;
@@ -59,7 +59,7 @@ export const worlds: World[] = [
       ink: "#0B1F4D",
     },
     lede: b(
-      "Where it all started: fish farms, science and sustainability — told so people actually care.",
+      "Where it all started: fish farms, science and sustainability, told so people actually care.",
       "Donde empezó todo: piscifactorías, ciencia y sostenibilidad, contadas para que a la gente le importen."
     ),
     description: b(
@@ -93,11 +93,11 @@ export const worlds: World[] = [
       ink: "#3E0B1E",
     },
     lede: b(
-      "Figuring out what a brand really stands for — and helping it say so, out loud.",
+      "Figuring out what a brand really stands for, and helping it say so out loud.",
       "Descubrir qué defiende de verdad una marca y ayudarla a decirlo en voz alta."
     ),
     description: b(
-      "Before any logo or campaign, I like to sit with the hard question: what do you actually stand for? Then I build the story, the positioning and the campaigns that carry it — across markets and languages.",
+      "Before any logo or campaign, I like to sit with the hard question: what do you actually stand for? Then I build the story, the positioning and the campaigns that carry it across markets and languages.",
       "Antes de cualquier logo o campaña, me gusta sentarme con la pregunta difícil: ¿qué defiendes de verdad? Después construyo la historia, el posicionamiento y las campañas que lo llevan a otros mercados e idiomas."
     ),
     shows: b(
@@ -161,11 +161,11 @@ export const worlds: World[] = [
       ink: "#141414",
     },
     lede: b(
-      "Campaigns, stories, social, copy, design and video — my loudest, most colourful side.",
+      "Campaigns, stories, social, copy, design and video: my loudest, most colourful side.",
       "Campañas, historias, redes, copy, diseño y vídeo: mi lado más ruidoso y colorido."
     ),
     description: b(
-      "This is where I get to play with words and pictures. The real pieces are the stars here — the orange is just the frame.",
+      "This is where I get to play with words and pictures. The real pieces are the stars here. The orange is just the frame.",
       "Aquí es donde juego con palabras e imágenes. Las piezas reales son las protagonistas; el naranja solo es el marco."
     ),
     shows: b(
@@ -199,7 +199,7 @@ export const worlds: World[] = [
       "Mi patio de juegos: ideas, experimentos y cosas que hago solo por diversión."
     ),
     description: b(
-      "Visual experiments, personal designs, little side projects, AI tests — the things I make on a Sunday because I can't help it. None of it had a brief, and that's the point.",
+      "Visual experiments, personal designs, little side projects, AI tests: the things I make on a Sunday because I can't help it. None of it had a brief, and that's the point.",
       "Experimentos visuales, diseños personales, pequeños proyectos, pruebas de IA: las cosas que hago un domingo porque no puedo evitarlo. Nada de esto tuvo brief, y ahí está la gracia."
     ),
     shows: b(

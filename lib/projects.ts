@@ -19,7 +19,7 @@ export type GalleryItem = {
 export type Project = {
   slug: string;
   year: string;
-  /** Format of the work — campaign, editorial, etc. */
+  /** Format of the work: campaign, editorial, etc. */
   category: ProjectCategory;
   /** Primary world: sets the card colour and where the case lives. */
   world: WorldSlug;
@@ -72,12 +72,12 @@ export const projects: Project[] = [
     approach: b(
       [
         "Spent two weeks on site documenting the production cycle, feed programme and traceability system in plain language.",
-        "Defined a narrative frame — Origin, Method, Responsibility — that the team could actually use in sales meetings, decks and media responses.",
+        "Defined a narrative frame (Origin, Method, Responsibility) that the team could actually use in sales meetings, decks and media responses.",
         "Built a messaging matrix for three audiences: buyers, retailers, and press, with calibrated depth for each.",
       ],
       [
         "Dos semanas en la granja documentando el ciclo productivo, el programa de alimentación y el sistema de trazabilidad en lenguaje llano.",
-        "Definimos un marco narrativo — Origen, Método, Responsabilidad — que el equipo pudiera usar de verdad en reuniones comerciales, presentaciones y respuestas a medios.",
+        "Definimos un marco narrativo (Origen, Método, Responsabilidad) que el equipo pudiera usar de verdad en reuniones comerciales, presentaciones y respuestas a medios.",
         "Construimos una matriz de mensajes para tres audiencias: compradores, distribuidores y prensa, con profundidad ajustada para cada una.",
       ]
     ),
@@ -121,7 +121,7 @@ export const projects: Project[] = [
   },
   {
     slug: "science-communication",
-    year: "2023 — present",
+    year: "2023 →",
     category: "Science communication",
     world: "seafood",
     tags: ["content"],
@@ -136,8 +136,8 @@ export const projects: Project[] = [
       "Una línea de trabajo continua que traduce investigación, ensayos de alimentación y datos ambientales en artículos, briefings y materiales visuales legibles."
     ),
     overview: b(
-      "A running practice rather than a single project: editorial work that takes technical material — feed trial results, welfare indicators, water quality data — and turns it into something a retailer, policymaker or general reader can actually use.",
-      "Más una práctica continua que un proyecto único: trabajo editorial que toma material técnico — resultados de ensayos de pienso, indicadores de bienestar, datos de calidad del agua — y lo convierte en algo que un distribuidor, un regulador o un lector general pueda usar de verdad."
+      "A running practice rather than a single project: editorial work that takes technical material (feed trial results, welfare indicators, water quality data) and turns it into something a retailer, policymaker or general reader can actually use.",
+      "Más una práctica continua que un proyecto único: trabajo editorial que toma material técnico (resultados de ensayos de pienso, indicadores de bienestar, datos de calidad del agua) y lo convierte en algo que un distribuidor, un regulador o un lector general pueda usar de verdad."
     ),
     context: b(
       "Technical teams often hold the most interesting part of the story and the least accessible version of it. Across several clients the same pattern appeared: strong science, weak surface. The brief, repeatedly, was to keep the substance and fix the surface.",
@@ -149,12 +149,12 @@ export const projects: Project[] = [
     ),
     approach: b(
       [
-        "Start from the primary source — the study, the dataset, the protocol — not the summary slide.",
+        "Start from the primary source (the study, the dataset, the protocol), not the summary slide.",
         "Write a first plain-language version, then check it back with the technical lead before design.",
         "Keep uncertainty visible. Do not smooth over what the data does not yet show.",
       ],
       [
-        "Empezar desde la fuente primaria — el estudio, el dataset, el protocolo — no desde la diapositiva resumen.",
+        "Empezar desde la fuente primaria (el estudio, el dataset, el protocolo), no desde la diapositiva resumen.",
         "Escribir una primera versión en lenguaje llano y validarla con el responsable técnico antes de pasar a diseño.",
         "Mantener visible la incertidumbre. No suavizar lo que los datos aún no muestran.",
       ]
@@ -221,12 +221,12 @@ export const projects: Project[] = [
       [
         "Anchored the campaign to one argument: what goes into the fish shapes everything downstream.",
         "Built a publishing rhythm of one long article and one short accompanying piece per month, so the argument could compound.",
-        "Commissioned interviews with a nutritionist, a welfare researcher, a retailer buyer and a chef — one voice per function.",
+        "Commissioned interviews with a nutritionist, a welfare researcher, a retailer buyer and a chef, one voice per function.",
       ],
       [
         "Anclamos la campaña a un único argumento: lo que entra en el pez condiciona todo lo que viene después.",
         "Establecimos un ritmo de publicación de un artículo largo y uno corto al mes, para que el argumento se acumulara.",
-        "Encargamos entrevistas a un nutricionista, una investigadora de bienestar, un comprador de distribución y un cocinero — una voz por función.",
+        "Encargamos entrevistas a un nutricionista, una investigadora de bienestar, un comprador de distribución y un cocinero, una voz por función.",
       ]
     ),
     execution: b(
@@ -234,13 +234,13 @@ export const projects: Project[] = [
         "Four long-form articles.",
         "Four shorter companion pieces for social and newsletter.",
         "A campaign landing page with a simple reading order.",
-        "Light visual system — no stock imagery, no hero shots of fish.",
+        "Light visual system, no stock imagery, no hero shots of fish.",
       ],
       [
         "Cuatro artículos largos.",
         "Cuatro piezas más cortas que los acompañan, para redes y newsletter.",
         "Una landing de campaña con un orden de lectura claro.",
-        "Sistema visual ligero — sin imágenes de banco, sin planos heroicos de peces.",
+        "Sistema visual ligero, sin imágenes de banco, sin planos heroicos de peces.",
       ]
     ),
     outcome: b(
@@ -282,8 +282,8 @@ export const projects: Project[] = [
       "Dirigí la parte editorial de un informe anual de sostenibilidad. El encargo era mantener cada dato y cada referencia normativa, y aun así hacer un documento que la gente quisiera leer de verdad."
     ),
     context: b(
-      "The previous year's report was technically correct and almost unread. The ESG team was frustrated that the real work — welfare progress, feed transition, community programmes — was getting buried under indicators.",
-      "El informe del año anterior era técnicamente correcto y casi nadie lo leía. El equipo ESG estaba frustrado porque el trabajo real — avances en bienestar, transición de pienso, programas comunitarios — quedaba enterrado bajo los indicadores."
+      "The previous year's report was technically correct and almost unread. The ESG team was frustrated that the real work (welfare progress, feed transition, community programmes) was getting buried under indicators.",
+      "El informe del año anterior era técnicamente correcto y casi nadie lo leía. El equipo ESG estaba frustrado porque el trabajo real (avances en bienestar, transición de pienso, programas comunitarios) quedaba enterrado bajo los indicadores."
     ),
     role: b(
       "Editorial lead, working alongside the ESG team, finance and design.",
@@ -293,12 +293,12 @@ export const projects: Project[] = [
       [
         "Mapped the document around three human questions before getting to indicators: what did we commit to, what did we actually do, what did we learn.",
         "Wrote an opening letter that named the hard parts honestly, not just the wins.",
-        "Kept all the standard disclosures — they live in their own section, clearly signposted.",
+        "Kept all the standard disclosures: they live in their own section, clearly signposted.",
       ],
       [
         "Estructuramos el documento alrededor de tres preguntas humanas antes de entrar en indicadores: a qué nos comprometimos, qué hicimos de verdad, qué aprendimos.",
         "Escribí una carta de apertura que nombraba honestamente las partes difíciles, no solo las victorias.",
-        "Mantuvimos todas las divulgaciones estándar — viven en su propia sección, claramente señalizada.",
+        "Mantuvimos todas las divulgaciones estándar: viven en su propia sección, claramente señalizada.",
       ]
     ),
     execution: b(
@@ -334,7 +334,7 @@ export const projects: Project[] = [
   },
   {
     slug: "women-in-aquaculture",
-    year: "2023 — present",
+    year: "2023 →",
     category: "Initiative",
     world: "content",
     tags: ["seafood", "brand"],
@@ -345,8 +345,8 @@ export const projects: Project[] = [
       ["Editorial", "Comunidad", "Marca"]
     ),
     summary: b(
-      "A running editorial initiative documenting the work of women across the aquaculture value chain — from hatcheries to policy.",
-      "Una iniciativa editorial continua que documenta el trabajo de mujeres a lo largo de la cadena de valor acuícola — desde los criaderos hasta la regulación."
+      "A running editorial initiative documenting the work of women across the aquaculture value chain, from hatcheries to policy.",
+      "Una iniciativa editorial continua que documenta el trabajo de mujeres a lo largo de la cadena de valor acuícola, desde los criaderos hasta la regulación."
     ),
     overview: b(
       "A long-form interview and portrait series, published in instalments, that records the careers and thinking of women working across aquaculture: technicians, researchers, farm managers, regulators, founders.",
@@ -363,12 +363,12 @@ export const projects: Project[] = [
     approach: b(
       [
         "One subject at a time. No composite profiles.",
-        "Interviews focused on the work itself — decisions, trade-offs, day-to-day — not personal branding.",
+        "Interviews focused on the work itself (decisions, trade-offs, day-to-day) not personal branding.",
         "A calm, consistent visual identity. No overdesigned treatments.",
       ],
       [
         "Una persona por entrega. Sin perfiles compuestos.",
-        "Entrevistas centradas en el trabajo — decisiones, compromisos, día a día — no en la marca personal.",
+        "Entrevistas centradas en el trabajo (decisiones, compromisos, día a día) no en la marca personal.",
         "Una identidad visual tranquila y constante. Sin tratamientos sobrediseñados.",
       ]
     ),
@@ -404,7 +404,7 @@ export const projects: Project[] = [
   },
   {
     slug: "seafood-on-nerea",
-    year: "2022 — present",
+    year: "2022 →",
     category: "Personal",
     world: "content",
     tags: ["seafood", "playground"],
@@ -415,12 +415,12 @@ export const projects: Project[] = [
       ["Marca personal", "Editorial", "Desarrollo de recetas"]
     ),
     summary: b(
-      "A personal platform exploring how seafood is bought, cooked and talked about — written from inside the industry.",
-      "Una plataforma personal sobre cómo se compra, se cocina y se habla del producto del mar — escrita desde dentro del sector."
+      "A personal platform exploring how seafood is bought, cooked and talked about, written from inside the industry.",
+      "Una plataforma personal sobre cómo se compra, se cocina y se habla del producto del mar, escrita desde dentro del sector."
     ),
     overview: b(
-      "An ongoing personal project sitting between editorial, recipe and field notes. Seafood on Nerea is where I work out the ideas that show up later in client work — and test whether I can make aquaculture feel close to people's kitchens.",
-      "Un proyecto personal continuo que está entre lo editorial, la receta y la nota de campo. Seafood on Nerea es donde elaboro las ideas que después aparecen en el trabajo de cliente — y donde compruebo si puedo hacer que la acuicultura se sienta cerca de la cocina de la gente."
+      "An ongoing personal project sitting between editorial, recipe and field notes. Seafood on Nerea is where I work out the ideas that show up later in client work, and test whether I can make aquaculture feel close to people's kitchens.",
+      "Un proyecto personal continuo que está entre lo editorial, la receta y la nota de campo. Seafood on Nerea es donde elaboro las ideas que después aparecen en el trabajo de cliente, y donde compruebo si puedo hacer que la acuicultura se sienta cerca de la cocina de la gente."
     ),
     context: b(
       "Most seafood content online sits either in the trade press or on food blogs. Very little moves between the two. The project exists in that gap, and uses it as a creative brief.",
@@ -439,7 +439,7 @@ export const projects: Project[] = [
       [
         "Cocinar primero, escribir después. Si el plato no funciona, el artículo no existe.",
         "Mantener la trazabilidad honesta. Decir qué compré, dónde y por qué.",
-        "Escribir en inglés británico con inclinación mediterránea — es el registro honesto.",
+        "Escribir en inglés británico con inclinación mediterránea: es el registro honesto.",
       ]
     ),
     execution: b(
@@ -478,7 +478,7 @@ export const projects: Project[] = [
     category: "Speculative",
     world: "brand",
     tags: ["seafood", "playground"],
-    title: b("SeaFarm — speculative rebrand", "SeaFarm — rebranding especulativo"),
+    title: b("SeaFarm: speculative rebrand", "SeaFarm: rebranding especulativo"),
     client: b("Speculative", "Especulativo"),
     disciplines: b(
       ["Brand strategy", "Naming", "Narrative"],
@@ -493,8 +493,8 @@ export const projects: Project[] = [
       "Un proyecto propio de marca y narrativa que explora cómo podría posicionarse una empresa de acuicultura de recirculación sin caer en el registro habitual de tech-startup."
     ),
     context: b(
-      "A lot of land-based aquaculture communication borrows from software branding — gradients, abstractions, future tense. The speculative brief here was to see what it looks like to communicate the same sector from a place of craft and restraint.",
-      "Mucha comunicación de acuicultura en tierra toma prestado del branding de software — degradados, abstracciones, futuro permanente. El brief especulativo aquí era ver cómo se ve comunicar el mismo sector desde el oficio y la contención."
+      "A lot of land-based aquaculture communication borrows from software branding: gradients, abstractions, future tense. The speculative brief here was to see what it looks like to communicate the same sector from a place of craft and restraint.",
+      "Mucha comunicación de acuicultura en tierra toma prestado del branding de software: degradados, abstracciones, futuro permanente. El brief especulativo aquí era ver cómo se ve comunicar el mismo sector desde el oficio y la contención."
     ),
     role: b(
       "Concept, strategy and writing.",

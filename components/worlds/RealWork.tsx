@@ -10,7 +10,7 @@ import { getWorld, type WorldSlug } from "@/lib/worlds";
 
 const title: Bilingual = { en: "Case studies in this world", es: "Casos de este mundo" };
 const empty: Bilingual = {
-  en: "Real cases for this world are on their way. Ask me in the meantime — some of it is easier to show on a call.",
+  en: "Real cases for this world are on their way. Ask me in the meantime. Some of it is easier to show on a call.",
   es: "Los casos reales de este mundo están en camino. Mientras tanto, pregúntame: hay cosas que se enseñan mejor en una llamada.",
 };
 

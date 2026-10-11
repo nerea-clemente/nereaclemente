@@ -38,7 +38,7 @@ export const articles: Article[] = [
     title: b("Feed is the story", "El pienso es la historia"),
     dek: b(
       "Most of aquaculture's environmental footprint, and most of its communication problem, starts with what goes into the fish.",
-      "La mayor parte de la huella ambiental de la acuicultura — y de su problema de comunicación — empieza en lo que come el pez."
+      "La mayor parte de la huella ambiental de la acuicultura (y de su problema de comunicación) empieza en lo que come el pez."
     ),
     readTime: b("9 min read", "9 min de lectura"),
     date: b("January 2026", "Enero de 2026"),
@@ -59,8 +59,8 @@ export const articles: Article[] = [
     category: "Essay",
     title: b("Writing sustainability without the greenwash", "Escribir sostenibilidad sin greenwashing"),
     dek: b(
-      "Three editorial habits that keep sustainability communication honest — and readable.",
-      "Tres hábitos editoriales que mantienen honesta — y legible — la comunicación de sostenibilidad."
+      "Three editorial habits that keep sustainability communication honest and readable.",
+      "Tres hábitos editoriales que mantienen honesta y legible la comunicación de sostenibilidad."
     ),
     readTime: b("6 min read", "6 min de lectura"),
     date: b("September 2025", "Septiembre de 2025"),

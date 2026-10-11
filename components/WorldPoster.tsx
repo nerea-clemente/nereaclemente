@@ -218,7 +218,7 @@ function SeafoodCover({ world, title, caption: cap, fragments = [], kicker }: Po
 }
 
 /* ------------------------------------------------ 02 · Bold Editorial */
-/* Idea: a magazine cover split in two — the headline changes colour as it
+/* Idea: a magazine cover split in two: the headline changes colour as it
    crosses into the darker panel. */
 
 function BrandCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
@@ -249,7 +249,7 @@ function BrandCover({ world, title, caption: cap, fragments = [], kicker }: Post
             className="absolute right-[3cqmin] top-1/2 origin-right -translate-y-1/2 rotate-90 whitespace-nowrap italic-serif"
             style={{ fontSize: "max(12px, 3cqmin)", color: p.light }}
           >
-            Nº {world.n} — {world.style}
+            Nº {world.n}: {world.style}
           </span>
         </div>
       }
@@ -266,7 +266,7 @@ function BrandCover({ world, title, caption: cap, fragments = [], kicker }: Post
 }
 
 /* -------------------------------------------- 03 · Organic Technology */
-/* Idea: a system at work — a small flow of nodes and a blinking cursor. */
+/* Idea: a system at work: a small flow of nodes and a blinking cursor. */
 
 function AiCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
   const p = world.palette;
@@ -339,7 +339,7 @@ function AiCover({ world, title, caption: cap, fragments = [], kicker }: PosterP
 }
 
 /* ---------------------------------------------- 04 · Playful Editorial */
-/* Idea: a collage — two cut-out "prints" taped over a big condensed headline. */
+/* Idea: a collage: two cut-out "prints" taped over a big condensed headline. */
 
 function ContentCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {
   const p = world.palette;
@@ -380,7 +380,7 @@ function ContentCover({ world, title, caption: cap, fragments = [], kicker }: Po
 }
 
 /* --------------------------------------------------- 05 · Creative Chaos */
-/* Idea: letters that won't sit the same way twice — fill, outline, italic —
+/* Idea: letters that won't sit the same way twice: fill, outline, italic  
    and jump when you come close. */
 
 function PlaygroundCover({ world, title, caption: cap, fragments = [], kicker }: PosterProps) {

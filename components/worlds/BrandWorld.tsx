@@ -22,7 +22,7 @@ const c = {
   concept: b("Concept preview", "Concept preview"),
   selected: b("Selected work", "Trabajo seleccionado"),
   selectedSide: b("Three ways I help brands create connection and lasting impact.", "Tres formas en las que ayudo a las marcas a conectar y dejar huella."),
-  bandTitle: b("Strategy is deciding what matters — then saying it clearly.", "La estrategia es decidir qué importa y luego decirlo claro."),
+  bandTitle: b("Strategy is deciding what matters, then saying it clearly.", "La estrategia es decidir qué importa y luego decirlo claro."),
   bandText: b(
     "I help brands work out what they really stand for, then turn it into positioning, campaigns and messages that travel across markets and languages.",
     "Ayudo a las marcas a descubrir qué defienden de verdad y a convertirlo en posicionamiento, campañas y mensajes que viajan entre mercados e idiomas."

@@ -45,7 +45,7 @@ export function Navigation() {
       >
         <Container>
           <div className="flex h-16 items-center justify-between md:h-[72px]">
-            <Link href="/" className="flex items-center gap-3" aria-label="Nerea Clemente — Home">
+            <Link href="/" className="flex items-center gap-3" aria-label="Nerea Clemente, home">
               <span
                 aria-hidden
                 className="world-ease block h-2.5 w-2.5 rounded-full"
@@ -55,7 +55,7 @@ export function Navigation() {
               {world && (
                 <span className="label hidden opacity-60 lg:inline">
                   <span className="sr-only">{t(ui.nav.activeWorld)}: </span>
-                  — {world.n} {t(world.short)}
+                  / {world.n} {t(world.short)}
                 </span>
               )}
             </Link>

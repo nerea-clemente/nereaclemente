@@ -27,8 +27,8 @@ const copy = {
   concept: b("Concept preview", "Concept preview"),
   aboutTitle: b("A little more about me.", "Un poco más sobre mí."),
   aboutText: b(
-    "Marketing, communication and creative thinking across industries and ideas.",
-    "Marketing, comunicación y pensamiento creativo entre sectores e ideas."
+    "I was born on Holy Thursday and named after the god of the sea. Ending up in seafood marketing was almost inevitable.",
+    "Nací un Jueves Santo y me llamo como el dios del mar. Acabar en el marketing del sector del mar era casi inevitable."
   ),
 };
 
@@ -55,7 +55,7 @@ export default function HomePage() {
       {/* Name first, loud */}
       <section className="pt-6 md:pt-10">
         <Container>
-          <h1 className="sr-only">Nerea Clemente — One mind. Many worlds.</h1>
+          <h1 className="sr-only">Nerea Clemente. One mind. Many worlds.</h1>
           <p aria-hidden className="nc-fade-up cond whitespace-nowrap text-[min(14.1vw,13.5rem)] leading-[0.82] text-ink">
             Nerea Clemente
           </p>

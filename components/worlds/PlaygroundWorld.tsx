@@ -19,8 +19,8 @@ const c = {
     "Experimentos visuales, ideas juguetonas y algún que otro accidente feliz."
   ),
   footnote: b(
-    "Concept preview — illustrative experiments only, not client work.",
-    "Concept preview — experimentos ilustrativos, no trabajo para clientes."
+    "Concept preview: illustrative experiments only, not client work.",
+    "Concept preview: experimentos ilustrativos, no trabajo para clientes."
   ),
   close: b("Keep exploring.", "Sigue explorando."),
   closeSub: b("More ideas, more experiments, more ways to see.", "Más ideas, más experimentos, más formas de mirar."),

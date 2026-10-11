@@ -35,13 +35,13 @@ const fontVars = `${anton.variable} ${pixel.variable} ${rubik.variable} ${displa
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteMeta.name} — ${siteMeta.taglineEn}`,
+    default: `${siteMeta.name} | ${siteMeta.taglineEn}`,
     template: `%s · ${siteMeta.name}`,
   },
   description: siteMeta.subtaglineEn,
   metadataBase: new URL(siteMeta.url),
   openGraph: {
-    title: `${siteMeta.name} — ${siteMeta.taglineEn}`,
+    title: `${siteMeta.name} | ${siteMeta.taglineEn}`,
     description: siteMeta.subtaglineEn,
     type: "website",
     url: siteMeta.url,

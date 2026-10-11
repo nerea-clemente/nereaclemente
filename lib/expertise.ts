@@ -10,7 +10,7 @@ export const principles = [
       "Primero las personas, luego las diapositivas."
     ),
     body: b(
-      "The best ideas come from time with the people doing the work — on a farm, in a team, behind a product. I listen a lot before I make anything.",
+      "The best ideas come from time with the people doing the work: on a farm, in a team, behind a product. I listen a lot before I make anything.",
       "Las mejores ideas salen de pasar tiempo con quien hace el trabajo: en una granja, en un equipo, detrás de un producto. Escucho mucho antes de hacer nada."
     ),
   },

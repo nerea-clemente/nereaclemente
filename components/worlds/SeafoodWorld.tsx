@@ -31,7 +31,7 @@ const c = {
   ),
   concept: b("Concept preview", "Concept preview"),
   close: b("Let's talk seafood.", "Hablemos de seafood."),
-  closeSub: b("Science, people and the sea — told clearly.", "Ciencia, personas y mar, contados con claridad."),
+  closeSub: b("Science, people and the sea, told clearly.", "Ciencia, personas y mar, contados con claridad."),
 };
 
 const CASES = [

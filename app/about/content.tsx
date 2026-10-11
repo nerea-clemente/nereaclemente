@@ -29,6 +29,14 @@ export function AboutContent() {
               <p className="mt-12 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
                 {t(ui.about.intro)}
               </p>
+              <dl className="mt-10 grid max-w-2xl grid-cols-3 gap-4 border-t border-ink pt-5">
+                {ui.about.facts.map((f, i) => (
+                  <div key={i}>
+                    <dt className="label text-muted">{t(f.k)}</dt>
+                    <dd className="serif mt-1 text-lg leading-snug text-ink md:text-xl">{t(f.v)}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
             <figure className="md:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-soft">
@@ -55,17 +63,12 @@ export function AboutContent() {
               <h2 className="mt-4 font-display-tight text-[clamp(2rem,4.5vw,3.5rem)] leading-[1]">
                 {t(ui.about.bgTitle)}
               </h2>
-              <div className="mt-10 flex flex-col gap-6 text-base leading-relaxed text-paper/75">
-                <p>{t(ui.about.bgP1)}</p>
-                <p>
-                  {t(ui.about.bgP2a)}
-                  <span className="serif text-lg text-paper">{t(ui.about.bgP2em1)}</span>
-                  {t(ui.about.bgP2b)}
-                  <span className="serif text-lg text-paper">{t(ui.about.bgP2em2)}</span>
-                  {t(ui.about.bgP2c)}
-                </p>
-                <p>{t(ui.about.bgP3)}</p>
-                <p>{t(ui.about.bgP4)}</p>
+              <div className="mt-10 flex flex-col gap-5 text-base leading-relaxed text-paper/80">
+                {ui.about.story.map((para, i) => (
+                  <p key={i} className={i === 1 ? "serif text-xl leading-snug text-paper md:text-2xl" : ""}>
+                    {t(para)}
+                  </p>
+                ))}
               </div>
             </div>
 
