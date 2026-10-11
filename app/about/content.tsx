@@ -32,7 +32,7 @@ export function AboutContent() {
             </div>
             <figure className="md:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-soft">
-                <Photo name="portrait" alt="Nerea Clemente" position="center 30%" className="grayscale" />
+                <Photo name="portrait" alt="Nerea Clemente" position="62% 30%" className="grayscale" />
                 <div className="absolute bottom-0 left-0 grid w-full grid-cols-5" aria-hidden>
                   {worlds.map((w) => (
                     <span key={w.slug} className="block h-2" style={{ backgroundColor: w.palette.mid }} />

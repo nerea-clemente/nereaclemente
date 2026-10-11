@@ -148,10 +148,10 @@ export default function HomePage() {
       <section className="pb-20 pt-14 md:pb-28 md:pt-20">
         <Container>
           <Link href="/about" className="group grid overflow-hidden bg-soft md:grid-cols-12">
-            <div className="aspect-[16/9] md:col-span-7 md:aspect-auto md:min-h-[320px]">
-              <Photo name="portrait" alt="Nerea Clemente" position="center 35%" className="grayscale" />
+            <div className="aspect-[4/5] md:col-span-5 md:aspect-[5/6]">
+              <Photo name="portrait" alt="Nerea Clemente" position="62% 30%" className="grayscale transition-transform duration-700 ease-soft group-hover:scale-[1.03]" />
             </div>
-            <div className="flex flex-col justify-center gap-4 p-8 md:col-span-5 md:p-12">
+            <div className="flex flex-col justify-center gap-4 p-8 md:col-span-7 md:p-16">
               <h2 className="serif text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.05] text-ink">{t(copy.aboutTitle)}</h2>
               <p className="serif text-lg leading-snug text-ink/80 md:text-xl">{t(copy.aboutText)}</p>
               <span aria-hidden className="self-end text-2xl transition-transform group-hover:translate-x-1">→</span>

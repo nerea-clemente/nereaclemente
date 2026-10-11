@@ -10,7 +10,7 @@ Todas las fotos van en `public/images/provisional/`. Para cambiar una, basta con
 
 ## 1. Tú (2 fotos)
 
-- [ ] ⭐ `portrait.jpg` — Retrato tuyo, horizontal o vertical, buena luz. Se usa en blanco y negro en la home y en About. Encuadre de pecho hacia arriba, con aire alrededor.
+- [x] ⭐ `portrait.jpg` — Retrato tuyo, horizontal o vertical, buena luz. Se usa en blanco y negro en la home y en About. Encuadre de pecho hacia arriba, con aire alrededor.
 - [ ] (Opcional) Una foto tuya en contexto: en el mar, en una granja, trabajando. Si me la pasas la uso en About.
 
 ## 2. Home — portadas de los mundos (5 fotos)
